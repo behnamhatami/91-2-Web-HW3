@@ -170,9 +170,11 @@ pip-log.txt
 ###########
 ## Symfony 
 ###########
-app/
+app/*
 !app/config/
+
 app/config/parameters.yml
+
 bin/
 src/Acme/
 vendor/
