@@ -170,13 +170,14 @@ pip-log.txt
 ###########
 ## Symfony 
 ###########
-!app/config/
 app/
+!app/config/
+app/config/parameters.yml
 bin/
 src/Acme/
-composer*
-LICENSE
-README.md
-UPGRADE*
 vendor/
 web/
+composer*
+README.md
+UPGRADE*
+LICENSE
