@@ -171,7 +171,9 @@ pip-log.txt
 ## Symfony 
 ###########
 app/*
+
 !app/config/
+!app/AppKernel.php
 
 app/config/parameters.yml
 
