@@ -14,7 +14,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`User` (
   `lastname` VARCHAR(128) NOT NULL ,
   `username` VARCHAR(128) NOT NULL ,
   `password` VARCHAR(128) NOT NULL COMMENT '8' ,
-  `showname` VARCHAR(128) NULL ,
+  `showname` VARCHAR(128) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) )
 ENGINE = InnoDB;
@@ -41,6 +41,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`News` (
   `image` VARCHAR(128) NULL ,
   `datetime` DATETIME NOT NULL ,
   `content` MEDIUMTEXT NULL ,
+  `visited` INT NOT NULL ,
   `Group_id` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_News_User` (`User_id` ASC) ,
