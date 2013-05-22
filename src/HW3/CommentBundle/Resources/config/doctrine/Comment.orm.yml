@@ -1,0 +1,29 @@
+HW3\CommentBundle\Entity\Comment:
+    type: entity
+    table: null
+    repositoryClass: HW3\CommentBundle\Entity\CommentRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: '127'
+    manyToOne:
+        news:
+            targetEntity: HW3\NewsBundle\Entity\News
+            inversedBy: comments
+            joinColumn:
+                name: news_id
+                referencedColumnName: id
+        parent:
+            targetEntity: Comment
+            inversedBy: children
+
+    oneToMany:
+        children:
+            targetEntity: Comment
+            mappedBy: parent
+    lifecycleCallbacks: {  }

@@ -1,7 +1,7 @@
-HW3\NewsBundle\Entity\User:
+HW3\UserBundle\Entity\User:
     type: entity
     table: null
-    repositoryClass: HW3\NewsBundle\Entity\UserRepository
+    repositoryClass: HW3\UserBundle\Entity\UserRepository
     fields:
         id:
             type: integer
@@ -23,4 +23,16 @@ HW3\NewsBundle\Entity\User:
         showname:
             type: string
             length: '127'
+    manyToMany:
+        newsgroups:
+            targetEntity: HW3\NewsBundle\Entity\NewsGroup
+            inversedBy: users
+            joinTable:
+                name: usernewsgroup
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    group_id:
+                        referencedColumnName: id
     lifecycleCallbacks: {  }

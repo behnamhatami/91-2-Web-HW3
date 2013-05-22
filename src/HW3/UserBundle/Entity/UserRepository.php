@@ -1,6 +1,6 @@
 <?php
 
-namespace HW3\NewsBundle\Entity;
+namespace HW3\UserBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

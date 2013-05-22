@@ -1,0 +1,18 @@
+HW3\NewsBundle\Entity\NewsGroup:
+    type: entity
+    table: null
+    repositoryClass: HW3\NewsBundle\Entity\NewsGroupRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: '127'
+    manyToMany:
+        users:
+            targetEntity: HW3\UserBundle\Entity\User
+            mappedBy: newsgroups
+    lifecycleCallbacks: {  }

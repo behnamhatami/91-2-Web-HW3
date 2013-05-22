@@ -1,0 +1,40 @@
+HW3\NewsBundle\Entity\News:
+    type: entity
+    table: null
+    repositoryClass: HW3\NewsBundle\Entity\NewsRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        title:
+            type: string
+            length: '127'
+        abstract:
+            type: text
+        image:
+            type: string
+            length: '511'
+        datetime:
+            type: datetime
+        content:
+            type: text
+        visit:
+            type: integer
+    manyToOne:
+        user:
+            targetEntity: HW3\UserBundle\Entity\User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+        newsgroup:
+            targetEntity: NewsGroup
+            joinColumn:
+                name: newsgroup_id
+                referencedColumnName: id
+    oneToMany:
+        comments:
+            targetEntity: HW3\CommentBundle\Entity\Comment
+            mappedBy: news
+    lifecycleCallbacks: {  }

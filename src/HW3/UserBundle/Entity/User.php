@@ -1,6 +1,6 @@
 <?php
 
-namespace HW3\NewsBundle\Entity;
+namespace HW3\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -39,6 +39,14 @@ class User
      */
     private $showname;
 
+    /**
+     * @var newsgroups
+     */
+    private $newsgroups;
+
+    public function __construct() {
+        $this->newsgroups = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -163,5 +171,38 @@ class User
     public function getShowname()
     {
         return $this->showname;
+    }
+
+    /**
+     * Add newsgroups
+     *
+     * @param \HW3\NewsBundle\Entity\NewsGroup $newsgroups
+     * @return User
+     */
+    public function addNewsgroup(\HW3\NewsBundle\Entity\NewsGroup $newsgroups)
+    {
+        $this->newsgroups[] = $newsgroups;
+    
+        return $this;
+    }
+
+    /**
+     * Remove newsgroups
+     *
+     * @param \HW3\NewsBundle\Entity\NewsGroup $newsgroups
+     */
+    public function removeNewsgroup(\HW3\NewsBundle\Entity\NewsGroup $newsgroups)
+    {
+        $this->newsgroups->removeElement($newsgroups);
+    }
+
+    /**
+     * Get newsgroups
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNewsgroups()
+    {
+        return $this->newsgroups;
     }
 }
