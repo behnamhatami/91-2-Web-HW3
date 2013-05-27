@@ -30,16 +30,4 @@ HW3\CommentBundle\Entity\Comment:
         children:
             targetEntity: Comment
             mappedBy: parent
-    properties:
-        id:
-            - NotNull: ~
-        name:
-            - NotBlank: ~
-            - MaxLength: 255
-        pos:
-            - NotBlank: ~
-            - Min: 0
-        neg:
-            - NotBlank: ~
-            - Min: 0
     lifecycleCallbacks: {  }

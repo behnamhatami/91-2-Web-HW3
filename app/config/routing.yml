@@ -1,12 +1,12 @@
 comment:
     resource: "@CommentBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /comment/
 
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /user/
 
 news:
     resource: "@NewsBundle/Resources/config/routing.yml"
-    prefix: /news
+    prefix: /news/
 

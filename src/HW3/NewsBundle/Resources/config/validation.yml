@@ -1,0 +1,32 @@
+# src/HW3/NewsBundle/Resources/config/validation.yml
+HW3\NewsBundle\Entity\News:
+    properties:
+        title:
+            - NotBlank: ~
+            - MaxLength: 255
+        abstract:
+            - NotBlank: ~
+        image:
+            - NotBlank: ~
+            - Image:
+                minWidth: 1
+                minHeight: 1
+        datetime:
+            - DateTime: ~
+        content:
+            - NotBlank: ~
+        visit:
+            - NotBlank: ~
+            - Min: 0
+        user:
+            - NotNull: ~
+        newsgroup:
+            - NutNull: ~
+
+HW3\NewsBundle\Entity\NewsGroup:
+    properties:
+        id:
+            - NotNull: ~
+        name:
+            - NotBlank: ~
+            - MaxLength: 255

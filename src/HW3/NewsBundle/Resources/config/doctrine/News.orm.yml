@@ -37,24 +37,4 @@ HW3\NewsBundle\Entity\News:
         comments:
             targetEntity: HW3\CommentBundle\Entity\Comment
             mappedBy: news
-    properties:
-        id:
-            - NotNull: ~
-        title:
-            - NotBlank: ~
-            - MaxLength: 255
-        abstract:
-            - NotBlank: ~
-        image:
-            - NotBlank: ~
-            - Image:
-                minWidth: 1
-                minHeight: 1
-        datetime:
-            - DateTime: ~
-        content:
-            - NotBlank: ~
-        visit:
-            - NotBlank: ~
-            - Min: 0
     lifecycleCallbacks: {  }

@@ -15,10 +15,4 @@ HW3\NewsBundle\Entity\NewsGroup:
         users:
             targetEntity: HW3\UserBundle\Entity\User
             mappedBy: newsgroups
-    properties:
-        id:
-            - NotNull: ~
-        name:
-            - NotBlank: ~
-            - MaxLength: 255
     lifecycleCallbacks: {  }

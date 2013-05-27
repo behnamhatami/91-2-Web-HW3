@@ -1,0 +1,13 @@
+HW3\CommentBundle\Entity\Comment:
+    properties:
+        id:
+            - NotNull: ~
+        name:
+            - NotBlank: ~
+            - MaxLength: 255
+        pos:
+            - NotBlank: ~
+            - Min: 0
+        neg:
+            - NotBlank: ~
+            - Min: 0
