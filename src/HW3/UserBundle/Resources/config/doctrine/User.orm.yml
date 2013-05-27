@@ -10,19 +10,19 @@ HW3\UserBundle\Entity\User:
                 strategy: AUTO
         firstname:
             type: string
-            length: '127'
+            length: '255'
         lastname:
             type: string
-            length: '127'
+            length: '255'
         username:
             type: string
-            length: '127'
+            length: '255'
         password:
             type: string
-            length: '127'
+            length: '255'
         showname:
             type: string
-            length: '127'
+            length: '255'
     manyToMany:
         newsgroups:
             targetEntity: HW3\NewsBundle\Entity\NewsGroup
@@ -35,4 +35,27 @@ HW3\UserBundle\Entity\User:
                 inverseJoinColumns:
                     group_id:
                         referencedColumnName: id
+    properties:
+        id:
+            - NotNull: ~
+        firstname:
+            - NotBlank: ~
+            - MinLength: 3
+            - MaxLength: 255
+        lastname:
+            - NotBlank: ~
+            - MinLength: 3
+            - MaxLength: 255
+        username:
+            - NotBlank: ~
+            - MinLength: 3
+            - MaxLength: 255
+        showname:
+            - NotBlank: ~
+            - MinLength: 3
+            - MaxLength: 255
+        password:
+            - NotBlank: ~
+            - MinLength: 3
+            - MaxLength: 255
     lifecycleCallbacks: {  }

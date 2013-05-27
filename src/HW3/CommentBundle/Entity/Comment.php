@@ -34,6 +34,17 @@ class Comment
      */
     private $news;
 
+    /**
+     * @var integer
+     */
+    private $pos;
+
+    /**
+     * @var integer
+     */
+    private $neg;
+
+
     public function __construct() {
         $this->children = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -148,5 +159,51 @@ class Comment
     public function getParent()
     {
         return $this->parent;
+    }
+
+    /**
+     * Set pos
+     *
+     * @param integer $pos
+     * @return Comment
+     */
+    public function setPos($pos)
+    {
+        $this->pos = $pos;
+    
+        return $this;
+    }
+
+    /**
+     * Get pos
+     *
+     * @return integer 
+     */
+    public function getPos()
+    {
+        return $this->pos;
+    }
+
+    /**
+     * Set neg
+     *
+     * @param integer $neg
+     * @return Comment
+     */
+    public function setNeg($neg)
+    {
+        $this->neg = $neg;
+    
+        return $this;
+    }
+
+    /**
+     * Get neg
+     *
+     * @return integer 
+     */
+    public function getNeg()
+    {
+        return $this->neg;
     }
 }

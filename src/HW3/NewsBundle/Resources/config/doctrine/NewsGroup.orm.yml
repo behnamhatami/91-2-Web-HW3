@@ -10,9 +10,15 @@ HW3\NewsBundle\Entity\NewsGroup:
                 strategy: AUTO
         name:
             type: string
-            length: '127'
+            length: '255'
     manyToMany:
         users:
             targetEntity: HW3\UserBundle\Entity\User
             mappedBy: newsgroups
+    properties:
+        id:
+            - NotNull: ~
+        name:
+            - NotBlank: ~
+            - MaxLength: 255
     lifecycleCallbacks: {  }

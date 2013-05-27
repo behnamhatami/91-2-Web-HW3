@@ -10,7 +10,11 @@ HW3\CommentBundle\Entity\Comment:
                 strategy: AUTO
         name:
             type: string
-            length: '127'
+            length: '255'
+        pos:
+            type: integer
+        neg:
+            type: integer
     manyToOne:
         news:
             targetEntity: HW3\NewsBundle\Entity\News
@@ -26,4 +30,16 @@ HW3\CommentBundle\Entity\Comment:
         children:
             targetEntity: Comment
             mappedBy: parent
+    properties:
+        id:
+            - NotNull: ~
+        name:
+            - NotBlank: ~
+            - MaxLength: 255
+        pos:
+            - NotBlank: ~
+            - Min: 0
+        neg:
+            - NotBlank: ~
+            - Min: 0
     lifecycleCallbacks: {  }
