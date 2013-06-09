@@ -10,3 +10,6 @@ news:
     resource: "@NewsBundle/Resources/config/routing.yml"
     prefix: /news/
 
+acme_hello:
+    resource: "@AcmeHelloBundle/Resources/config/routing.yml"
+    prefix:   /

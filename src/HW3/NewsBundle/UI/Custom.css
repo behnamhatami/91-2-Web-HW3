@@ -13,7 +13,7 @@ body {
     list-style: none;
     border-bottom: 1px solid #d6dde0;
     padding: 5px 2px 5px 2px;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 20px;
     clear: both;
     direction: rtl;
@@ -164,25 +164,25 @@ nspList {
     overflow: hidden;
 }
 
-#gkContentWrap {
+#gkContentWrap,#gkCommentWrap {
     border-left: 1px solid #d2d0d0;
     width: 100%;
     background: #FFF;
 }
 
-.gkMainbodyTop {
+.gkMainbodyTop,.gkComment {
     position: relative;
     border-top: 0;
     margin-top: 30px;
 }
 
-.catBorder {
+.catBorder,.comBorder {
     border-bottom: 2px solid #bf0707;
 }
 
-.catHeader {
+.catHeader,.comHeader {
     direction: rtl;
-    font-size: 17px;
+    font-size: 16px;
     background: #bf0707;
     color: #FFF;
     position: absolute;
@@ -193,7 +193,7 @@ nspList {
     line-height: 24px;
 }
 
-.catHeader a {
+.catHeader a,.comHeader a {
     color: #FFF;
 }
 
@@ -264,7 +264,7 @@ ul.LeftTopTabs li {
 
 ul.LeftTopTabs li a {
     color: #fff;
-    font-size: 13px;
+    font-size: 12px;
     font-family: Bnazanin;
     font-weight: bold;
 }
@@ -313,7 +313,7 @@ ul.LeftTopTabs li.last:hover {
     list-style: none;
     border-bottom: 1px solid #d6dde0;
     padding: 5px 2px 5px 2px;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 20px;
     clear: both;
     direction: rtl;
@@ -327,4 +327,215 @@ ul.LeftTopTabs li.last:hover {
 
 .content ul li a:hover {
     color: #a59c83;
+}
+
+#gkContentCategory {
+    width: 100%;
+    background: #FFF;
+}
+
+#gkMainStory>div {
+    direction: rtl;
+    padding: 30px;
+}
+
+#gkBreadcrumb .ContentCount {
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+    float: left;
+}
+
+.actionBox {
+    float: left;
+    clear: both;
+    margin: 5px 0 0 0;
+}
+
+.actionBox a img {
+    float: right!important;
+    margin: 0 0 0 5px;
+}
+
+.actionBox a span {
+    float: right!important;
+    padding: 0 0 0 15px;
+}
+
+.StoryBody {
+    margin: 20px 0 0 0!important;
+    float: right;
+    font-size: 17px;
+    text-align: justify;
+    width: 100%;
+    line-height: 30px;
+}
+
+.StoryBody p {
+    clear: both;
+    color: #000;
+    margin: 12px 0 0 0;
+}
+
+#gkCommentWrap
+{
+    width : 78%;
+}
+
+.commentRating {
+    width: 139px;
+   /*height: 20px;
+    float: right;*/
+    padding-top: 0px;
+    position: absolute;
+    top: -23px;
+    left: 50px;
+}
+
+.ratingDown {
+    width: 43px;
+    height: 21px;
+    overflow: hidden;
+    float: right;
+    text-align: center;
+    font: 11px tahoma;
+    color: #E30303;
+    background: url('Images/r_mi.gif') no-repeat;
+}
+
+.rateDownLink {
+    width: 24px;
+    height: 21px;
+    display: block;
+    text-decoration: none;
+    float: right;
+    background: url('Images/l_mi.gif') no-repeat;
+    cursor: pointer;
+    margin-left: 5px;
+
+}
+
+.rateUpLink {
+    width: 24px;
+    height: 21px;
+    display: block;
+    text-decoration: none;
+    float: right;
+    background: url('Images/r_po.gif') no-repeat;
+    cursor: pointer;
+}
+
+.ratingUp {
+    width: 43px;
+    height: 21px;
+    overflow: hidden;
+    float: right;
+    text-align: center;
+    font: 11px tahoma;
+    color: #116DD6;
+    background: url('Images/l_po.gif') no-repeat;
+
+}
+
+.box.light.comment
+{
+    background: #ffffff !important;
+    position: relative;
+    padding: 0px;
+}
+
+.commentInfoBar {
+    width: 100%;
+    background: #EDEDED;
+    margin : auto ;
+    overflow: hidden;
+}
+
+.commentDate,.commentUser
+{
+    width : 15% ;
+    background: #bf0707;
+    color: #FFF;
+    text-align: center;
+}
+.commentDate
+{
+    float :left ;
+}
+
+.commentUser
+{
+    float:right;
+}
+
+.commentContent
+{
+    width: 100%;
+   /* padding: 20px 50px 10px 50px;*/
+    font: 12px  Bnazanin,tahoma,arial;
+    color: #2F2F2F;
+    line-height: 150%;
+    text-align: justify;
+    margin-bottom: 8px;
+    overflow: hidden;
+    direction : rtl ;
+}
+
+.commentBox
+{
+   /* position: absolute;*/
+    border : 1px solid #868686;
+   /* left: 0px ;*/
+    margin-left: 15px ;
+    width: 95%;
+    margin-top: 15px ;
+    margin-bottom: 15px;
+}
+
+
+#gkContentCategory #CategoryChoosen {
+    direction: rtl;
+    padding: 20px 20px 0 20px;
+    border-bottom: solid 1px #d2d0d0;
+}
+
+.catTop:first-child {
+    margin: 0 0 0 0!important;
+}
+
+.catTop {
+    margin: 0 10px 0 0!important;
+}
+
+.catTop a {
+    margin: 0 0 10px 0!important;
+}
+
+#gkMainbody>div {
+    width: 100%;
+}
+
+.categoryList:first-child {
+    padding: 15px 15px;
+}
+
+.categoryList {
+    border-left: 1px solid #d2d0d0;
+    padding: 15px;
+    min-height: 140px;
+}
+
+.gkArtContentWrap {
+    padding: 5px 5px 0 0;
+}
+
+.categoryList p {
+    font-size: 15px!important;
+    font-weight: normal;
+}
+
+span.nspDate {
+    float: left;
+    font-size: 14px;
+    margin: -5px 0 0 0;
 }

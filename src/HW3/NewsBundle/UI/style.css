@@ -34,7 +34,7 @@ body
 {
     margin : 0 ;
     min-height: 100%;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.6;
 }
 body>header:first-child
@@ -145,7 +145,7 @@ body>footer:first-child, body>header:first-child, body>section:first-child, sect
     -o-box-sizing: border-box;
     box-sizing: border-box;
     color: #666;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.6;
     width: 100%;
     background: #FFF;
@@ -285,7 +285,7 @@ img {
     -ms-box-sizing: border-box;
     -o-box-sizing: border-box;
     box-sizing: border-box;
-    font-size: 19px;
+    font-size: 18px;
     margin: 0;
     padding: 8px 14px;
     position: absolute;
@@ -308,7 +308,7 @@ img {
 }
 h4.nspHeader {
     color: #363636;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.2;
     margin-bottom: 10px;
 }
@@ -374,7 +374,7 @@ h4 {
     color: #fff;
     margin-top: 5px;
     position: static;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
     text-align: justify;
 }
@@ -445,13 +445,13 @@ ul li {
 }
 
 .header .nspLinks ul li h4 {
-    font-size: 14px;
+    font-size: 13px;
 
 }
 
 .nspLinks ul li h4 {
     color: #2f3133;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     line-height: 18px;
 }
@@ -523,7 +523,7 @@ ul li {
     color: #fff;
 }
 
-#gkContentWrap {
+#gkContentWrap,#gkCommentWrap {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -533,7 +533,7 @@ ul li {
     padding: 10px 20px;
 }
 
-.gkMainbodyTop {
+.gkMainbodyTop,.gkComment {
     margin: -10px -19px 0 -20px;
     border-bottom: 1px solid #d2d0d0;
     border-top: 1px solid #d2d0d0;
@@ -562,7 +562,7 @@ ul li {
 .nspArt p.nspText {
     color: #444;
     float: none;
-    font-size: 14px;
+    font-size: 13px;
     margin: 10px 0;
 }
 
@@ -582,11 +582,11 @@ ul li {
 }
 
 .header .nspLinks ul li h4 {
-    font-size: 14px;
+    font-size: 13px;
 }
 .nspLinks ul li h4 {
     color: #2f3133;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     line-height: 18px;
 }
@@ -608,7 +608,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="url"],
     border: 1px solid #d2d0d0;
     box-sizing: border-box;
     color: #777;
-    font-size: 11px;
+    font-size: 10px;
     height: 32px;
     line-height: 33px;
     max-width: 100%!important;
@@ -643,7 +643,7 @@ button, .button, input.button, span.button, button.button, div.button, input[typ
     cursor: pointer;
     display: block;
     float: left;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     height: 42px;
     line-height: 42px;
@@ -669,7 +669,118 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
     box-sizing: border-box;
     border-top: 2px solid #bf0707;
     color: #777;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 21px;
     margin: 0 auto 20px auto!important;
+}
+
+#gkBreadcrumb {
+    background: #f9f9f9;
+    border-bottom: 1px solid #d2d0d0;
+    padding: 5px 15px 5px 24px;
+    direction: rtl;
+}
+
+#gkBreadcrumb .breadcrumbs {
+    float: right;
+    color: #333;
+}
+
+#k2Container {
+    padding-bottom: 10px;
+}
+
+section article:first-child, section.blog .items-more ol {
+    margin-top: 0;
+}
+section article {
+    margin-top: 10px;
+}
+
+article, article>section {
+    position: relative;
+}
+
+#gkMainStory img {
+    float: left;
+}
+
+article header {
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    float: right;
+    width: 450px;
+    margin: 10px 15px 0 0;
+}
+
+article header span {
+    font-size: 18px;
+}
+
+article header h1, .category header, article header h2 {
+    clear: both;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 42px;
+    padding: 0 0 6px;
+}
+
+article header .Abstract {
+    font-size: 17px;
+    text-align: justify;
+}
+
+#k2Container .box {
+    border: 0;
+    padding-top: 0;
+}
+
+.bigtitle .nspHeader {
+    font-size: 18px;
+}
+
+.nsphover .content {
+    margin: 0 -12px;
+}
+
+.bigtitle .nspArt:first-child {
+    border-top: 0;
+}
+
+.bigtitle .nspArt {
+    border-top: 1px solid #d2d0d0;
+}
+
+.nspCol30 {
+    width: 32.5%;
+}
+
+.bigtitle p.nspInfo {
+    font-size: 14px;
+}
+.nspArt p.nspInfo {
+    color: #999;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.0;
+    margin: 0 0 5px 0;
+}
+
+.nspArt .fright {
+    float: left;
+}
+.nspArt .tright {
+    text-align: left;
+}
+
+.bigtitle p.nspText {
+    font-size: 16px;
+}
+p.nspText
+{
+    clear : both ;
 }
