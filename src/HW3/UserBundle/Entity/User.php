@@ -3,11 +3,13 @@
 namespace HW3\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Role\Role;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var integer
@@ -44,14 +46,15 @@ class User
      */
     private $newsgroups;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->newsgroups = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -67,14 +70,14 @@ class User
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
-    
+
         return $this;
     }
 
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
     public function getFirstname()
     {
@@ -90,14 +93,14 @@ class User
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
-    
+
         return $this;
     }
 
     /**
      * Get lastname
      *
-     * @return string 
+     * @return string
      */
     public function getLastname()
     {
@@ -113,14 +116,14 @@ class User
     public function setUsername($username)
     {
         $this->username = $username;
-    
+
         return $this;
     }
 
     /**
      * Get username
      *
-     * @return string 
+     * @return string
      */
     public function getUsername()
     {
@@ -136,14 +139,14 @@ class User
     public function setPassword($password)
     {
         $this->password = $password;
-    
+
         return $this;
     }
 
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
@@ -159,14 +162,14 @@ class User
     public function setShowname($showname)
     {
         $this->showname = $showname;
-    
+
         return $this;
     }
 
     /**
      * Get showname
      *
-     * @return string 
+     * @return string
      */
     public function getShowname()
     {
@@ -182,7 +185,7 @@ class User
     public function addNewsgroup(\HW3\NewsBundle\Entity\NewsGroup $newsgroups)
     {
         $this->newsgroups[] = $newsgroups;
-    
+
         return $this;
     }
 
@@ -199,10 +202,25 @@ class User
     /**
      * Get newsgroups
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getNewsgroups()
     {
         return $this->newsgroups;
+    }
+
+    public function getRoles()
+    {
+        return 'ROLE_USER';
+    }
+
+    public function getSalt()
+    {
+        return null;
+    }
+
+    public function eraseCredentials()
+    {
+        return;
     }
 }
