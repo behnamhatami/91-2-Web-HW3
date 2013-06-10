@@ -186,3 +186,6 @@ README.md
 UPGRADE*
 LICENSE
 .travis.yml
+src/HW3/NewsBundle/UI/simplehtmldom_1_5/*
+src/HW3/NewsBundle/UI/jquery-1.9.1.js
+
