@@ -292,4 +292,32 @@ class News
     {
         return $this->newsgroup;
     }
+    /**
+     * @var \DateTime
+     */
+    private $creationDateTime;
+
+
+    /**
+     * Set creationDateTime
+     *
+     * @param \DateTime $creationDateTime
+     * @return News
+     */
+    public function setCreationDateTime($creationDateTime)
+    {
+        $this->creationDateTime = $creationDateTime;
+    
+        return $this;
+    }
+
+    /**
+     * Get creationDateTime
+     *
+     * @return \DateTime 
+     */
+    public function getCreationDateTime()
+    {
+        return $this->creationDateTime;
+    }
 }

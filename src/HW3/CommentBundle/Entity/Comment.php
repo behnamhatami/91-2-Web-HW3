@@ -1,8 +1,9 @@
 <?php
 
 namespace HW3\CommentBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
+use \Doctrine\Common\Collections\ArrayCollection;
+use \HW3\NewsBundle\Entity\News;
 
 /**
  * Comment
@@ -45,14 +46,15 @@ class Comment
     private $neg;
 
 
-    public function __construct() {
-        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    public function __construct()
+    {
+        $this->children = new ArrayCollection();
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -68,14 +70,14 @@ class Comment
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -88,10 +90,10 @@ class Comment
      * @param \HW3\CommentBundle\Entity\Comment $children
      * @return Comment
      */
-    public function addChildren(\HW3\CommentBundle\Entity\Comment $children)
+    public function addChildren(Comment $children)
     {
         $this->children[] = $children;
-    
+
         return $this;
     }
 
@@ -100,7 +102,7 @@ class Comment
      *
      * @param \HW3\CommentBundle\Entity\Comment $children
      */
-    public function removeChildren(\HW3\CommentBundle\Entity\Comment $children)
+    public function removeChildren(Comment $children)
     {
         $this->children->removeElement($children);
     }
@@ -108,7 +110,7 @@ class Comment
     /**
      * Get children
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getChildren()
     {
@@ -121,17 +123,17 @@ class Comment
      * @param \HW3\NewsBundle\Entity\News $news
      * @return Comment
      */
-    public function setNews(\HW3\NewsBundle\Entity\News $news = null)
+    public function setNews(News $news = null)
     {
         $this->news = $news;
-    
+
         return $this;
     }
 
     /**
      * Get news
      *
-     * @return \HW3\NewsBundle\Entity\News 
+     * @return \HW3\NewsBundle\Entity\News
      */
     public function getNews()
     {
@@ -144,17 +146,17 @@ class Comment
      * @param \HW3\CommentBundle\Entity\Comment $parent
      * @return Comment
      */
-    public function setParent(\HW3\CommentBundle\Entity\Comment $parent = null)
+    public function setParent(Comment $parent = null)
     {
         $this->parent = $parent;
-    
+
         return $this;
     }
 
     /**
      * Get parent
      *
-     * @return \HW3\CommentBundle\Entity\Comment 
+     * @return \HW3\CommentBundle\Entity\Comment
      */
     public function getParent()
     {
@@ -170,14 +172,14 @@ class Comment
     public function setPos($pos)
     {
         $this->pos = $pos;
-    
+
         return $this;
     }
 
     /**
      * Get pos
      *
-     * @return integer 
+     * @return integer
      */
     public function getPos()
     {
@@ -193,17 +195,45 @@ class Comment
     public function setNeg($neg)
     {
         $this->neg = $neg;
-    
+
         return $this;
     }
 
     /**
      * Get neg
      *
-     * @return integer 
+     * @return integer
      */
     public function getNeg()
     {
         return $this->neg;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $creationDateTime;
+
+
+    /**
+     * Set creationDateTime
+     *
+     * @param \DateTime $creationDateTime
+     * @return Comment
+     */
+    public function setCreationDateTime($creationDateTime)
+    {
+        $this->creationDateTime = $creationDateTime;
+    
+        return $this;
+    }
+
+    /**
+     * Get creationDateTime
+     *
+     * @return \DateTime 
+     */
+    public function getCreationDateTime()
+    {
+        return $this->creationDateTime;
     }
 }

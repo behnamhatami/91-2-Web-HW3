@@ -11,6 +11,8 @@ HW3\CommentBundle\Entity\Comment:
         name:
             type: string
             length: '255'
+        creationDateTime:
+            type: datetime
         pos:
             type: integer
         neg:

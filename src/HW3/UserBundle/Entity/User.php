@@ -205,4 +205,60 @@ class User
     {
         return $this->newsgroups;
     }
+    /**
+     * @var string
+     */
+    private $userpwd;
+
+
+    /**
+     * Set userpwd
+     *
+     * @param string $userpwd
+     * @return User
+     */
+    public function setUserpwd($userpwd)
+    {
+        $this->userpwd = $userpwd;
+    
+        return $this;
+    }
+
+    /**
+     * Get userpwd
+     *
+     * @return string 
+     */
+    public function getUserpwd()
+    {
+        return $this->userpwd;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $creationDateTime;
+
+
+    /**
+     * Set creationDateTime
+     *
+     * @param \DateTime $creationDateTime
+     * @return User
+     */
+    public function setCreationDateTime($creationDateTime)
+    {
+        $this->creationDateTime = $creationDateTime;
+    
+        return $this;
+    }
+
+    /**
+     * Get creationDateTime
+     *
+     * @return \DateTime 
+     */
+    public function getCreationDateTime()
+    {
+        return $this->creationDateTime;
+    }
 }
