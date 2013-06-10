@@ -17,14 +17,12 @@ HW3\UserBundle\Entity\User:
         username:
             type: string
             length: '255'
-        userpwd:
+        password:
             type: string
             length: '255'
         showname:
             type: string
             length: '255'
-        creationDateTime:
-            type: datetime
     manyToMany:
         newsgroups:
             targetEntity: HW3\NewsBundle\Entity\NewsGroup

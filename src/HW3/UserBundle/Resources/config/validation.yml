@@ -18,7 +18,7 @@ HW3\UserBundle\Entity\User:
             - NotBlank: ~
             - MinLength: 3
             - MaxLength: 255
-        userpwd:
+        password:
             - NotBlank: ~
             - MinLength: 3
             - MaxLength: 255
