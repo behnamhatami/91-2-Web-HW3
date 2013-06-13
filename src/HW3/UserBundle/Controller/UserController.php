@@ -2,6 +2,7 @@
 
 namespace HW3\UserBundle\Controller;
 
+use Doctrine\DBAL\Cache\CacheException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -134,7 +135,7 @@ class UserController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new UserType(), $entity);
-        $editForm->handleRequest($request);
+        $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
@@ -157,12 +158,11 @@ class UserController extends Controller
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('UserBundle:User')->find($id);
-
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find User entity.');
             }

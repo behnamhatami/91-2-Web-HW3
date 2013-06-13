@@ -62,10 +62,11 @@ class News
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct($user)
     {
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->setCreationDate('now');
+        $this->setUser($user);
         $this->setVisit(0);
     }
 

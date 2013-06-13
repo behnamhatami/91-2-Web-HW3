@@ -14,9 +14,16 @@ class UserType extends AbstractType
             ->add('firstname')
             ->add('lastname')
             ->add('username')
-            ->add('password', 'password')
             ->add('showname')
-            ->add('newsgroups');
+            ->add('newsgroups')
+            ->add('password', 'repeated', array(
+                'type' => 'password',
+                'invalid_message' => 'The password fields must match.',
+                'options' => array('attr' => array('class' => 'password-field')),
+                'required' => true,
+                'first_options' => array('label' => 'Password'),
+                'second_options' => array('label' => 'Repeat Password'),
+            ));;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

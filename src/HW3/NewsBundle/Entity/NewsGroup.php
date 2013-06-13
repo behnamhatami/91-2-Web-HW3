@@ -27,7 +27,7 @@ class NewsGroup
     /**
      * @var integer
      */
-    private $order;
+    private $level;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -100,26 +100,26 @@ class NewsGroup
     }
 
     /**
-     * Set order
+     * Set level
      *
-     * @param integer $order
+     * @param integer $level
      * @return NewsGroup
      */
-    public function setOrder($order)
+    public function setLevel($level)
     {
-        $this->order = $order;
+        $this->level = $level;
 
         return $this;
     }
 
     /**
-     * Get order
+     * Get level
      *
      * @return integer
      */
-    public function getOrder()
+    public function getLevel()
     {
-        return $this->order;
+        return $this->level;
     }
 
     /**
@@ -153,5 +153,10 @@ class NewsGroup
     public function getUsers()
     {
         return $this->users;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

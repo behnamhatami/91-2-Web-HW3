@@ -12,9 +12,7 @@ class NewsGroupType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('order')
-            ->add('users')
-        ;
+            ->add('level');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

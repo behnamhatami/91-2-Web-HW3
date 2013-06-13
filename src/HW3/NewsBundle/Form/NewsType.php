@@ -15,7 +15,6 @@ class NewsType extends AbstractType
             ->add('abstract')
             ->add('image')
             ->add('content')
-            ->add('user')
             ->add('newsgroup')
         ;
     }

@@ -37,7 +37,7 @@ HW3\NewsBundle\Entity\NewsGroup:
         creation_date:
             - DateTime: ~
 
-        order:
+        level:
             - NotBlank: ~
             - Range:
                 min: 0

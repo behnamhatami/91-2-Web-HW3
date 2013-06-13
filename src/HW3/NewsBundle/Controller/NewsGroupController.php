@@ -2,11 +2,13 @@
 
 namespace HW3\NewsBundle\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use HW3\NewsBundle\Entity\NewsGroup;
 use HW3\NewsBundle\Form\NewsGroupType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * NewsGroup controller.
@@ -29,13 +31,14 @@ class NewsGroupController extends Controller
             'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new NewsGroup entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity  = new NewsGroup();
+        $entity = new NewsGroup();
         $form = $this->createForm(new NewsGroupType(), $entity);
         $form->handleRequest($request);
 
@@ -49,7 +52,7 @@ class NewsGroupController extends Controller
 
         return $this->render('NewsBundle:NewsGroup:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -60,11 +63,11 @@ class NewsGroupController extends Controller
     public function newAction()
     {
         $entity = new NewsGroup();
-        $form   = $this->createForm(new NewsGroupType(), $entity);
+        $form = $this->createForm(new NewsGroupType(), $entity);
 
         return $this->render('NewsBundle:NewsGroup:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -85,8 +88,8 @@ class NewsGroupController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('NewsBundle:NewsGroup:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'entity' => $entity,
+            'delete_form' => $deleteForm->createView(),));
     }
 
     /**
@@ -107,8 +110,8 @@ class NewsGroupController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('NewsBundle:NewsGroup:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -129,7 +132,7 @@ class NewsGroupController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new NewsGroupType(), $entity);
-        $editForm->handleRequest($request);
+        $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
@@ -139,11 +142,12 @@ class NewsGroupController extends Controller
         }
 
         return $this->render('NewsBundle:NewsGroup:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a NewsGroup entity.
      *
@@ -151,8 +155,7 @@ class NewsGroupController extends Controller
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
+        $form->bind($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('NewsBundle:NewsGroup')->find($id);
@@ -179,7 +182,6 @@ class NewsGroupController extends Controller
     {
         return $this->createFormBuilder(array('id' => $id))
             ->add('id', 'hidden')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

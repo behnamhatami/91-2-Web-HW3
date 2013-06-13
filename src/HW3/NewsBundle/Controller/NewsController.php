@@ -29,13 +29,14 @@ class NewsController extends Controller
             'entities' => $entities,
         ));
     }
-    /**
+
+    /*
      * Creates a new News entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity  = new News();
+        $entity = new News($this->getUser());
         $form = $this->createForm(new NewsType(), $entity);
         $form->handleRequest($request);
 
@@ -49,7 +50,7 @@ class NewsController extends Controller
 
         return $this->render('NewsBundle:News:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -59,12 +60,12 @@ class NewsController extends Controller
      */
     public function newAction()
     {
-        $entity = new News();
-        $form   = $this->createForm(new NewsType(), $entity);
+        $entity = new News($this->getUser());
+        $form = $this->createForm(new NewsType(), $entity);
 
         return $this->render('NewsBundle:News:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -85,8 +86,8 @@ class NewsController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('NewsBundle:News:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'entity' => $entity,
+            'delete_form' => $deleteForm->createView(),));
     }
 
     /**
@@ -107,8 +108,8 @@ class NewsController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('NewsBundle:News:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -129,7 +130,7 @@ class NewsController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new NewsType(), $entity);
-        $editForm->handleRequest($request);
+        $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
@@ -139,11 +140,12 @@ class NewsController extends Controller
         }
 
         return $this->render('NewsBundle:News:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a News entity.
      *
@@ -151,7 +153,7 @@ class NewsController extends Controller
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -179,7 +181,6 @@ class NewsController extends Controller
     {
         return $this->createFormBuilder(array('id' => $id))
             ->add('id', 'hidden')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
