@@ -3,7 +3,8 @@ HW3\NewsBundle\Entity\News:
     properties:
         title:
             - NotBlank: ~
-            - MaxLength: 255
+            - Length:
+                max: 255
         abstract:
             - NotBlank: ~
         image:
@@ -11,22 +12,36 @@ HW3\NewsBundle\Entity\News:
             - Image:
                 minWidth: 1
                 minHeight: 1
-        datetime:
+        creation_date:
             - DateTime: ~
         content:
             - NotBlank: ~
         visit:
             - NotBlank: ~
-            - Min: 0
+            - Range:
+                min: 0
         user:
             - NotNull: ~
         newsgroup:
-            - NutNull: ~
+            - NotNull: ~
 
 HW3\NewsBundle\Entity\NewsGroup:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
     properties:
-        id:
-            - NotNull: ~
         name:
             - NotBlank: ~
-            - MaxLength: 255
+            - Length:
+                min: 3
+                max: 255
+        creation_date:
+            - DateTime: ~
+
+        order:
+            - NotBlank: ~
+            - Range:
+                min: 0
+
+        users:
+            - Count:
+                min: 0

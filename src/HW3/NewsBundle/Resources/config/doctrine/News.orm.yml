@@ -16,7 +16,7 @@ HW3\NewsBundle\Entity\News:
         image:
             type: string
             length: '511'
-        datetime:
+        creation_date:
             type: datetime
         content:
             type: text

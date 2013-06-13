@@ -32,7 +32,7 @@ class News
     /**
      * @var \DateTime
      */
-    private $datetime;
+    private $creation_date;
 
     /**
      * @var string
@@ -45,26 +45,29 @@ class News
     private $visit;
 
     /**
-     * @var integer
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $comments;
+
+    /**
+     * @var \HW3\UserBundle\Entity\User
      */
     private $user;
 
     /**
-     * @var integer
+     * @var \HW3\NewsBundle\Entity\NewsGroup
      */
     private $newsgroup;
 
     /**
-     * @var integer
+     * Constructor
      */
-    private $comments;
-
-
     public function __construct()
     {
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setCreationDate('now');
+        $this->setVisit(0);
     }
-
 
     /**
      * Get id
@@ -146,26 +149,26 @@ class News
     }
 
     /**
-     * Set datetime
+     * Set creation_date
      *
-     * @param \DateTime $datetime
+     * @param \DateTime $creationDate
      * @return News
      */
-    public function setDatetime($datetime)
+    public function setCreationDate($creationDate)
     {
-        $this->datetime = $datetime;
+        $this->creation_date = new \DateTime($creationDate);
 
         return $this;
     }
 
     /**
-     * Get datetime
+     * Get creation_date
      *
      * @return \DateTime
      */
-    public function getDatetime()
+    public function getCreationDate()
     {
-        return $this->datetime;
+        return $this->creation_date;
     }
 
     /**

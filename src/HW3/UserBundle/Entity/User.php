@@ -3,7 +3,6 @@
 namespace HW3\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -37,18 +36,27 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @var \DateTime
+     */
+    private $creation_date;
+
+    /**
      * @var string
      */
     private $showname;
 
     /**
-     * @var newsgroups
+     * @var \Doctrine\Common\Collections\Collection
      */
     private $newsgroups;
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $this->newsgroups = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setCreationDate('now');
     }
 
     /**
@@ -139,7 +147,6 @@ class User implements UserInterface
     public function setPassword($password)
     {
         $this->password = $password;
-
         return $this;
     }
 
@@ -151,6 +158,29 @@ class User implements UserInterface
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set creation_date
+     *
+     * @param \DateTime $creationDate
+     * @return User
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creation_date = new \DateTime($creationDate);
+
+        return $this;
+    }
+
+    /**
+     * Get creation_date
+     *
+     * @return \DateTime
+     */
+    public function getCreationDate()
+    {
+        return $this->creation_date;
     }
 
     /**
@@ -209,9 +239,9 @@ class User implements UserInterface
         return $this->newsgroups;
     }
 
-    public function getRoles()
+    public function  getRoles()
     {
-        return 'ROLE_USER';
+        return array('ROLE_USER');
     }
 
     public function getSalt()
@@ -219,7 +249,7 @@ class User implements UserInterface
         return null;
     }
 
-    public function eraseCredentials()
+    public function  eraseCredentials()
     {
         return;
     }

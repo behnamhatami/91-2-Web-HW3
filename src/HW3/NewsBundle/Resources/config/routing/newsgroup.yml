@@ -1,0 +1,30 @@
+newsgroup:
+    pattern:  /
+    defaults: { _controller: "NewsBundle:NewsGroup:index" }
+
+newsgroup_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "NewsBundle:NewsGroup:show" }
+
+newsgroup_new:
+    pattern:  /new
+    defaults: { _controller: "NewsBundle:NewsGroup:new" }
+
+newsgroup_create:
+    pattern:  /create
+    defaults: { _controller: "NewsBundle:NewsGroup:create" }
+    requirements: { _method: post }
+
+newsgroup_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "NewsBundle:NewsGroup:edit" }
+
+newsgroup_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "NewsBundle:NewsGroup:update" }
+    requirements: { _method: post|put }
+
+newsgroup_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "NewsBundle:NewsGroup:delete" }
+    requirements: { _method: post|delete }

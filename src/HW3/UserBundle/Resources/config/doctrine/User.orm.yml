@@ -20,6 +20,8 @@ HW3\UserBundle\Entity\User:
         password:
             type: string
             length: '255'
+        creation_date:
+            type: datetime
         showname:
             type: string
             length: '255'

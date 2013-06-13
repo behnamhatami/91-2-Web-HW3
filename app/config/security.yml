@@ -10,7 +10,7 @@ security:
         in_memory:
             memory:
                 users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    user:  { password: 45f106ef4d5161e7aa38cf6c666607f25748b6ca, roles: [ 'ROLE_USER' ] }
                     admin: { password: 74913f5cd5f61ec0bcfdb775414c2fb3d161b620, roles: [ 'ROLE_SUPER_ADMIN' ] }
         in_database:
             entity: {class: HW3\UserBundle\Entity\User, property: username}
@@ -21,11 +21,12 @@ security:
             iterations: 1
             encode_as_base64: false
 
+        HW3\UserBundle\Entity\User:
+            algorithm: sha1
+            iterations: 1
+            encode_as_base64: false
 
     firewalls:
-        main:
-            switch_user: true
-
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -50,5 +51,5 @@ security:
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, roles: ROLE_ADMIN }
+        - { path: ^/, roles: ROLE_USER }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

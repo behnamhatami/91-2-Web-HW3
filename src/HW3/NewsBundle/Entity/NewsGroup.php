@@ -20,19 +20,33 @@ class NewsGroup
     private $name;
 
     /**
-     * @var collection
+     * @var \DateTime
+     */
+    private $creation_date;
+
+    /**
+     * @var integer
+     */
+    private $order;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      */
     private $users;
 
-
-    public function __construct() {
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setCreationDate('now');
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -48,18 +62,64 @@ class NewsGroup
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set creation_date
+     *
+     * @param \DateTime $creationDate
+     * @return NewsGroup
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creation_date = new \DateTime($creationDate);
+
+        return $this;
+    }
+
+    /**
+     * Get creation_date
+     *
+     * @return \DateTime
+     */
+    public function getCreationDate()
+    {
+        return $this->creation_date;
+    }
+
+    /**
+     * Set order
+     *
+     * @param integer $order
+     * @return NewsGroup
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
+        return $this->order;
     }
 
     /**
@@ -71,7 +131,7 @@ class NewsGroup
     public function addUser(\HW3\UserBundle\Entity\User $users)
     {
         $this->users[] = $users;
-    
+
         return $this;
     }
 
@@ -88,7 +148,7 @@ class NewsGroup
     /**
      * Get users
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getUsers()
     {

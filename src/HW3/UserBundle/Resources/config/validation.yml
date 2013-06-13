@@ -1,24 +1,32 @@
 HW3\UserBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: username
     properties:
-        id:
-            - NotNull: ~
         firstname:
             - NotBlank: ~
-            - MinLength: 3
-            - MaxLength: 255
+            - Length:
+                min: 3
+                max: 255
         lastname:
             - NotBlank: ~
-            - MinLength: 3
-            - MaxLength: 255
+            - Length:
+                min: 3
+                max: 255
         username:
             - NotBlank: ~
-            - MinLength: 3
-            - MaxLength: 255
+            - Length:
+                min: 3
+                max: 255
+        creation_date:
+            - DateTime: ~
         showname:
             - NotBlank: ~
-            - MinLength: 3
-            - MaxLength: 255
+            - Length:
+                min: 3
+                max: 255
         password:
             - NotBlank: ~
-            - MinLength: 3
-            - MaxLength: 255
+        newsgroups:
+            - Count:
+                min: 0
+                max: 3

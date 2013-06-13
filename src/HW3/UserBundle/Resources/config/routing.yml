@@ -6,3 +6,7 @@ user_homepage:
 user_login:
     pattern: /login
     defaults: { _controller: UserBundle:Default:login }
+
+user_crud:
+    resource: "@UserBundle/Resources/config/routing/user.yml"
+    prefix:   /user
