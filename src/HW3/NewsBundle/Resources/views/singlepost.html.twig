@@ -15,7 +15,7 @@
                 <section id='gkBreadcrumb'>
                     <div class='breadcrumbs'>";
                        <a href='/'>صفحه اصلی</a> &gt;
-                       <a href="{{ path('__single',{'id':news.id})}}" > {{ news.newsgroup }}</a>
+                       <a href="{{ path('__single',{'id':news.id})}}" > {{ news.newsgroup.name }}</a>
                     </div>
                     <div class='ContentCount'>سرویس:
                     {{ news.newsgroup }}
@@ -89,7 +89,26 @@
             </section>
 
 
-</div>
+
+        </div>
+    <aside id="gkSidebar" >
+
+        <div class="box nsp color">
+            <div class="splitHeader"><a href="/Home/Category/1" target="_blank">مرتبط</a></div>
+            <div class="content side catList">
+                {%  for post in relatednews %}
+                    <div class="nspArt nspCol1">
+                        <a href="{{ path('__single',{'id':post.id}) }}" target="_blank" class="nspImageWrapper tleft fleft gkResponsive">
+                        <img class="nspImage tleft fleft gkResponsive" src="{{ post.image }}" ></a>
+                        <div class="gkArtContentWrap">
+                            <h4 class="nspHeader tleft fnone"><a href="{{ path('__single',{'id':post.id}) }}" target="_blank">post.title</a></h4>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+          </aside>
 </div>
 {% endblock %}
 

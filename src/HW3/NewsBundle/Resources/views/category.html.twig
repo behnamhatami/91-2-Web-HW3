@@ -97,6 +97,35 @@
                         </div>
                             {% endif %}
                             {% endfor %}
+                        <div class="pagination">
+                            <div class="wp-pagenavi">
+                                <span class="pages">
+                                    صفحه
+                                    {{ currentpage }}
+                                    از
+                                    {{ numofpages }}
+                                </span>
+                                <span class="current">{{ currentpage }}</span>
+                                {% set low=currentpage - (currentpage%10)+1  %}
+                                {% set high= currentpage +10-(currentpage%10) %}
+                                {% if high> numofpages-1 %}
+                                    {% set high=numofpages-1 %}
+                                {% endif %}
+                                {% if currentpage > 1 %}
+                                    <a href="{{ path('__category',{'id' : group.id,'page':currentpage-1}) }}" class="previous">قبل</a>
+                                {% endif %}
+                                {% for i in range (low,high) %}
+                                    <a href="{{ path('__category',{'id' : group.id,'page':i}) }}" class="page">{{ i }}</a>
+                                {% endfor %}
+                                <a href="{{ path('__category',{'id' : group.id,'page':high+1}) }}" class="page">...</a>
+                                <a href="{{ path('__category',{'id' : group.id,'page':numofpages}) }}" class="page">{{ numofpages }}</a>
+                                {% if currentpage < numofpages %}
+                                <a href="{{ path('__category',{'id' : group.id,'page':currentpage+1}) }}" class="next">بعد</a>
+                                {% endif %}
+                            </div>
+
+                            <!--wp-pagenavi-->
+                        </div>
 
 
 
@@ -105,7 +134,71 @@
         </section>
     </div>
     </section>
-</div>
+        <aside id="gkSidebar">
+
+            <div class="block_search_top">
+                {# action dorost shavad #}
+                <form action="/Search/Index" method="GET">
+                    <div class="field">
+                        <input type="text" class="w_def_text" id="search-box" name="query" title="چستجوی سریع">
+                    </div>
+                    <input type="hidden" name="submited" value="1">
+                    <input type="hidden" name="positions" value="-1">
+                    <input type="submit" class="button" id="search-button">
+
+                    <div class="clearboth"></div>
+                </form>
+            </div>
+
+
+
+
+
+            <div style="padding: 10px 22px 0 0;">
+
+            </div>
+
+            <div style="padding: 2px 5px 0 0;">
+
+            </div>
+
+            <div class="tabbed_area">
+                <ul class="LeftTopTabs">
+                    <li class="first" act="content_1"><a href="#">برگزیده</a></li>
+                    <li class="middle active" act="content_2" style="float: left;"><a href="#">آخرین اخبار</a></li>
+
+                </ul>
+                <div id="content_1" class="content" style="display: none; overflow: hidden;">
+                    <ul style="-webkit-transform: translateZ(0); height: 950px;">
+                        {% for index,news in chosenews %}
+                            {%  if index < 15 %}
+                                <li class="active"><a href="{{ path('__single',{'id': news.id}) }}" target="_blank">{{ news.title }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+
+                    </ul>
+                </div>
+                <div id="content_2" class="content" style="display: block; overflow: hidden;">
+                    <ul style="-webkit-transform: translateZ(0); height: 1390px;">
+                        {% for index,news in recentnews %}
+                            {%  if index < 15 %}
+                                <li class="active"><a href="{{ path('__single',{'id': news.id}) }}" target="_blank">{{ news.title }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+
+
+
+        </aside>
+
+    </div>
 </div>
 <footer id="gkFooter" class="gkPage">
 
