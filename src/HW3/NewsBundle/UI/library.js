@@ -6,6 +6,23 @@
  * To change this template use File | Settings | File Templates.
  */
 var currentnavelem = null ;
+function homepageSidebar()
+{
+    $("div.tabbed_area .LeftTopTabs li.first  a").click(function()
+    {
+        $('div#content_1').attr({display : 'block'});
+        $('div#content_2').attr({display : 'none'});
+        $('this').parent().attr('class','first active');
+        $("div.tabbed_area .LeftTopTabs li.middle").attr('class','middle');
+    });
+    $("div.tabbed_area .LeftTopTabs li.middle  a").click(function()
+    {
+        $('div#content_2').css({display : 'block'});
+        $('div#content_1').css({display : 'none'});
+        $('this').parent().attr('class','middle active');
+        $("div.tabbed_area .LeftTopTabs li.first").attr('class','first');
+    });
+}
 function mainNavigation()
 {
 
@@ -104,11 +121,30 @@ function catContent()
        var elem = jQuery(temp);
        console.log($(elem,".catMain a")+"salam");
        $(".catMain a",elem).attr('href',$('h4 a',$(this)).attr('href'));
-        $(".catMain a img",elem).attr('src',$('img',$(this)).attr('bigsrc'));
+
+       // $(".catMain a img",elem).attr('src',$('img',$(this)).attr('bigsrc'));
+        $(".catMain a img",elem).attr('src',$('img',$(this)).attr('src'));
         $(".catMain h4 a",elem).attr('href',$('h4 a',$(this)).attr('href'));
         $(".catMain h4 a",elem).text($('h4 a',$(this)).text());
         console.log($('h4 input',$(this)).attr('value'));
         $(".catMain div.AbsText ",elem).text($('input',$(this)).attr('value'));
+    });
+}
+
+function categoryView()
+{
+    $('.catTop.nspArt.nspCol30').mouseover(function(){
+        $('.nspHoverOverlay',$(this)).css({top:0});
+        $('.nspHoverOverlay',$(this)).attr('class','nspHoverOverlay active');
+       // $('.nspHeader.tleft.fnone',$(this)).hide() ;
+        $('img.nspImage.tleft.fleft.gkResponsive',$(this)).css({opacity:0.5});
+    });
+    $('.nspArt.nspCol30').mouseout(function(){
+        $('.nspHoverOverlay',$(this)).css({top:'100%'});
+        $('.nspHoverOverlay',$(this)).attr('class','nspHoverOverlay');
+
+   //     $('.nspHeader.tleft.fnone',$(this)).show() ;
+        $('img.nspImage.tleft.fleft.gkResponsive',$(this)).css({opacity:1});
     });
 }
 

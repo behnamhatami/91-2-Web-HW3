@@ -29,6 +29,45 @@ body {
     color: #a59c83;
 }
 
+.pagination {
+    width: 100%;
+    float: right;
+    border-top: 1px solid #e2e2e2;
+    padding: 35px 0 35px 0;
+}
+
+.pagination span.pages {
+    float: right;
+    display: block;
+    font-size: 14px;
+    color: #666;
+    padding: 0 20px 0 0;
+}
+
+.pagination a, .pagination span.current {
+    display: block;
+    float: right;
+    padding: 0 9px 0 9px;
+    border: 1px solid #c6c6c6;
+    font-size: 14px;
+    color: #999;
+    -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    margin: 0 6px 0 0;
+}
+
+span.current {
+    display: block;
+    float: right;
+    padding: 0 9px 0 9px;
+    border: 1px solid #c6c6c6;
+    font-size: 14px;
+    color: #999;
+    -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    margin: 0 6px 0 0;
+}
+
 .block_big_dropdown .image p a:hover {
     color: #f24024;
     text-decoration: none;
@@ -112,7 +151,7 @@ body {
     display: none;
 }
 
-nspList {
+.nspList {
     float: left;
     direction: rtl;
 }
@@ -538,4 +577,28 @@ span.nspDate {
     float: left;
     font-size: 14px;
     margin: -5px 0 0 0;
+}
+
+.splitHeader {
+    height: 28px;
+    padding: 12px 10px 0 10px;
+    margin: 0 0 15px 0;
+    text-align: right;
+    border-bottom: solid 2px #bf0707;
+    position: relative;
+}
+
+.splitHeader a {
+    position: absolute;
+    color: #fff;
+    font-size: 16px;
+    padding: 0 5px 0 5px;
+    line-height: 22px;
+    background: #bf0707;
+    bottom: 0;
+    right: 10px;
+}
+
+.side.content {
+    padding: 0 10px;
 }

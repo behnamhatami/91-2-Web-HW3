@@ -180,7 +180,6 @@ app/config/parameters.yml
 bin/
 src/Acme/
 vendor/
-web/
 composer*
 README.md
 UPGRADE*
