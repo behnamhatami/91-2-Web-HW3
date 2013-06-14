@@ -6,14 +6,16 @@ HW3\NewsBundle\Entity\News:
                 message: Please enter title.
             - Length:
                 max: 255
-                maxMessage: Title should be at most 255 charachter.
+                maxMessage: Title should be at most {{ limit }} charachter.
         abstract:
             - NotBlank:
                 message: Please enter abstract.
         image:
             - NotBlank:
-                message: Please enter image uri.
-            - Image: ~
+                message: Please select image uri.
+            - Image:
+                mimeTypesMessage: Please select an image.
+                maxSizeMessage: The file is too large. Allowed maximum size is {{ limit }}
         creation_date:
             - DateTime: ~
         content:
@@ -30,21 +32,24 @@ HW3\NewsBundle\Entity\News:
 
 HW3\NewsBundle\Entity\NewsGroup:
     constraints:
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: name
+            message: Newsgroup with this name already exists.
     properties:
         name:
-            - NotBlank: ~
+            - NotBlank:
+                message: Please enter name of the news group.
             - Length:
                 min: 3
                 max: 255
+                minMessage: Name should has more than {{ limit - 1 }} character.
+                maxMessage: Name should has less than {{ limit + 1 }} character.
         creation_date:
             - DateTime: ~
 
         level:
-            - NotBlank: ~
+            - NotBlank:
+                message: Please enter importance level of the group.
             - Range:
                 min: 0
-
-        users:
-            - Count:
-                min: 0
+                minMessage: Level should be possitive integer.

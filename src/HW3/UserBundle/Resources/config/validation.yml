@@ -8,24 +8,24 @@ HW3\UserBundle\Entity\User:
             - Length:
                 min: 3
                 max: 255
-                minMessage: First name should be more than 2 character.
-                maxMessage: First name should be more than 256 character.
+                minMessage: First name should be more than {{ limit - 1 }} character.
+                maxMessage: First name should be less than {{ limit + 1 }} character.
         lastname:
             - NotBlank:
                 message: Please enter last name.
             - Length:
                 min: 3
                 max: 255
-                minMessage: Last name should be more than 2 character.
-                maxMessage: Last name should be more than 256 character.
+                minMessage: Last name should be more than {{ limit - 1 }} character.
+                maxMessage: Last name should be less than {{ limit + 1 }} character.
         username:
             - NotBlank:
                 message: Please enter username.
             - Length:
                 min: 3
                 max: 255
-                minMessage: Username should be more than 2 character.
-                maxMessage: Username should be more than 256 character.
+                minMessage: Username should be more than {{ limit - 1 }} character.
+                maxMessage: Username should be less than {{ limit + 1 }} character.
         creation_date:
             - DateTime: ~
         showname:
@@ -34,8 +34,8 @@ HW3\UserBundle\Entity\User:
             - Length:
                 min: 3
                 max: 255
-                minMessage: Showname should be more than 2 character.
-                maxMessage: Showname should be more than 256 character.
+                minMessage: Showname should be more than {{ limit - 1 }} character.
+                maxMessage: Showname should be less than {{ limit + 1 }} character.
         password:
             - NotBlank:
                 message: Please enter password.
@@ -43,5 +43,5 @@ HW3\UserBundle\Entity\User:
             - Count:
                 min: 1
                 max: 3
-                minMessage: You should select at list one news group.
-                maxMessage: You should select at most three news group.
+                minMessage: You should select at least {{ limit }} news group.
+                maxMessage: You should select at most {{ limit }} news group.

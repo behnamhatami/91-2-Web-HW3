@@ -1,14 +1,17 @@
 HW3\CommentBundle\Entity\Comment:
     properties:
         composer:
-            - NotBlank: ~
+            - NotBlank:
+                message: Please enter your name.
             - Length:
-                min: 3
                 max: 255
+                maxMessage: Your name should have at most {{ limit }} charachter.
         content:
-            - NotBlank: ~
+            - NotBlank:
+                message: Please enter your comment content.
             - Length:
                 max: 8192
+                maxMessage: Your comment should have at most {{ limit }} character.
         creation_date:
             - DateTime: ~
         pos:

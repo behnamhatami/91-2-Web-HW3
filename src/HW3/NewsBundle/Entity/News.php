@@ -346,4 +346,9 @@ class News
         unlink($this->getFullImagePath());
         rmdir($this->getUploadRootDir());
     }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 }
