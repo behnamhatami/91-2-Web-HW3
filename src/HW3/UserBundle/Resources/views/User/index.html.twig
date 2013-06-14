@@ -7,12 +7,11 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
+                <th>First name</th>
+                <th>Last name</th>
                 <th>Username</th>
-                <th>Password</th>
-                <th>Creation_date</th>
-                <th>Showname</th>
+                <th>Creation Date</th>
+                <th>Show Name</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,7 +22,6 @@
                 <td>{{ entity.firstname }}</td>
                 <td>{{ entity.lastname }}</td>
                 <td>{{ entity.username }}</td>
-                <td>{{ entity.password }}</td>
                 <td>{% if entity.creationdate %}{{ entity.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.showname }}</td>
                 <td>

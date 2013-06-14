@@ -3,30 +3,45 @@ HW3\UserBundle\Entity\User:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: username
     properties:
         firstname:
-            - NotBlank: ~
+            - NotBlank:
+                message: Please enter first name.
             - Length:
                 min: 3
                 max: 255
+                minMessage: First name should be more than 2 character.
+                maxMessage: First name should be more than 256 character.
         lastname:
-            - NotBlank: ~
+            - NotBlank:
+                message: Please enter last name.
             - Length:
                 min: 3
                 max: 255
+                minMessage: Last name should be more than 2 character.
+                maxMessage: Last name should be more than 256 character.
         username:
-            - NotBlank: ~
+            - NotBlank:
+                message: Please enter username.
             - Length:
                 min: 3
                 max: 255
+                minMessage: Username should be more than 2 character.
+                maxMessage: Username should be more than 256 character.
         creation_date:
             - DateTime: ~
         showname:
-            - NotBlank: ~
+            - NotBlank:
+                message: Please enter show name.
             - Length:
                 min: 3
                 max: 255
+                minMessage: Showname should be more than 2 character.
+                maxMessage: Showname should be more than 256 character.
         password:
-            - NotBlank: ~
+            - NotBlank:
+                message: Please enter password.
         newsgroups:
             - Count:
                 min: 1
                 max: 3
+                minMessage: You should select at list one news group.
+                maxMessage: You should select at most three news group.

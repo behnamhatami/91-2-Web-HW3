@@ -37,4 +37,8 @@ HW3\NewsBundle\Entity\News:
         comments:
             targetEntity: HW3\CommentBundle\Entity\Comment
             mappedBy: news
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+        prePersist: [uploadImage]
+        preUpdate: [uploadImage]
+        preRemove: [removeImage]
+        postPersist: [moveImage]

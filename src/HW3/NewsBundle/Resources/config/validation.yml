@@ -2,20 +2,23 @@
 HW3\NewsBundle\Entity\News:
     properties:
         title:
-            - NotBlank: ~
+            - NotBlank:
+                message: Please enter title.
             - Length:
                 max: 255
+                maxMessage: Title should be at most 255 charachter.
         abstract:
-            - NotBlank: ~
+            - NotBlank:
+                message: Please enter abstract.
         image:
-            - NotBlank: ~
-            - Image:
-                minWidth: 1
-                minHeight: 1
+            - NotBlank:
+                message: Please enter image uri.
+            - Image: ~
         creation_date:
             - DateTime: ~
         content:
-            - NotBlank: ~
+            - NotBlank:
+                message: Please enter content.
         visit:
             - NotBlank: ~
             - Range:
