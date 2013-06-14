@@ -1,0 +1,118 @@
+{% extends lang =='fa' ? 'layoutfa.html.twig' : 'layouten.html.twig' %}
+{% block body %}
+    {% include 'header.html.twig' with {'lang' : lang,'groups' : groups} %}
+<div id="gkpagecontent" class="gkPage">
+
+    <div id="gkpagecontent" class="gkPage">
+        <section id="gkcontent">
+            <div id= "gkContentCategory">
+                <section id="gkBreadcrumb">
+                    <div class="breadcrumbs">
+                        <a href="/">صفحه اصلی</a> &gt; <a href="/Home/Category/4">{{ group.name }}</a>
+                    </div>
+                    {#<div class="ContentCount">#}
+                        {#تعداد اخبار امروز: ۱۶#}
+                    {#</div>#}
+                    <!--[if IE 8]>
+                    <div class="ie8clear"></div>
+                    <![endif]-->
+                </section>
+                <section id="CategoryChoosen">
+                    <div>
+                        <section id="k2Container">
+                            <div class="box bigtitle nsphover">
+                                <div class="content">
+
+                                    <div class="catTop nspArt nspCol30">
+                                        <div style="min-height: 305px">
+                                            <a href="{{ path("__single",{'id':posts[0].id }) }}" target="_blank" class="nspImageWrapper tleft fleft gkResponsive">
+                                                <img class="nspImage tleft fleft gkResponsive" src="{{ posts[0].image }}" width="295px" style="opacity: 1;"></a>
+                                            <h4 class="nspHeader tleft fnone"><a href={{ path("__single",{'id':posts[0].id }) }} target="_blank" title="">{{ posts[0].title }}</a></h4>
+                                            <div class="nspHoverOverlay">
+                                                <h4 class="nspHeader tleft fnone">
+                                                    <a href="{{ path("__single",{'id':posts[0].id }) }}" target="_blank">{{ posts[0].title }}</a>
+                                                </h4>
+                                                <div class="nspText">
+                                                    <a href="{{ path("__single",{'id':posts[0].id }) }}" target="_blank">{{ posts[0].abstract }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="catTop nspArt nspCol30">
+                                        <div style="min-height: 305px">
+                                            <a href="{{ path("__single",{'id':posts[1].id }) }}" target="_blank" class="nspImageWrapper tleft fleft gkResponsive">
+                                                <img class="nspImage tleft fleft gkResponsive" src="{{ posts[1].image }}" width="295px" style="opacity: 1;"></a>
+                                            <h4 class="nspHeader tleft fnone"><a href="{{ path("__single",{'id':posts[1].id }) }}" target="_blank" title="">{{ posts[1].title }}</a></h4>
+                                            <div class="nspHoverOverlay">
+                                                <h4 class="nspHeader tleft fnone">
+                                                    <a href="{{ path("__single",{'id':posts[1].id }) }}" target="_blank">{{ posts[1].title }}</a>
+                                                </h4>
+                                                <div class="nspText">
+                                                    <a href="{{ path("__single",{'id':posts[1].id }) }}" target="_blank">{{ posts[1].abstract }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="catTop nspArt nspCol30">
+                                        <div style="min-height: 305px">
+                                            <a href="{{ path("__single",{'id':posts[2].id }) }}" target="_blank" class="nspImageWrapper tleft fleft gkResponsive">
+                                                <img class="nspImage tleft fleft gkResponsive" src="{{ posts[2].image }}" width="295px" style="opacity: 1;"></a>
+                                            <h4 class="nspHeader tleft fnone"><a href="/Home/Single/70841" target="_blank" title="">{{ posts[2].title }}</a></h4>
+                                            <div class="nspHoverOverlay">
+                                                <h4 class="nspHeader tleft fnone">
+                                                    <a href="{{ path("__single",{'id':posts[2].id }) }}" target="_blank">{{ posts[2].title }}</a>
+                                                </h4>
+                                                <div class="nspText">
+                                                    <a href="{{ path("__single",{'id':posts[2].id }) }}" target="_blank">{{ posts[2].abstract }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+                <section id="gkmainbody">
+                    <div>
+                        <div class='nsp bigtitle mobilelayout'>
+                            <div class="content">
+                                    {%  for index,post in posts %}
+                                        {%  if index < 15 %}
+                                       <div class='nspArt nspCol1 categoryList'>
+                                <a href="{{ path("__single",{'id':post.id }) }}" target='_blank' class='nspImageWrapper tleft fleft gkResponsive'>
+                                    <img class='nspImage tleft fleft gkResponsive' src="{{ psot.image }}"  width='170px' height='118px'></a>
+                                <div class='gkArtContentWrap'>
+                                    <p class='nspInfo  nspInfo1 tleft fleft'></p>
+
+                                    <span class='nspDate tright fright'>{{ post.datetime }}</span>
+
+                                   <h4 class='nspHeader tleft fnone'><a href="{{ path("__single",{'id':post.id }) }}" target='_blank'>
+                                           {{ post.title }}
+                                   </a></h4>
+                                    <p class='nspText tleft fleft'>"{{ post.abstract }}</p>
+                                </div>
+                            </div>
+                        </div>
+                            {% endif %}
+                            {% endfor %}
+
+
+
+                    </div>
+            </div>
+        </section>
+    </div>
+    </section>
+</div>
+</div>
+<footer id="gkFooter" class="gkPage">
+
+
+    <p id="gkCopyrights">© <a href="http://www.tasnimnews.com/" title="Tasnim News Agency">Tasnim News Agency</a>. All rights reserved.</p>
+
+
+</footer>
+{% block body %}
+

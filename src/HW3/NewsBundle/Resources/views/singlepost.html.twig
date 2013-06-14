@@ -1,0 +1,99 @@
+
+{% extends lang =='fa' ? 'layoutfa.html.twig' : 'layouten.html.twig' %}
+
+{#<?php#}
+        {#include_once("data.php");#}
+        {#initializeVars();#}
+        {#allCatContent();#}
+{#?>#}
+{% block body %}
+    {% include 'header.html.twig' with {'lang' : lang , 'groups' : groups} %}
+
+    <div id="gkPageContent" class="gkPage">
+        <section id='gkContent'>
+            <div id='gkContentCategory'>
+                <section id='gkBreadcrumb'>
+                    <div class='breadcrumbs'>";
+                       <a href='/'>صفحه اصلی</a> &gt;
+                       <a href="{{ path('__single',{'id':news.id})}}" > {{ news.newsgroup }}</a>
+                    </div>
+                    <div class='ContentCount'>سرویس:
+                    {{ news.newsgroup }}
+                        ،تاریخ:
+                    {{ news.datetime }}
+                    شناسه خبر‌:
+                    {{ news.id }}
+                    </div>
+                </section>
+                <section id='gkMainStory'>
+                    <div>
+                        <article id='k2Container' class='itemView'>";
+                           {#post.bigimage ezafe shavad va alt va optional text va rating ha#}
+                            <img src="{{ bigimage }}"  alt="" width='400px'>
+                                <header>
+                                    <span>{{ news.title }}</span>
+                                    <h1>{{ news.title}}</h1>
+                                    <div class='Abstract'>{{ news.abstract }}
+                                    </div>
+                                </header>
+                                <div class="actionBox">
+                                    <a href="javascript:Print('70598');">
+                                        <img src="../Images/Global/print.png" alt="print">
+                                        <span>نسخه قابل چاپ</span>
+                                    </a>
+                                </div>
+                                <div class="itemBody StoryBody">
+                                    <div class="itemFullText">
+                                        {{ news.content }}
+
+                                    </div>
+
+                                </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </section>
+        {#comments#}
+        <div id="gkCommentWrap">
+            <section class='gkComment'>
+                <div class="comBorder">
+                    <div class="comHeader">
+                        <div>
+                        نظرات بینندگان
+                        </div>
+                    </div>
+                    <div class="commentRating">
+                        <div class="ratingDown" id="down_rate_7556175">{{ rataingdown }}</div>
+                        <a  class="rateDownLink" id="up_button_7556175"></a>
+                        <a  class="rateUpLink" id="down_button_7556175"></a>
+                        <div class="ratingUp" id="up_rate_7556175">{{ ratingUp }}</div>
+                    </div>
+
+                </div>
+                <div class="comment box nsp clear light header">
+                {% set curlevel = -1 %}
+                       {% for i in range (0,news.comments |length -1) %}
+                            {% for j in range(news.comments[i].level,curlevel) %}
+                                </div>
+                            {% endfor %}
+            {% include 'HW3CommentBundle::comment.html.twig' with {'comment' : news.comments[i]} %}
+            {%  set curlevel=news.comments[i].level %}
+                        {% endfor %}
+            {%  if news.comments|length > 0%}
+                </div>
+            {% endif %}
+
+
+            </div>
+            </section>
+
+
+</div>
+</div>
+{% endblock %}
+
+
+
+
+
