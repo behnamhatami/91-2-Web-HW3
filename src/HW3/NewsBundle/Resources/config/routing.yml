@@ -4,7 +4,7 @@ news_homepage:
 
 news_crud:
     resource: "@NewsBundle/Resources/config/routing/news.yml"
-    prefix:   /news
+    prefix:   /
 
 newsgroup_crud:
     resource: "@NewsBundle/Resources/config/routing/newsgroup.yml"

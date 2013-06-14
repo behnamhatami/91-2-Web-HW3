@@ -1,18 +1,30 @@
 comment:
     resource: "@CommentBundle/Resources/config/routing.yml"
-    prefix:   /comment/
+    prefix:   /{_locale}/comment/
+    defaults: {_locale: fa}
+    requirements:
+        _locale: en|fa
 
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
-    prefix:   /user/
+    prefix:   /{_locale}/user/
+    defaults: {_locale: fa}
+    requirements:
+        _locale: en|fa
+
 
 news:
     resource: "@NewsBundle/Resources/config/routing.yml"
-    prefix: /news/
+    prefix: /{_locale}/news/
+    defaults: {_locale: fa}
+    requirements:
+        _locale: en|fa
 
 login:
-    pattern: /login
-    defaults: {_controller: UserBundle:Default:login}
+    pattern: /{_locale}/login
+    defaults: {_controller: UserBundle:Default:login, _locale: fa}
+    requirements:
+        _locale: en|fa
 
 logout:
     path: /logout

@@ -3,6 +3,7 @@
 namespace HW3\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\SecurityContext;
 
 class DefaultController extends Controller
@@ -18,6 +19,9 @@ class DefaultController extends Controller
     {
         $request = $this->getRequest();
         $session = $request->getSession();
+
+        $translated = $this->get('translator')->trans('Symfony2 is great');
+        return new Response($translated);
 
         // get the login error if there is one
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {

@@ -4,4 +4,4 @@ comment_homepage:
 
 comment_crud:
     resource: "@CommentBundle/Resources/config/routing/comment.yml"
-    prefix:   /comment
+    prefix:   /

@@ -9,4 +9,4 @@ user_login:
 
 user_crud:
     resource: "@UserBundle/Resources/config/routing/user.yml"
-    prefix:   /user
+    prefix:   /
