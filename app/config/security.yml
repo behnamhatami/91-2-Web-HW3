@@ -32,14 +32,16 @@ security:
             security: false
 
         login_firewall:
-            pattern: ^/(en|fa)/login$
+            pattern: ^/.*/user/login$
             anonymous: ~
 
         secured_area:
-            pattern: ^/
+            pattern: ^/.*/user
             form_login:
                 login_path: login
                 check_path: login_check
+                default_target_path: user
+
 
             logout:
                 path: logout
@@ -50,6 +52,6 @@ security:
             #    realm: "Secured Demo Area"
 
     access_control:
-        - { path: ^/(en|fa)/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, roles: ROLE_USER }
+        - { path: ^/.*/user/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/.*/user, roles: ROLE_USER }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

@@ -4,35 +4,31 @@
         <body>
             <trans-unit id="0">
                 <source>Login</source>
-                <target>ورود</target>
+                <target>Login</target>
             </trans-unit>
             <trans-unit id="1">
                 <source>Please sign in</source>
-                <target>لطفا وارد شويد</target>
+                <target>Please sign in</target>
             </trans-unit>
             <trans-unit id="2">
                 <source>Password</source>
-                <target>رمز عبور</target>
+                <target>Password</target>
             </trans-unit>
             <trans-unit id="3">
                 <source>Username</source>
-                <target>نام کاربري</target>
+                <target>Username</target>
             </trans-unit>
             <trans-unit id="4">
                 <source>Sign in</source>
-                <target>ورود</target>
+                <target>Sign in</target>
             </trans-unit>
             <trans-unit id="5">
                 <source>Bad credentials</source>
-                <target>نام کاربري با رمز عبور همخواني ندارد.</target>
+                <target>Username and password doesn't match</target>
             </trans-unit>
             <trans-unit id="6">
                 <source>News Management System</source>
-                <target>سيستم مديريت اخبار</target>
-            </trans-unit>
-            <trans-unit id="8">
-                <source>Sign in</source>
-                <target></target>
+                <target>News Management System</target>
             </trans-unit>
         </body>
     </file>

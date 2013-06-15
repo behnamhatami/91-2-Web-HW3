@@ -5,6 +5,7 @@ imports:
 framework:
     #esi:             ~
     translator:      { fallback: %locale% }
+    session:         { default_locale: 'fa' }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -29,7 +30,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ ]
+    bundles:        [UserBundle, CommentBundle, NewsBundle]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~

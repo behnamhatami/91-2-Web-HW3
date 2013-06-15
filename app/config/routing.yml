@@ -21,13 +21,13 @@ news:
         _locale: en|fa
 
 login:
-    pattern: /{_locale}/login
+    pattern: /{_locale}/user/login
     defaults: {_controller: UserBundle:Default:login, _locale: fa}
     requirements:
         _locale: en|fa
 
 logout:
-    path: /logout
+    path: /{_locale}/user/logout
 
 login_check:
-    pattern: /login_check
+    pattern: /{_locale}/user/login_check

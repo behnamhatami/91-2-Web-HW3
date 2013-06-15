@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use HW3\UserBundle\Entity\User;
 use HW3\UserBundle\Form\UserType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * User controller.
@@ -23,7 +24,6 @@ class UserController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('UserBundle:User')->findAll();
 
         return $this->render('UserBundle:User:index.html.twig', array(

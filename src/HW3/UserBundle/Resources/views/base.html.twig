@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+    {% block stylesheets %}
+        {% stylesheets  'bundles/user/bootstrap/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+    {% block javascripts %}
+        {% javascripts '@UserBundle/Resources/public/jquery/js/*'
+                        '@UserBundle/Resources/public/bootstrap/js/*'%}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock %}
+    {% block title %}
+        {% trans %}News Management System{% endtrans %}
+    {% endblock %}

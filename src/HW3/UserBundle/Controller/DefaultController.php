@@ -8,10 +8,9 @@ use Symfony\Component\Security\Core\SecurityContext;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function homeAction()
     {
-
-        return $this->render('UserBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('UserBundle:Default:home.html.twig', array());
     }
 
 
@@ -19,9 +18,6 @@ class DefaultController extends Controller
     {
         $request = $this->getRequest();
         $session = $request->getSession();
-
-        $translated = $this->get('translator')->trans('Symfony2 is great');
-        return new Response($translated);
 
         // get the login error if there is one
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
@@ -39,5 +35,10 @@ class DefaultController extends Controller
                 => $error,
             )
         );
+    }
+
+    public function showAction()
+    {
+
     }
 }

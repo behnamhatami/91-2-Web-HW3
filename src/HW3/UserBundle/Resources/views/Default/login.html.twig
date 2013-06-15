@@ -1,15 +1,30 @@
-{# src/HW3/UserBundle/Resources/views/Security/login.html.twig #}
-{% if error %}
-    <div>{{ error.message }}</div>
-{% endif %}
-<form action="{{ path('login_check') }}" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}"/>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="_password"/>
-    {#
-        If you want to control the URL the user is redirected to on success (more details below)
-        <input type="hidden" name="_target_path" value="/account" />
-    #}
-    <button type="submit">login</button>
-</form>
+{% extends 'UserBundle::base.html.twig' %}
+    {% block title %}{% trans %}Login{% endtrans %}{% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+        {% if app.request.locale == 'en' %}
+            {% stylesheets  '@UserBundle/Resources/public/css/en/login.css' %}
+            <link rel="stylesheet" href="{{ asset_url }}"/>
+            {% endstylesheets %}
+        {% else %}
+            {% stylesheets  '@UserBundle/Resources/public/css/fa/login.css' %}
+            <link rel="stylesheet" href="{{ asset_url }}"/>
+            {% endstylesheets %}
+        {% endif %}
+    {% endblock %}
+{% block body %}
+    <div class="container">
+        <form class="form-signin" action="{{ path('login_check') }}" method="post">
+            <h2 class="form-signin-heading">{% trans %}Please sign in{% endtrans %}</h2>
+            <input id="username" name="_username" type="text" class="input-block-level"
+                   placeholder="{% trans %}Username{% endtrans %}">
+            <input id="password" name="_password" type="password" class="input-block-level"
+                   placeholder="{% trans %}Password{% endtrans %}">
+            {% if error %}
+                <p class="text-error">{{ error.message | trans() }}</p>
+            {% endif %}
+            <button class="btn btn-large btn-primary" type="submit">{% trans %}Sign in{% endtrans %}</button>
+        </form>
+    </div>
+    <!-- /container -->
+{% endblock %}

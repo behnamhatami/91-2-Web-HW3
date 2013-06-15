@@ -1,11 +1,6 @@
-user_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: UserBundle:Default:index }
-
-
-user_login:
-    pattern: /login
-    defaults: { _controller: UserBundle:Default:login }
+user_home:
+    pattern:  /
+    defaults: { _controller: UserBundle:Default:home }
 
 user_crud:
     resource: "@UserBundle/Resources/config/routing/user.yml"
