@@ -70,6 +70,7 @@ class Comment
         $this->setCreationDate('now');
         $this->setNeg(0);
         $this->setPos(0);
+        $this->setLevel(0);
     }
 
     /**

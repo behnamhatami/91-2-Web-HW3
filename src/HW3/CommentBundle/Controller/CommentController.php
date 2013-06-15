@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use HW3\CommentBundle\Entity\Comment;
 use HW3\CommentBundle\Form\CommentType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Comment controller.
@@ -29,13 +30,14 @@ class CommentController extends Controller
             'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new Comment entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity  = new Comment();
+        $entity = new Comment();
         $form = $this->createForm(new CommentType(), $entity);
         $form->bind($request);
 
@@ -49,7 +51,7 @@ class CommentController extends Controller
 
         return $this->render('CommentBundle:Comment:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -60,11 +62,11 @@ class CommentController extends Controller
     public function newAction()
     {
         $entity = new Comment();
-        $form   = $this->createForm(new CommentType(), $entity);
+        $form = $this->createForm(new CommentType(), $entity);
 
         return $this->render('CommentBundle:Comment:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -85,8 +87,8 @@ class CommentController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('CommentBundle:Comment:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'entity' => $entity,
+            'delete_form' => $deleteForm->createView(),));
     }
 
     /**
@@ -107,8 +109,8 @@ class CommentController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('CommentBundle:Comment:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -139,11 +141,12 @@ class CommentController extends Controller
         }
 
         return $this->render('CommentBundle:Comment:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Comment entity.
      *
@@ -179,7 +182,6 @@ class CommentController extends Controller
     {
         return $this->createFormBuilder(array('id' => $id))
             ->add('id', 'hidden')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
