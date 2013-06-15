@@ -11,10 +11,11 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('composer')
             ->add('content')
+            ->add('composer')
             ->add('news')
-            ->add('parent');
+            ->add('parent')
+        ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

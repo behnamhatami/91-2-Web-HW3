@@ -179,7 +179,8 @@ app/config/parameters.yml
 
 bin/
 src/Acme/
-vendor/
+vendor/*
+!vendor/egeloen
 README.md
 UPGRADE*
 LICENSE

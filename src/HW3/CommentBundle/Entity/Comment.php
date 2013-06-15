@@ -56,6 +56,12 @@ class Comment
     private $parent;
 
     /**
+     * @var integer
+     */
+    private $level;
+
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -191,6 +197,30 @@ class Comment
         return $this->neg;
     }
 
+
+    /**
+     * Set level
+     *
+     * @param integer $level
+     * @return Comment
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return integer
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
     /**
      * Add children
      *
@@ -256,7 +286,9 @@ class Comment
     public function setParent(\HW3\CommentBundle\Entity\Comment $parent = null)
     {
         $this->parent = $parent;
-
+        if ($this->parent == null)
+            $this->setLevel(0);
+        else $this->setLevel($this->getParent()->getLevel() + 1);
         return $this;
     }
 

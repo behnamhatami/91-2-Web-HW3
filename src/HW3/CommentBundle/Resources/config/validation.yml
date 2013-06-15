@@ -22,5 +22,9 @@ HW3\CommentBundle\Entity\Comment:
             - NotBlank: ~
             - Range:
                 min: 0
+        level:
+            - NotBlank: ~
+            - Range:
+                min: 0
         news:
             - NotBlank: ~

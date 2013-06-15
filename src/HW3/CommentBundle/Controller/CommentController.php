@@ -37,7 +37,7 @@ class CommentController extends Controller
     {
         $entity  = new Comment();
         $form = $this->createForm(new CommentType(), $entity);
-        $form->handleRequest($request);
+        $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

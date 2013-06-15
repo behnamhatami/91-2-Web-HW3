@@ -20,6 +20,8 @@ HW3\CommentBundle\Entity\Comment:
             type: integer
         neg:
             type: integer
+        level:
+            type: integer
     manyToOne:
         news:
             targetEntity: HW3\NewsBundle\Entity\News
