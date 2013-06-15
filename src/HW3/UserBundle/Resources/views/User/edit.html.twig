@@ -1,28 +1,66 @@
-{% extends '::base.html.twig' %}
+{% extends 'UserBundle:Default:home.html.twig' %}
 
-{% block body -%}
-    <h1>User edit</h1>
+{% block content %}
+    <h2>User edit</h2>
 
-    <form action="{{ path('user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-        <input type="hidden" name="_method" value="PUT" />
-        {{ form_widget(edit_form) }}
-        <p>
-            <button type="submit">Edit</button>
-        </p>
+    <form action="{{ path('user_update', { 'id': entity.id }) }}" method="PUT" {{ form_enctype(edit_form) }}>
+        <fieldset>
+            <legend>Edit User</legend>
+            <div class="text-error">{{ form_errors(edit_form) }}</div>
+            <div class="control-group">
+                {{ form_label(edit_form.firstname) }}
+                <div class="controls">
+                    {{ form_widget(edit_form.firstname) }}
+                </div>
+                <div class="text-error">{{ form_errors(edit_form.firstname) }}</div>
+            </div>
+            <div class="control-group">
+                {{ form_label(edit_form.lastname) }}
+                <div class="controls">
+                    {{ form_widget(edit_form.lastname) }}
+                </div>
+                <div class="text-error">{{ form_errors(edit_form.lastname) }}</div>
+            </div>
+            <div class="control-group">
+                {{ form_label(edit_form.showname) }}
+                <div class="controls">
+                    {{ form_widget(edit_form.showname) }}
+                </div>
+                <div class="text-error">{{ form_errors(edit_form.showname) }}</div>
+            </div>
+            <div class="control-group">
+                {{ form_label(edit_form.newsgroups) }}
+                <div class="controls">
+                    {{ form_widget(edit_form.newsgroups) }}
+                </div>
+                <div class="text-error">{{ form_errors(edit_form.newsgroups) }}</div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    {{ form_widget(edit_form.password) }}
+                </div>
+                <div class="text-error">{{ form_errors(edit_form.password) }}</div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn">edit</button>
+                </div>
+            </div>
+            {{ form_widget(edit_form._token) }}
+        </fieldset>
     </form>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('user') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('user_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('user') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('user_delete', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE"/>
+                {{ form_widget(delete_form) }}
+                <button class="btn" type="submit">Delete</button>
+            </form>
+        </li>
+    </ul>
 {% endblock %}

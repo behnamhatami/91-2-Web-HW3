@@ -47,6 +47,7 @@ class UserController extends Controller
             $encoder = $factory->getEncoder($entity);
             $password = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
             $entity->setPassword($password);
+            $entity->setRole('ROLE_USER');
             $em->persist($entity);
             $em->flush();
 
@@ -138,6 +139,10 @@ class UserController extends Controller
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
+            $factory = $this->get('security.encoder_factory');
+            $encoder = $factory->getEncoder($entity);
+            $password = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
+            $entity->setPassword($password);
             $em->persist($entity);
             $em->flush();
 

@@ -25,6 +25,9 @@ HW3\UserBundle\Entity\User:
         showname:
             type: string
             length: '255'
+        role:
+            type: string
+            length: '255'
     manyToMany:
         newsgroups:
             targetEntity: HW3\NewsBundle\Entity\NewsGroup

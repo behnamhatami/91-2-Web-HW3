@@ -1,54 +1,54 @@
-{% extends '::base.html.twig' %}
+{% extends 'UserBundle:Default:home.html.twig' %}
 
-{% block body -%}
-    <h1>User</h1>
+{% block content %}
+    <h2>User</h2>
 
-    <table class="record_properties">
+    <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>First Name</th>
-                <td>{{ entity.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Last Name</th>
-                <td>{{ entity.lastname }}</td>
-            </tr>
-            <tr>
-                <th>User Name</th>
-                <td>{{ entity.username }}</td>
-            </tr>
-            <tr>
-                <th>Creation Date</th>
-                <td>{{ entity.creationdate|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Show Name</th>
-                <td>{{ entity.showname }}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>First Name</th>
+            <td>{{ entity.firstname }}</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>{{ entity.lastname }}</td>
+        </tr>
+        <tr>
+            <th>User Name</th>
+            <td>{{ entity.username }}</td>
+        </tr>
+        <tr>
+            <th>Creation Date</th>
+            <td>{{ entity.creationdate|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Show Name</th>
+            <td>{{ entity.showname }}</td>
+        </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('user') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('user_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('user_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('user') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('user_edit', { 'id': entity.id }) }}">
+                Edit
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('user_delete', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE"/>
+                {{ form_widget(delete_form) }}
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    </ul>
 {% endblock %}

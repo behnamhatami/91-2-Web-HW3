@@ -3,26 +3,28 @@
 {% block content %}
     <form action="{{ path('newsgroup_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
         <fieldset>
-            <legend>Edit News Group</legend>
+            <legend>News Group Edit</legend>
             <div class="text-error">{{ form_errors(edit_form) }}</div>
             <div class="control-group">
                 {{ form_label(edit_form.name) }}
                 <div class="controls">
                     {{ form_widget(edit_form.name) }}
                 </div>
+                <div class="text-error">{{ form_errors(edit_form.name) }}</div>
             </div>
             <div class="control-group">
                 {{ form_label(edit_form.level) }}
                 <div class="controls">
                     {{ form_widget(edit_form.level) }}
                 </div>
+                <div class="text-error">{{ form_errors(edit_form.level) }}</div>
             </div>
             <div class="control-group">
                 <div class="controls">
                     <button type="submit" class="btn">edit</button>
                 </div>
             </div>
-            {{ form_rest(edit_form) }}
+            {{ form_widget(edit_form._token) }}
         </fieldset>
     </form>
     <ul class="record_actions">

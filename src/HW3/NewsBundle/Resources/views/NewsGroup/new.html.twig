@@ -3,19 +3,21 @@
 {% block content %}
     <form action="{{ path('newsgroup_create') }}" method="post" {{ form_enctype(form) }}>
         <fieldset>
-            <legend>NewsGroup Creation</legend>
+            <legend>News Group Creation</legend>
             <div class="text-error">{{ form_errors(form) }}</div>
             <div class="control-group">
                 {{ form_label(form.name) }}
                 <div class="controls">
                     {{ form_widget(form.name) }}
                 </div>
+                <div class="text-error">{{ form_errors(form.name) }}</div>
             </div>
             <div class="control-group">
                 {{ form_label(form.level) }}
                 <div class="controls">
                     {{ form_widget(form.level) }}
                 </div>
+                <div class="text-error">{{ form_errors(form.level) }}</div>
             </div>
             <div class="control-group">
                 <div class="controls">

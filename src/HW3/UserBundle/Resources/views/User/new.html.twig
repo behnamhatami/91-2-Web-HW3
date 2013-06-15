@@ -1,20 +1,58 @@
-{% extends '::base.html.twig' %}
+{% extends 'UserBundle:Default:home.html.twig' %}
 
-{% block body -%}
-    <h1>User creation</h1>
-
+{% block content %}
+    <h2>User Creation</h2>
     <form action="{{ path('user_create') }}" method="post" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
-        <p>
-            <button type="submit">Create</button>
-        </p>
+        <fieldset>
+            <legend>User Creation</legend>
+            <div class="text-error">{{ form_errors(form) }}</div>
+            <div class="control-group">
+                {{ form_label(form.firstname) }}
+                <div class="controls">
+                    {{ form_widget(form.firstname) }}
+                </div>
+                <div class="text-error">{{ form_errors(form.firstname) }}</div>
+            </div>
+            <div class="control-group">
+                {{ form_label(form.lastname) }}
+                <div class="controls">
+                    {{ form_widget(form.lastname) }}
+                </div>
+                <div class="text-error">{{ form_errors(form.lastname) }}</div>
+            </div>
+            <div class="control-group">
+                {{ form_label(form.showname) }}
+                <div class="controls">
+                    {{ form_widget(form.showname) }}
+                </div>
+                <div class="text-error">{{ form_errors(form.showname) }}</div>
+            </div>
+            <div class="control-group">
+                {{ form_label(form.newsgroups) }}
+                <div class="controls">
+                    {{ form_widget(form.newsgroups) }}
+                </div>
+                <div class="text-error">{{ form_errors(form.newsgroups) }}</div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    {{ form_widget(form.password) }}
+                </div>
+                <div class="text-error">{{ form_errors(form.password) }}</div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn">create</button>
+                </div>
+            </div>
+            {{ form_widget(form._token) }}
+        </fieldset>
     </form>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('user') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('user') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
 {% endblock %}

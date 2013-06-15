@@ -34,20 +34,18 @@
                                 {{ app.user.username }}
                                 <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">View Profile</a></li>
-                                <li><a href="#">Edit Profile</a></li>
-                                <li><a href="#">Change Password</a></li>
+                                <li><a href="{{ path('user_show', {'id': app.user.id}) }}">View Profile</a></li>
+                                <li><a href="{{ path('user_edit', {'id': app.user.id}) }}">Edit Profile</a></li>
                                 {% if is_granted('ROLE_ADMIN') %}
-                                    <li class="divider"></li>
-                                    <li><a href="#">Create User</a></li>
-                                    <li><a href="#">Delete User</a></li>
-                                    <li><a href="#">Change User Password</a>
-                                    </li>
-                                {% endif %}
                                 <li class="divider"></li>
-                                <li><a href="{{ path('logout') }}">Sign Out</a></li>
-                            </ul>
+                                <li><a href="{{ path('user', {'id': app.user.id}) }}">List Users</a></li>
+                                <li><a href="{{ path('user_edit', {'id': app.user.id}) }}">Create User</a></li>
                         </li>
+                        {% endif %}
+                        <li class="divider"></li>
+                        <li><a href="{{ path('logout') }}">Sign Out</a></li>
+                    </ul>
+                    </li>
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
@@ -59,15 +57,15 @@
             <div class="well sidebar-nav">
                 <ul class="nav nav-list">
                     <li class="nav-header">News</li>
-                    <li><a href="#">Create News</a></li>
-                    <li><a href="#">My Old News</a></li>
+                    <li><a href="{{ path('user_new') }}">Create News</a></li>
+                    <li><a href="{{ path('user') }}">My Old News</a></li>
                     <li class="nav-header">News Group</li>
                     <li><a href="{{ path('newsgroup') }}">View News Groups</a></li>
                     <li><a href="{{ path('newsgroup_new') }}">Create News Groups</a></li>
                     <br>
                     <li class="nav-header">User</li>
-                    <li><a href="#">View Profile</a></li>
-                    <li><a href="#">Edit Profile</a></li>
+                    <li><a href="{{ path('user_show', {'id': app.user.id}) }}">View Profile</a></li>
+                    <li><a href="{{ path('user_edit', {'id': app.user.id}) }}">Edit Profile</a></li>
                 </ul>
             </div>
             <!--/.well -->
