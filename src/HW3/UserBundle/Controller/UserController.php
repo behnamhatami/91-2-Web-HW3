@@ -47,13 +47,11 @@ class UserController extends Controller
             $encoder = $factory->getEncoder($entity);
             $password = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
             $entity->setPassword($password);
-            $entity->setRole('ROLE_USER');
             $em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('user_show', array('id' => $entity->getId())));
         }
-
         return $this->render('UserBundle:User:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),

@@ -1,32 +1,32 @@
 {% extends 'UserBundle:Default:home.html.twig' %}
 
 {% block content %}
-    <h2>User</h2>
+    <h2>{% trans %}User{% endtrans %}</h2>
 
     <table class="table">
         <tbody>
         <tr>
-            <th>Id</th>
+            <th>{% trans %}Id{% endtrans %}</th>
             <td>{{ entity.id }}</td>
         </tr>
         <tr>
-            <th>First Name</th>
+            <th>{% trans %}Firstname{% endtrans %}</th>
             <td>{{ entity.firstname }}</td>
         </tr>
         <tr>
-            <th>Last Name</th>
+            <th>{% trans %}Lastname{% endtrans %}</th>
             <td>{{ entity.lastname }}</td>
         </tr>
         <tr>
-            <th>User Name</th>
+            <th>{% trans %}Username{% endtrans %}</th>
             <td>{{ entity.username }}</td>
         </tr>
         <tr>
-            <th>Creation Date</th>
+            <th>{% trans %}Creation Date{% endtrans %}</th>
             <td>{{ entity.creationdate|date('Y-m-d H:i:s') }}</td>
         </tr>
         <tr>
-            <th>Show Name</th>
+            <th>{% trans %}Showname{% endtrans %}</th>
             <td>{{ entity.showname }}</td>
         </tr>
         </tbody>
@@ -35,19 +35,19 @@
     <ul class="record_actions">
         <li>
             <a href="{{ path('user') }}">
-                Back to the list
+                {% trans %}Back to the list{% endtrans %}
             </a>
         </li>
         <li>
             <a href="{{ path('user_edit', { 'id': entity.id }) }}">
-                Edit
+                {% trans %}Edit{% endtrans %}
             </a>
         </li>
         <li>
             <form action="{{ path('user_delete', { 'id': entity.id }) }}" method="post">
                 <input type="hidden" name="_method" value="DELETE"/>
                 {{ form_widget(delete_form) }}
-                <button type="submit">Delete</button>
+                <button type="submit">{% trans %}Delete{% endtrans %}</button>
             </form>
         </li>
     </ul>

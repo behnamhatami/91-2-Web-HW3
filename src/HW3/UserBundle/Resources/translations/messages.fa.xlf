@@ -2,37 +2,222 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="0">
+            <trans-unit id="1">
                 <source>Login</source>
                 <target>ورود</target>
             </trans-unit>
-            <trans-unit id="1">
+            <trans-unit id="2">
                 <source>Please sign in</source>
                 <target>لطفا وارد شويد</target>
             </trans-unit>
-            <trans-unit id="2">
+            <trans-unit id="3">
                 <source>Password</source>
                 <target>رمز عبور</target>
             </trans-unit>
-            <trans-unit id="3">
+            <trans-unit id="4">
                 <source>Username</source>
                 <target>نام کاربري</target>
             </trans-unit>
-            <trans-unit id="4">
+            <trans-unit id="5">
                 <source>Sign in</source>
                 <target>ورود</target>
             </trans-unit>
-            <trans-unit id="5">
-                <source>Bad credentials</source>
-                <target>نام کاربري با رمز عبور همخواني ندارد.</target>
-            </trans-unit>
             <trans-unit id="6">
+                <source>Bad credentials</source>
+                <target>نام کاربري و رمز عبور همخواني ندارند.</target>
+            </trans-unit>
+            <trans-unit id="7">
                 <source>News Management System</source>
                 <target>سيستم مديريت اخبار</target>
             </trans-unit>
             <trans-unit id="8">
-                <source>Sign in</source>
-                <target></target>
+                <source>News</source>
+                <target>اخبار</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Create News</source>
+                <target>ساخت خبر جديد</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>My Old News</source>
+                <target>خبرهاي قبلي من</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>News Group</source>
+                <target>گروه خبري</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>View News Groups</source>
+                <target>مشاهده ي گروه هاي خبري</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Create News Group</source>
+                <target>ساخت گروه خبري جديد</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>User</source>
+                <target>کاربر</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>View Profile</source>
+                <target>مشاهده ي پروفايل</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Edit Profile</source>
+                <target>ويرايش پروفايل</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Sign Out</source>
+                <target>خروج</target>
+            </trans-unit>
+
+            <trans-unit id="18">
+                <source>List Users</source>
+                <target>ليست کاربران</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Create User</source>
+                <target>ساخت کاربر جديد</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>User list</source>
+                <target>ليست کاربران</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Id</source>
+                <target>شماره شناسايي</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Firstname</source>
+                <target>نام</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Lastname</source>
+                <target>نام خانوادگي</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Username</source>
+                <target>نام کاربري</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Creation Date</source>
+                <target>زمان ساخت حساب</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>Showname</source>
+                <target>نام نمايش</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Actions</source>
+                <target>فعاليت ها</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>show</source>
+                <target>مشاهده</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>edit</source>
+                <target>ويرايش</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Create a new entry</source>
+                <target>ساخت موردي جديد</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>User</source>
+                <target>کاربر</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>Back to the list</source>
+                <target>بازگشت</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>Edit</source>
+                <target>ويرايش</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>Delete</source>
+                <target>حذف</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>Edit User</source>
+                <target>ويرايش پروفايل</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>Newsgroups</source>
+                <target>گروه خبري</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>Repeat Password</source>
+                <target>تکرار رمزعبور</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>User Creation</source>
+                <target>ساخت کاربر جديد</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>create</source>
+                <target>ساخت</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>NewsGroup list</source>
+                <target>ليست گروه هاي خبري</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>Name</source>
+                <target>نام</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>Level</source>
+                <target>اهميت</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>NewsGroup</source>
+                <target>گروه خبري</target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>Edit News Group</source>
+                <target>ويرايش گروه خبري</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>News Group Creation</source>
+                <target>ساخت گروه خبري جديد</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>News list</source>
+                <target>ليست خبر</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>Title</source>
+                <target>تيتر</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>Visit</source>
+                <target>شمار بازديد کنندگان</target>
+            </trans-unit>
+            <trans-unit id="49">
+                <source>News Creation</source>
+                <target>ساخت خبر</target>
+            </trans-unit>
+            <trans-unit id="50">
+                <source>Newsgroup</source>
+                <target>گروه خبري</target>
+            </trans-unit>
+            <trans-unit id="51">
+                <source>Image</source>
+                <target>عکس</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>Abstract</source>
+                <target>چکيده</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>Content</source>
+                <target>محتوا</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>News Edit</source>
+                <target>ويرايش خبر</target>
             </trans-unit>
         </body>
     </file>

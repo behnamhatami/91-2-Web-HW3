@@ -8,6 +8,16 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class NewsType extends AbstractType
 {
+    private $locale;
+
+    public function __construct($locale)
+    {
+        $this->locale = $locale;
+        if ($this->locale == 'en')
+            $this->locale = 'en';
+        else $this->locale = 'fa';
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -17,6 +27,7 @@ class NewsType extends AbstractType
             ->add('content', 'ckeditor', array(
                 'config' => array(
                     'ui_color' => '#ffffff',
+                    'language' => $this->locale
                 )))
             ->add('newsgroup');
     }

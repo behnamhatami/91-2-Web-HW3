@@ -3,7 +3,7 @@
 {% block content %}
     <form action="{{ path('newsgroup_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
         <fieldset>
-            <legend>News Group Edit</legend>
+            <legend>{% trans %}Edit News Group{% endtrans %}</legend>
             <div class="text-error">{{ form_errors(edit_form) }}</div>
             <div class="control-group">
                 {{ form_label(edit_form.name) }}
@@ -21,7 +21,7 @@
             </div>
             <div class="control-group">
                 <div class="controls">
-                    <button type="submit" class="btn">edit</button>
+                    <button type="submit" class="btn">{% trans %}edit{% endtrans %}</button>
                 </div>
             </div>
             {{ form_widget(edit_form._token) }}
@@ -30,14 +30,14 @@
     <ul class="record_actions">
         <li>
             <a href="{{ path('newsgroup') }}">
-                Back to the list
+                {% trans %}Back to the list{% endtrans %}
             </a>
         </li>
         <li>
             <form action="{{ path('newsgroup_delete', { 'id': entity.id }) }}" method="post">
                 <input type="hidden" name="_method" value="DELETE"/>
                 {{ form_widget(delete_form) }}
-                <button class="btn" type="submit">Delete</button>
+                <button class="btn" type="submit">{% trans %}Delete{% endtrans %}</button>
             </form>
         </li>
     </ul>

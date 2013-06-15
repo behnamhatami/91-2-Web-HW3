@@ -28,7 +28,7 @@ HW3\UserBundle\Entity\User:
                 maxMessage: Username should be less than {{ limit + 1 }} character.
         creation_date:
             - DateTime: ~
-        roll:
+        role:
             - NotBlank: ~
         showname:
             - NotBlank:

@@ -1,41 +1,45 @@
 {% extends 'UserBundle:Default:home.html.twig' %}
 
 {% block content %}
-    <h2>News</h2>
+    <h3>{% trans %}News{% endtrans %}</h3>
 
     <table class="table">
         <tbody>
         <tr>
-            <th>Id</th>
+            <th>{% trans %}Id{% endtrans %}</th>
             <td>{{ entity.id }}</td>
         </tr>
         <tr>
-            <th>Title</th>
+            <th>{% trans %}Newsgroup{% endtrans %}</th>
+            <td>{{ entity.newsgroup }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Title{% endtrans %}</th>
             <td>{{ entity.title }}</td>
         </tr>
         <tr>
-            <th>Abstract</th>
+            <th>{% trans %}Abstract{% endtrans %}</th>
             <td>{{ entity.abstract }}</td>
         </tr>
         <tr>
-            <th>Image</th>
+            <th>{% trans %}Image{% endtrans %}</th>
             <td align="center" valign="top"><img src="{{ asset('upload/' ~ entity.id ~'/' ~ entity.image) }}" alt=""
                                                  height="525" width="666"/></td>
         </tr>
         <tr>
-            <th>Creation Date</th>
+            <th>{% trans %}Creation Date{% endtrans %}</th>
             <td>{{ entity.creationdate|date('Y-m-d H:i:s') }}</td>
         </tr>
         <tr>
-            <th>Content</th>
+            <th>{% trans %}Content{% endtrans %}</th>
             <td>{{ entity.content }}</td>
         </tr>
         <tr>
-            <th>User</th>
+            <th>{% trans %}User{% endtrans %}</th>
             <td>{{ entity.user }}</td>
         </tr>
         <tr>
-            <th>Visit</th>
+            <th>{% trans %}Visit{% endtrans %}</th>
             <td>{{ entity.visit }}</td>
         </tr>
         </tbody>
@@ -44,19 +48,19 @@
     <ul class="record_actions">
         <li>
             <a href="{{ path('news') }}">
-                Back to the list
+                {% trans %}Back to the list{% endtrans %}
             </a>
         </li>
         <li>
             <a href="{{ path('news_edit', { 'id': entity.id }) }}">
-                Edit
+                {% trans %}Edit{% endtrans %}
             </a>
         </li>
         <li>
             <form action="{{ path('news_delete', { 'id': entity.id }) }}" method="post">
                 <input type="hidden" name="_method" value="DELETE"/>
                 {{ form_widget(delete_form) }}
-                <button type="submit">Delete</button>
+                <button type="submit">{% trans %}Delete{% endtrans %}</button>
             </form>
         </li>
     </ul>

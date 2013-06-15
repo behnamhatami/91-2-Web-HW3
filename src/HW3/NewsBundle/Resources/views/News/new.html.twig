@@ -1,11 +1,9 @@
 {% extends 'UserBundle:Default:home.html.twig' %}
 
 {% block content %}
-    <h1>News creation</h1>
-
     <form action="{{ path('news_create') }}" method="post" {{ form_enctype(form) }}>
         <fieldset>
-            <legend>News Creation</legend>
+            <legend>{% trans %}News Creation{% endtrans %}</legend>
             <div class="text-error">{{ form_errors(form) }}</div>
             <div class="control-group">
                 {{ form_label(form.newsgroup) }}
@@ -44,7 +42,7 @@
             </div>
             <div class="control-group">
                 <div class="controls">
-                    <button type="submit" class="btn">create</button>
+                    <button type="submit" class="btn">{% trans %}create{% endtrans %}</button>
                 </div>
             </div>
             {{ form_widget(form._token) }}
@@ -54,7 +52,7 @@
     <ul class="record_actions">
         <li>
             <a href="{{ path('news') }}">
-                Back to the list
+                {% trans %}Back to the list{% endtrans %}
             </a>
         </li>
     </ul>

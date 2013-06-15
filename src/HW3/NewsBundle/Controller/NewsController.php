@@ -38,7 +38,7 @@ class NewsController extends Controller
     public function createAction(Request $request)
     {
         $entity = new News($this->getUser());
-        $form = $this->createForm(new NewsType(), $entity);
+        $form = $this->createForm(new NewsType($this->getRequest()->getLocale()), $entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -62,7 +62,7 @@ class NewsController extends Controller
     public function newAction()
     {
         $entity = new News($this->getUser());
-        $form = $this->createForm(new NewsType(), $entity);
+        $form = $this->createForm(new NewsType($this->getRequest()->getLocale()), $entity);
 
         return $this->render('NewsBundle:News:new.html.twig', array(
             'entity' => $entity,
@@ -106,7 +106,7 @@ class NewsController extends Controller
         }
 
         $entity->image_valid = false;
-        $editForm = $this->createForm(new NewsType(), $entity);
+        $editForm = $this->createForm(new NewsType($this->getRequest()->getLocale()), $entity);
         $entity->image_valid = true;
         $deleteForm = $this->createDeleteForm($id);
 
@@ -133,7 +133,7 @@ class NewsController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
         $entity->image_valid = false;
-        $editForm = $this->createForm(new NewsType(), $entity);
+        $editForm = $this->createForm(new NewsType($this->getRequest()->getLocale()), $entity);
         $entity->image_valid = true;
         $editForm->bind($request);
 

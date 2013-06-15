@@ -1,16 +1,16 @@
 {% extends 'UserBundle:Default:home.html.twig' %}
 
 {% block content %}
-    <h2>NewsGroup list</h2>
+    <h3>{% trans %}NewsGroup list{% endtrans %}</h3>
 
     <table class="table">
         <thead>
         <tr>
-            <th>Identifier</th>
-            <th>Name</th>
-            <th>Creation Date</th>
-            <th>Level</th>
-            <th>Actions</th>
+            <th>{% trans %}Id{% endtrans %}</th>
+            <th>{% trans %}Name{% endtrans %}</th>
+            <th>{% trans %}Creation Date{% endtrans %}</th>
+            <th>{% trans %}Level{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
         </tr>
         </thead>
         <tbody>
@@ -23,10 +23,12 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('newsgroup_show', { 'id': entity.id }) }}">show</a>
+                            <a href="{{ path('newsgroup_show', { 'id': entity.id }) }}">{% trans %}
+                                show{% endtrans %}</a>
                         </li>
                         <li>
-                            <a href="{{ path('newsgroup_edit', { 'id': entity.id }) }}">edit</a>
+                            <a href="{{ path('newsgroup_edit', { 'id': entity.id }) }}">{% trans %}
+                                edit{% endtrans %}</a>
                         </li>
                     </ul>
                 </td>
@@ -38,7 +40,7 @@
     <ul>
         <li>
             <a href="{{ path('newsgroup_new') }}">
-                Create a new entry
+                {% trans %}Create a new entry{% endtrans %}
             </a>
         </li>
     </ul>

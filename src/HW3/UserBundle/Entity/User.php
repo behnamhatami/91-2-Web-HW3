@@ -50,6 +50,13 @@ class User implements UserInterface
      */
     private $newsgroups;
 
+
+    /**
+     * @var string
+     */
+    private $role;
+
+
     /**
      * Constructor
      */
@@ -57,6 +64,7 @@ class User implements UserInterface
     {
         $this->newsgroups = new \Doctrine\Common\Collections\ArrayCollection();
         $this->setCreationDate('now');
+        $this->setRole('ROLE_USER');
     }
 
     /**
@@ -239,32 +247,6 @@ class User implements UserInterface
         return $this->newsgroups;
     }
 
-    public function  getRoles()
-    {
-        return array($this->getRole());
-    }
-
-    public function getSalt()
-    {
-        return null;
-    }
-
-    public function  eraseCredentials()
-    {
-        return;
-    }
-
-    public function __toString()
-    {
-        return $this->getShowname();
-    }
-
-    /**
-     * @var string
-     */
-    private $role;
-
-
     /**
      * Set role
      *
@@ -286,5 +268,25 @@ class User implements UserInterface
     public function getRole()
     {
         return $this->role;
+    }
+
+    public function  getRoles()
+    {
+        return array($this->getRole());
+    }
+
+    public function getSalt()
+    {
+        return null;
+    }
+
+    public function  eraseCredentials()
+    {
+        return;
+    }
+
+    public function __toString()
+    {
+        return $this->getShowname();
     }
 }

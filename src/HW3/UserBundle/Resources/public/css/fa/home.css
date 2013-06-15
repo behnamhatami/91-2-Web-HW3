@@ -1,4 +1,4 @@
-@import url(http://awebfont.ir/css?id=1069|1047|1106&mode=wl);
+/*@import url(http://awebfont.ir/css?id=1069|1047|1106&mode=wl);*/
 
 * {
     -webkit-box-sizing: border-box;
@@ -9,7 +9,7 @@
 body {
     direction: rtl;
     text-align: right;
-    font-family: 'B NAZANIN', Arial, Verdana;
+    /*font-family: 'B NAZANIN', Arial, Verdana;*/
     font-size: 15px;
     padding-top: 60px;
     padding-bottom: 30px;

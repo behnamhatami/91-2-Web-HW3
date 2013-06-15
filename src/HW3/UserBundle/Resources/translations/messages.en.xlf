@@ -2,33 +2,221 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="0">
+            <trans-unit id="1">
                 <source>Login</source>
                 <target>Login</target>
             </trans-unit>
-            <trans-unit id="1">
+            <trans-unit id="2">
                 <source>Please sign in</source>
                 <target>Please sign in</target>
             </trans-unit>
-            <trans-unit id="2">
+            <trans-unit id="3">
                 <source>Password</source>
                 <target>Password</target>
             </trans-unit>
-            <trans-unit id="3">
+            <trans-unit id="4">
                 <source>Username</source>
                 <target>Username</target>
             </trans-unit>
-            <trans-unit id="4">
+            <trans-unit id="5">
                 <source>Sign in</source>
                 <target>Sign in</target>
             </trans-unit>
-            <trans-unit id="5">
+            <trans-unit id="6">
                 <source>Bad credentials</source>
                 <target>Username and password doesn't match</target>
             </trans-unit>
-            <trans-unit id="6">
+            <trans-unit id="7">
                 <source>News Management System</source>
                 <target>News Management System</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>News</source>
+                <target>News</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Create News</source>
+                <target>Create News</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>My Old News</source>
+                <target>My Old News</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>News Group</source>
+                <target>News Group</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>View News Groups</source>
+                <target>View News Groups</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Create News Group</source>
+                <target>Create News Group</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>User</source>
+                <target>User</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>View Profile</source>
+                <target>View Profile</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Edit Profile</source>
+                <target>Edit Profile</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Sign Out</source>
+                <target>Sign Out</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>List Users</source>
+                <target>List Users</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Create User</source>
+                <target>Create User</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>User list</source>
+                <target>User list</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Id</source>
+                <target>Id</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Firstname</source>
+                <target>Firstname</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Lastname</source>
+                <target>Lastname</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Username</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Creation Date</source>
+                <target>Creation Date</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>Showname</source>
+                <target>Show Name</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>show</source>
+                <target>show</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>edit</source>
+                <target>edit</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Create a new entry</source>
+                <target>Create a new entry</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>User</source>
+                <target>User</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>Back to the list</source>
+                <target>Back to the list</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>Edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>Delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>Edit User</source>
+                <target>Edit User</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>Newsgroups</source>
+                <target>News Groups</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>Repeat Password</source>
+                <target>Repeat Password</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>User Creation</source>
+                <target>User Creation</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>create</source>
+                <target>create</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>NewsGroup list</source>
+                <target>NewsGroup list</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source>Name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="42">
+                <source>Level</source>
+                <target>Level</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>NewsGroup</source>
+                <target>News Group</target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>Edit News Group</source>
+                <target>Edit News Group</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>News Group Creation</source>
+                <target>News Group Creation</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>News list</source>
+                <target>News list</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>Title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>Visit</source>
+                <target>Number Of Visitors</target>
+            </trans-unit>
+            <trans-unit id="49">
+                <source>News Creation</source>
+                <target>News Creation</target>
+            </trans-unit>
+            <trans-unit id="50">
+                <source>Newsgroup</source>
+                <target>Newsgroup</target>
+            </trans-unit>
+            <trans-unit id="51">
+                <source>Image</source>
+                <target>Image</target>
+            </trans-unit>
+            <trans-unit id="52">
+                <source>Abstract</source>
+                <target>Abstract</target>
+            </trans-unit>
+            <trans-unit id="53">
+                <source>Content</source>
+                <target>Content</target>
+            </trans-unit>
+            <trans-unit id="54">
+                <source>News Edit</source>
+                <target>News Edit</target>
             </trans-unit>
         </body>
     </file>
