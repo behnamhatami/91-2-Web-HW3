@@ -62,8 +62,8 @@
                     <li><a href="#">Create News</a></li>
                     <li><a href="#">My Old News</a></li>
                     <li class="nav-header">News Group</li>
-                    <li><a href="#">View News Groups</a></li>
-                    <li><a href="#">Create News Groups</a></li>
+                    <li><a href="{{ path('newsgroup') }}">View News Groups</a></li>
+                    <li><a href="{{ path('newsgroup_new') }}">Create News Groups</a></li>
                     <br>
                     <li class="nav-header">User</li>
                     <li><a href="#">View Profile</a></li>
@@ -74,6 +74,8 @@
         </div>
         <!--/span-->
         <div class="span9">
+            {% block content %}
+            {% endblock %}
         </div>
         <!--/span-->
     </div>

@@ -13,10 +13,12 @@ class NewsType extends AbstractType
         $builder
             ->add('title')
             ->add('abstract')
-            ->add('image')
-            ->add('content')
-            ->add('newsgroup')
-        ;
+            ->add('image', 'file')
+            ->add('content', 'ckeditor', array(
+                'config' => array(
+                    'ui_color' => '#ffffff',
+                )))
+            ->add('newsgroup');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

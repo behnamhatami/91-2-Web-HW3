@@ -23,7 +23,8 @@ class NewsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('NewsBundle:News')->findAll();
+        $repository = $em->getRepository('NewsBundle:News');
+        $entities = $repository->findByUser($this->getUser());
 
         return $this->render('NewsBundle:News:index.html.twig', array(
             'entities' => $entities,
@@ -104,7 +105,9 @@ class NewsController extends Controller
             throw $this->createNotFoundException('Unable to find News entity.');
         }
 
+        $entity->image_valid = false;
         $editForm = $this->createForm(new NewsType(), $entity);
+        $entity->image_valid = true;
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('NewsBundle:News:edit.html.twig', array(
@@ -129,7 +132,9 @@ class NewsController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        $entity->image_valid = false;
         $editForm = $this->createForm(new NewsType(), $entity);
+        $entity->image_valid = true;
         $editForm->bind($request);
 
         if ($editForm->isValid()) {

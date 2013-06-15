@@ -1,3 +1,7 @@
+news_sample:
+    pattern: /sample
+    defaults: {_controller: NewsBundle:Default:sample}
+
 news_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: NewsBundle:Default:index }

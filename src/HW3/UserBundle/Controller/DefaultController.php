@@ -13,7 +13,6 @@ class DefaultController extends Controller
         return $this->render('UserBundle:Default:home.html.twig', array());
     }
 
-
     public function loginAction()
     {
         $request = $this->getRequest();

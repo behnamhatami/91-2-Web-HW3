@@ -11,6 +11,12 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class News
 {
     /**
+     * @var boolean
+     */
+
+    public $image_valid = true;
+
+    /**
      * @var integer
      */
     private $id;
@@ -147,7 +153,9 @@ class News
      */
     public function getImage()
     {
-        return $this->image;
+        if ($this->image_valid)
+            return $this->image;
+        else return null;
     }
 
     /**

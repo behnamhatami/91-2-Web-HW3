@@ -1,20 +1,36 @@
-{% extends '::base.html.twig' %}
+{% extends 'UserBundle:Default:home.html.twig' %}
 
-{% block body -%}
-    <h1>NewsGroup creation</h1>
-
+{% block content %}
     <form action="{{ path('newsgroup_create') }}" method="post" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
-        <p>
-            <button type="submit">Create</button>
-        </p>
+        <fieldset>
+            <legend>NewsGroup Creation</legend>
+            <div class="text-error">{{ form_errors(form) }}</div>
+            <div class="control-group">
+                {{ form_label(form.name) }}
+                <div class="controls">
+                    {{ form_widget(form.name) }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form_label(form.level) }}
+                <div class="controls">
+                    {{ form_widget(form.level) }}
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn">create</button>
+                </div>
+            </div>
+            {{ form_widget(form._token) }}
+        </fieldset>
     </form>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('newsgroup') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <br>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('newsgroup') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
 {% endblock %}

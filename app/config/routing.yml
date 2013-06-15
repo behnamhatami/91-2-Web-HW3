@@ -15,7 +15,7 @@ user:
 
 news:
     resource: "@NewsBundle/Resources/config/routing.yml"
-    prefix: /{_locale}/news/
+    prefix: /{_locale}/user/news/
     defaults: {_locale: fa}
     requirements:
         _locale: en|fa

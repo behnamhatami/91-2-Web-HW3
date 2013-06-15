@@ -1,20 +1,56 @@
-{% extends '::base.html.twig' %}
+{% extends 'UserBundle:Default:home.html.twig' %}
 
-{% block body -%}
+{% block content %}
     <h1>News creation</h1>
 
     <form action="{{ path('news_create') }}" method="post" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
-        <p>
-            <button type="submit">Create</button>
-        </p>
+        <fieldset>
+            <legend>News Creation</legend>
+            <div class="text-error">{{ form_errors(form) }}</div>
+            <div class="control-group">
+                {{ form_label(form.newsgroup) }}
+                <div class="controls">
+                    {{ form_widget(form.newsgroup) }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form_label(form.image) }}
+                <div class="controls">
+                    {{ form_widget(form.image) }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form_label(form.title) }}
+                <div class="controls">
+                    {{ form_widget(form.title) }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form_label(form.abstract) }}
+                <div class="controls">
+                    {{ form_widget(form.abstract) }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form_label(form.content) }}
+                <div id="content" class="controls">
+                    {{ form_widget(form.content) }}
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn">create</button>
+                </div>
+            </div>
+            {{ form_widget(form._token) }}
+        </fieldset>
     </form>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('news') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('news') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
 {% endblock %}

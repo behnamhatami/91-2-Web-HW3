@@ -180,7 +180,6 @@ app/config/parameters.yml
 bin/
 src/Acme/
 vendor/
-composer*
 README.md
 UPGRADE*
 LICENSE

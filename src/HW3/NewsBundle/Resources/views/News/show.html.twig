@@ -1,9 +1,9 @@
-{% extends '::base.html.twig' %}
+{% extends 'UserBundle:Default:home.html.twig' %}
 
-{% block body -%}
-    <h1>News</h1>
+{% block content %}
+    <h2>News</h2>
 
-    <table class="record_properties">
+    <table class="table">
         <tbody>
         <tr>
             <th>Id</th>
@@ -29,6 +29,10 @@
         <tr>
             <th>Content</th>
             <td>{{ entity.content }}</td>
+        </tr>
+        <tr>
+            <th>User</th>
+            <td>{{ entity.user }}</td>
         </tr>
         <tr>
             <th>Visit</th>
