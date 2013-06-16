@@ -13,7 +13,13 @@ class DefaultController extends Controller
 {
     public function homeAction()
     {
-        return new Response('salam');
+        $em = $this->getDoctrine()->getManager();
+        $news = $em->getRepository('NewsBundle:News')->findall();
+
+        return $this->render('NewsBundle::homepage.html.twig', array(
+            'groups' => $this->getNewsGroups(),
+            'news' => $news
+        ));
     }
 
     public function headerAction()
@@ -35,7 +41,7 @@ class DefaultController extends Controller
             throw $this->createNotFoundException('Unable to find News entity.');
 
         $latest_news = $em->getRepository('NewsBundle:News')->getNewsFromGroup($group, 0, 3);
-        $news = $em->getRepository('NewsBundle:News')->getNewsFromGroup($id, ($page - 1) * 15, 15);
+        $news = $em->getRepository('NewsBundle:News')->getNewsFromGroup($group, ($page - 1) * 15, 15);
         return $this->render('NewsBundle::category.html.twig', array(
             'news_count' => $em->getRepository('NewsBundle:News')->getNewsCount($group),
             'group' => $group,

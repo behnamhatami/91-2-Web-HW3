@@ -4,7 +4,8 @@
 {% block body %}
     {% include 'NewsBundle::header.html.twig' with {'groups' : groups} %}
     <div id="gkpagecontent" class="gkPage">
-        <section id="gkcontent">
+		<div id="gkPageContent" class="gkPage">
+        <section id="gkContent">
             <div id="gkContentCategory">
                 <section id="gkBreadcrumb">
                     <div class="breadcrumbs">
@@ -149,7 +150,7 @@
                 <form action="{{ path('news_search') }}" method="GET">
                     <div class="field">
                         <input type="text" class="w_def_text" id="search-box" name="query"
-                               title="{% trans %}Fast Seach{% endtrans %}">
+                               title="{% trans %}Fast Search{% endtrans %}">
                     </div>
                     <input type="hidden" name="submited" value="1">
                     <input type="hidden" name="positions" value="-1">
@@ -169,6 +170,7 @@
             </div>
         </aside>
     </div>
+	</div>
     <footer id="gkFooter" class="gkPage">
         <p id="gkCopyrights">©
             <a href="{{ path('news_homepage', {'_locale': _locale}) }}" title="News agancy">
@@ -179,3 +181,11 @@
     </footer>
 {% endblock %}
 
+
+{% block javascripts %}
+	<script>mainNavigation() ;
+	catContent();
+	homepageSidebar() ;
+	categoryView();
+	</script>
+	{%endblock %}

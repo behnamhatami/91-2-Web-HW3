@@ -45,8 +45,8 @@ function mainNavigation()
        {
            console.log("1 \n");
            var position = currentnavelem.offset() ;
-           console.log(position.top+" "+ e.clientY) ;
-           if(position.top > e.clientY)
+           console.log(position.top+" "+ e.screenY) ;
+           if(position.top > e.screenY)
            {
                if($(this).attr('class')!='big_dropdown current_page_item')
                     $(this).attr('class','big_dropdown');
@@ -147,4 +147,52 @@ function categoryView()
         $('img.nspImage.tleft.fleft.gkResponsive',$(this)).css({opacity:1});
     });
 }
+
+function likeDislike()
+{
+    $('.commentInfoBar  .rateUpLink').click(function ()
+    {
+        $.getJSON('',{'like' : true},function(data,status,xhr){
+            $('.ratingUp',$(this).parent()).text(data['pos']);
+            $('.ratingDown',$(this).parent()).text(data['neg']);
+        });
+    });
+    $('.commentInfoBar  .rateDownLink').click(function ()
+    {
+        $.getJSON('',{'like' : false},function(data,status,xhr){
+            $('.ratingUp',$(this).parent()).text(data['pos']);
+            $('.ratingDown',$(this).parent()).text(data['neg']);
+        });
+    });
+}
+function newComment()
+{
+    $('.commentInfoBar a.newComment').click(function(){
+        $('.gkPage').css('opacity',0.3);
+        $('.commentReply').show();
+        $('.commentReply').attr('parentid',$(this).parent().parent().attr('id'));
+
+    });
+    $('.comReply').click(function(){
+        console.log('kir');
+        $('.gkPage').css('opacity',0.3);
+        $('.commentReply').show();
+        $('.commentReply').attr('parentid',-1);
+
+    });
+
+    $('.commentsend').click(function()
+    {
+        $('.gkPage').css('opacity',1);
+        $('.commentReply').hide();
+        //        TODO json
+    });
+    $('.commentcancel').click(function()
+    {
+        $('html').css('opacity',1);
+        $('.commentReply').hide();
+        //        TODO json
+    });
+}
+
 

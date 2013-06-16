@@ -1,67 +1,86 @@
-{% extends lang =='fa' ? 'layoutfa.html.twig' : 'layouten.html.twig' %}
+{% extends 'NewsBundle::layout.html.twig' %}
+{% set _locale = app.request.locale %}
 {% block body %}
-    {% include 'header.html.twig' with {'lang' : lang,'groups' : groups} %}
-    <div id="gkpagecontent" class="gkpage">
-        <section id="gkContent">
-            <section class="gkMain">
-                <div class="box nsp clear light header">
-                    <div class="nspMain nspFs100 activated">
+    {% include 'NewsBundle::header.html.twig' with {'groups' : groups} %}
+    <div id="gkPageContent" class="gkPage">
+    <section id="gkContent">
+        <section class="gkMain">
+            <div class="box nsp clear light header">
+                <div class="nspMain nspFs100 activated">
 
-                        <div class="nspArts right box nsp bigtitle nsphover nomargin" style="width: 350px;">
-                            <div class="nspArt nspCol1">
-                                <div class="center tcenter fnone gkResponsive">
+                    <div class="nspArts right box nsp bigtitle nsphover nomargin" style="width: 350px;">
+                        <div class="nspArt nspCol1">
+                            <div class="center tcenter fnone gkResponsive">
 
-                                    <a href="{{ path('__single',{{ 'id' : importantnews.id}) }}" target="_blank" class="nspImageWrapper tcenter fnone gkResponsive">
-                                        <img class="nspImage noborder" src='{{ importantnews.bigimage }}' alt=" " style="opacity: 1;">
+                                <a href="{{ path('news_single',{'_locale': _locale, 'id' : important_news.id}) }}"
+                                   target="_blank"
+                                   class="nspImageWrapper tcenter fnone gkResponsive">
+                                    <img class="nspImage noborder" src='{{ important_news.image }}' alt=" "
+                                         style="opacity: 1;">
+                                </a>
+                                <h4 class="nspHeader tleft fnone MainHeader" style="display: block;">
+                                    <a href="{{ path('news_single',{'_locale': _locale, 'id' : important_news.id}) }}"
+                                       target="_blank"
+                                       class="nspImageWrapper tcenter fnone gkResponsive">
                                     </a>
-                                    <h4 class="nspHeader tleft fnone MainHeader" style="display: block;">
-                                        <a href="{{ path('__single',{ 'id' : importantnews.id}) }}" target="_blank" class="nspImageWrapper tcenter fnone gkResponsive" >
-                                        </a>
-                                        <a href="{{ path('__single',{ 'id' : importantnews.id}) }}" target="_blank">{{ importantnews.title }}
-                                        </a>
-                                    </h4>
+                                    <a href="{{ path('news_single',{'_locale': _locale, 'id' : important_news.id}) }}"
+                                       target="_blank">{{ important_news.title }}
+                                    </a>
+                                </h4>
 
 
+                                <div class="nspHoverOverlay">
+                                    <h3 class="nspHeader tleft fnone">
+                                        <a href="{{ path('news_single',{'_locale': _locale, 'id' : important_news.id}) }}"
+                                           target="_blank">{{ important_news.title }}</a>
+                                    </h3>
 
-
-                                    <div class="nspHoverOverlay">
-                                        <h3 class="nspHeader tleft fnone">
-                                            <a href="{{ path('__single',{ 'id' : importantnews.id}) }}" target="_blank">{{ importantnews.title }}</a>
-                                        </h3>
-                                        <div class="nspText">
-                                            <a target="_blank" href="{{ path('__single',{ 'id' : importantnews.id}) }}">{{ importantnews.abstract }}</a>
-                                        </div>
+                                    <div class="nspText">
+                                        <a target="_blank"
+                                           href="{{ path('news_single',{'_locale': _locale, 'id' : important_news.id}) }}">{{ important_news.abstract }}</a>
                                     </div>
-
                                 </div>
+
                             </div>
                         </div>
-                        <div class="nspLinksWrap right">
-                            <div class="nspLinks">
-                                <div class="nspLinkScroll1">
+                    </div>
+                    <div class="nspLinksWrap right">
+                        <div class="nspLinks">
+                            <div class="nspLinkScroll1">
 
-                                    <div class="nspLinkScroll2 nspPages4">
+                                <div class="nspLinkScroll2 nspPages4">
 
-                                        <ul class="nspArt nspList slider" id="slide_0" style="display: none;">
-                                                 {{ for i in range(0,5) }}
-                                                    {% if topnews[i] is defined  %}
-                                                            <li {%  if i%2 ==0 %} class="even"{% endif %} >
-
-                                                            {{ topnews[i].title}}
-                                                            </li>
-                                                    {% endif %} }}
-                                        </ul>
-
-                                        <ul class="nspArt nspList slider" id="slide_1" style="display: block;">
-                                            {{ for i in range(6,11) }}
-                                            {% if topnews[i] is defined  %}
-                                                <li {%  if i%2 ==0 %} class="even"{% endif %} >
-
-                                                    {{ topnews[i].title}}
+                                    <ul class="nspArt nspList slider" id="slide_0" style="display: none;">
+                                        {% for i in range(0,5) %}
+                                            {% if top_news[i] is defined %}
+                                                <li {% if i%2 ==0 %} class="even"{% endif %} >
+                                                    <img class="nspImage" src="{{ top_news[i].image }}"
+                                                         style="width:30%">
+                                                    <h4><a href="{{ path('news_show',{'id':top_news[i].id}) }}"
+                                                           target="_blank">{{ top_news[i].title }}</a></h4>
                                                 </li>
-                                            {% endif %} }}
 
-                                        </ul>
+
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+
+                                    <ul class="nspArt nspList slider" id="slide_1" style="display: block;">
+                                        {% for i in range(6,11) %}
+                                            {% if top_news[i] is defined %}
+                                                <li {% if i%2 ==0 %} class="even"{% endif %} >
+                                                    <img style="width:30%" class="nspImage"
+                                                         src="{{ top_news[i].image }}">
+                                                    <h4><a href="{{ path('news_show',{'id':top_news[i].id}) }}"
+                                                           target="_blank">{{ top_news[i].title }}</a></h4>
+
+
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+
+
+                                    </ul>
 
                                 </div>
 
@@ -71,10 +90,11 @@
                     <div class="nspBotInterface">
                         <div>
                             <ul id="SliderPaging" class="nspPagination">
-                                <li act="slide_0" class="">0</li><li act="slide_1" class="active">1</li></ul>
+                                <li act="slide_0" class="">0</li>
+                                <li act="slide_1" class="active">1</li>
+                            </ul>
                         </div>
                     </div>
-
 
 
                 </div>
@@ -82,30 +102,39 @@
 
         </section>
         <div id="gkContentWrap">
-              {%  for index,value in groups%}
+            {% for group_index, group in groups %}
 
-              <section class='gkMainbodyTop'>
+                <section class='gkMainbodyTop'>
                     <div class='catBorder'>
-                        <div class='catHeader'><div><a href='#'>{{ value['group'].name }}</a></div></div></div>
+                        <div class='catHeader'>
+                            <div><a href='#'>{{ group.name }}</a></div>
+                        </div>
+                    </div>
                     <div class='box nsp clear light header'>
                         <div class='nspMain nspFs100 activated' style='width: 100%;' data-direction='ltr'>
-                            <div class='nspArts aright' style='width: 60%;' catid="{{ value['group'].id }}">
+                            <div class='nspArts aright' style='width: 60%;' catid="{{ group.id }}">
                                 <div class='nspArtScroll1'>
                                     <div class='nspArtScroll2 nspPages1'>
                                         <div class='nspArtPage nspCol1'>
 
                                             <div class='nspArt nspCol1 catMain'>
                                                 <div class='center tcenter fnone gkResponsive'>";
-                                                    <a href='{{ path('__single',{'id':value['posts'][0].id}) }}' target='_blank' class='nspImageWrapper tcenter fnone gkResponsive'>
-                                                         <img class='nspImage' src='{{ value['posts'][0].image }}' alt="">
+                                                    <a href='{{ path('news_show',{'id':value['posts'][1].id}) }}'
+                                                       target='_blank'
+                                                       class='nspImageWrapper tcenter fnone gkResponsive'>
+                                                        <img class='nspImage' src='{{ value['posts'][1].image }}'
+                                                             alt="">
                                                     </a>
                                                 </div>
                                                 <h4 class='tleft fnone'>
-                                                    <a href="{{ path('__single',{'id':value['posts'][0].id}) }}" target='_blank'>{{ value['posts'][0].title }}</a>
+                                                    <a href="{{ path('news_show',{'id':value['posts'][1].id}) }}"
+                                                       target='_blank'>{{ value['posts'][1].title }}</a>
                                                 </h4>
+
                                                 <p class='nspText tleft fleft tjustify'>
                                                 </p>
-                                                <div class='AbsText'>{{ value['posts'][0].abstract }}
+
+                                                <div class='AbsText'>{{ value['posts'][1].abstract }}
                                                 </div>
                                                 <p></p>
                                             </div>
@@ -119,12 +148,16 @@
                                     <div class='catLinkScroll1'>
 
                                         <div class='nspLinkScroll2 nspPages4'>
-                                            <ul class='nspArt nspList catList nspCol4' catlist="{{ value['groups'].id }}">
-                                                {% for index,post in value['posts']  %}
+                                            <ul class='nspArt nspList catList nspCol4'
+                                                catlist="{{ value['group'].id }}">
+                                                {% for index,post in value['posts'] %}
                                                     {% if index < 6 %}
-                                                    <li class='even'><img class='nspImage tleft fleft gkResponsive' src="{{ post.picture }}" alt="" >
-                                                    <h4><a href="{{ path('__single',{'id':post.url}) }}" target='_blank'>{{ post.title }}</a></h4>
-                                                    <input type='hidden' class='abstractText' value="{{ post.abstract }}" ></li>
+                                                        <li class='even'><img class='nspImage tleft fleft gkResponsive'
+                                                                              src="{{ post.image }}" alt="">
+                                                            <h4><a href="{{ path('news_show',{'id':post.id}) }}"
+                                                                   target='_blank'>{{ post.title }}</a></h4>
+                                                            <input type='hidden' class='abstractText'
+                                                                   value="{{ post.abstract }}"></li>
                                                     {% endif %}
                                                 {% endfor %}
                                             </ul>
@@ -135,81 +168,87 @@
                             </div>
                         </div>
                     </div>
-              </section>
-              {% endfor %}
+                </section>
+            {% endfor %}
         </div>
     </section>
 
-<aside id="gkSidebar">
+    <aside id="gkSidebar">
 
-    <div class="block_search_top">
-        {# action dorost shavad #}
-        <form action="/Search/Index" method="GET">
-            <div class="field">
-                <input type="text" class="w_def_text" id="search-box" name="query" title="چستجوی سریع">
+        <div class="block_search_top">
+            {# action dorost shavad #}
+            <form action="/Search/Index" method="GET">
+                <div class="field">
+                    <input type="text" class="w_def_text" id="search-box" name="query" title="چستجوی سریع">
+                </div>
+                <input type="hidden" name="submited" value="1">
+                <input type="hidden" name="positions" value="-1">
+                <input type="submit" class="button" id="search-button">
+
+                <div class="clearboth"></div>
+            </form>
+        </div>
+
+
+        <div style="padding: 10px 22px 0 0;">
+
+        </div>
+
+        <div style="padding: 2px 5px 0 0;">
+
+        </div>
+
+        <div class="tabbed_area">
+            <ul class="LeftTopTabs">
+                <li class="first" act="content_1"><a href="#">برگزیده</a></li>
+                <li class="middle active" act="content_2" style="float: left;"><a href="#">آخرین اخبار</a></li>
+
+            </ul>
+            <div id="content_1" class="content" style="display: none; overflow: hidden;">
+                <ul style="-webkit-transform: translateZ(0); height: 950px;">
+                    {% for index,news in chosenews %}
+                        {% if index < 15 %}
+                            <li class="active"><a href="{{ path('news_show',{'id': news.id}) }}"
+                                                  target="_blank">{{ news.title }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                </ul>
             </div>
-            <input type="hidden" name="submited" value="1">
-            <input type="hidden" name="positions" value="-1">
-            <input type="submit" class="button" id="search-button">
+            <div id="content_2" class="content" style="display: block; overflow: hidden;">
+                <ul style="-webkit-transform: translateZ(0); height: 1390px;">
+                    {% for index,news in recentnews %}
+                        {% if index < 15 %}
+                            <li class="active"><a href="{{ path('news_show',{'id': news.id}) }}"
+                                                  target="_blank">{{ news.title }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
 
-            <div class="clearboth"></div>
-        </form>
-    </div>
-
-
-
-
-
-    <div style="padding: 10px 22px 0 0;">
-
-    </div>
-
-    <div style="padding: 2px 5px 0 0;">
-
-    </div>
-
-    <div class="tabbed_area">
-        <ul class="LeftTopTabs">
-            <li class="first" act="content_1"><a href="#">برگزیده</a></li>
-            <li class="middle active" act="content_2" style="float: left;"><a href="#">آخرین اخبار</a></li>
-
-        </ul>
-        <div id="content_1" class="content" style="display: none; overflow: hidden;">
-            <ul style="-webkit-transform: translateZ(0); height: 950px;">
-                {% for index,news in chosenews %}
-                    {%  if index < 15 %}
-                    <li class="active"><a href="{{ path('__single',{'id': news.id}) }}" target="_blank">{{ news.title }}
-                        </a>
-                    </li>
-                    {% endif %}
-                {% endfor %}
-
-            </ul>
-        </div>
-        <div id="content_2" class="content" style="display: block; overflow: hidden;">
-            <ul style="-webkit-transform: translateZ(0); height: 1390px;">
-                {% for index,news in recentnews %}
-                    {%  if index < 15 %}
-                    <li class="active"><a href="{{ path('__single',{'id': news.id}) }}" target="_blank">{{ news.title }}
-                        </a>
-                    </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
         </div>
 
+
+    </aside>
     </div>
+    <footer id="gkFooter" class="gkPage">
 
 
-
-</aside>
-</div>
-<footer id="gkFooter" class="gkPage">
+        <p id="gkCopyrights">© <a href="http://www.tasnimnews.com/" title="Tasnim News Agency">Tasnim News Agency</a>.
+            All rights reserved.</p>
 
 
-    <p id="gkCopyrights">© <a href="http://www.tasnimnews.com/" title="Tasnim News Agency">Tasnim News Agency</a>. All rights reserved.</p>
+    </footer>
+{% endblock %}
 
-
-</footer>
-{% block body %}
+{% block javascripts %}
+    mainNavigation();
+    middleContent();
+    catContent();
+    homePageSidebar() ;
+{% endblock %}
 
