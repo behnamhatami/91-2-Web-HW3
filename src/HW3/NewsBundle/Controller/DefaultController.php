@@ -2,7 +2,6 @@
 
 namespace HW3\NewsBundle\Controller;
 
-use Doctrine\Tests\Common\Annotations\Null;
 use HW3\NewsBundle\Entity\News;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
@@ -17,15 +16,19 @@ class DefaultController extends Controller
         $news = $em->getRepository('NewsBundle:News')->findall();
 
         return $this->render('NewsBundle::homepage.html.twig', array(
-            'groups' => $this->getNewsGroups(),
-            'news' => $news
+            'groups' => $this->getAllNewsGroups(),
+            'news' => $news,
+            'important_news' => $news[0],
+            "chosenews" => $news,
+            "top_news" => $news,
+            "recentnews" => $news
         ));
     }
 
     public function headerAction()
     {
         return $this->render('NewsBundle::header.html.twig', array(
-            'groups' => $this->getNewsGroups(),
+            'groups' => $this->getAllNewsGroups(),
         ));
     }
 
@@ -45,7 +48,7 @@ class DefaultController extends Controller
         return $this->render('NewsBundle::category.html.twig', array(
             'news_count' => $em->getRepository('NewsBundle:News')->getNewsCount($group),
             'group' => $group,
-            'groups' => $this->getNewsGroups(),
+            'groups' => $this->getAllNewsGroups(),
             'all_news' => $news,
             'latest_news' => $latest_news,
             'current_page' => $page,
@@ -64,12 +67,19 @@ class DefaultController extends Controller
             throw $this->createNotFoundException('Unable to find News entity.');
 
         return $this->render('NewsBundle::singlepost.html.twig', array(
-            'groups' => $this->getNewsGroups(),
-            'news' => $news
+            'groups' => $this->getAllNewsGroups(),
+            'news' => $news,
+            'hot_news' => $this->getAllNews(),
         ));
     }
 
-    private function getNewsGroups()
+    private function getAllNews()
+    {
+        $em = $this->getDoctrine()->getManager();
+        return $em->getRepository('NewsBundle:News')->findAll();
+    }
+
+    private function getAllNewsGroups()
     {
         $em = $this->getDoctrine()->getManager();
         $groups = $em->getRepository('NewsBundle:NewsGroup')->findAll();

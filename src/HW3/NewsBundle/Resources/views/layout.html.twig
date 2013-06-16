@@ -1,12 +1,12 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-	<script src="{{ asset('bundles/news/js/library.js') }}"> </script>
-    <script src="{{ asset('bundles/news/js/jquery-1.9.1.js') }}"> </script>
-    <link rel="stylesheet" href="{{ asset('bundles/news/css/style.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('bundles/news/css/Header.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('bundles/news/css/Custom.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('bundles/news/css/ticker-style.css') }}" type="text/css" />
+    <script src="{{ asset('bundles/news/js/library.js') }}"></script>
+    <script src="{{ asset('bundles/news/js/jquery-1.9.1.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/news/css/style.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/news/css/Header.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/news/css/Custom.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/news/css/ticker-style.css') }}" type="text/css"/>
     {% stylesheets  'Symfony/bundles/news/css/*' filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
