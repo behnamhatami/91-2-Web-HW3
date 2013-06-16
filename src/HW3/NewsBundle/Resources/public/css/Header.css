@@ -12,7 +12,7 @@ center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, t
 
 #header .top {
     height: 30px;
-    background: url(../../Images/bg_header_section_top.jpg) repeat-x;
+    background: url(Images/bg_header_section_top.jpg) repeat-x;
 }
 
 section {
@@ -76,7 +76,7 @@ section {
     height: 16px;
     display: block;
     background-repeat: no-repeat;
-    background-image: url(../../Images/sprite_social_1.png);
+    background-image: url(Images/sprite_social_1.png);
     text-indent: -9000px;
 }
 
@@ -86,20 +86,20 @@ section {
 
 header .bottom .inner {
     height: 110px;
-    background: #FFF url(../../Images/f2Header.png) no-repeat 0 0!important;
+    background: #FFF url(Images/f2Header.png) no-repeat 0 0!important;
 }
 
 #header .section_main_menu {
     height: 30px;
     width: 1230px;
     margin: 0 auto 0 auto;
-    background: url(../../Images/bg_main_menu.jpg) repeat-x;
+    background: url(Images/bg_main_menu.jpg) repeat-x;
 }
 
 nav.main_menu {
     padding-right: 2px;
     float: right;
-    background: url(../../Images/line_main_menu.jpg) no-repeat right 12px;
+    background: url(Images/line_main_menu.jpg) no-repeat right 12px;
 }
 
 nav.main_menu>ul>li {
@@ -108,7 +108,7 @@ nav.main_menu>ul>li {
     display: block;
     float: right;
     position: relative;
-    background: url(../../Images/line_main_menu.jpg) no-repeat 0 12px;
+    background: url(Images/line_main_menu.jpg) no-repeat 0 12px;
     z-index: 1;
 }
 
@@ -124,7 +124,7 @@ nav.main_menu>ul>li.current_page_item>a {
     padding-right: 14px;
     padding-left: 14px;
     padding-top: 2px;
-    background: url(../../Images/bg_main_menu_current.jpg) repeat-x;
+    background: url(Images/bg_main_menu_current.jpg) repeat-x;
 }
 
 nav.main_menu>ul>li>a {
@@ -197,7 +197,7 @@ nav.main_menu>ul>li>a {
 .block_big_dropdown .title {
     margin-top: -10px;
     padding-bottom: 7px;
-    background: url(../../Images/line_5.gif) repeat-x left bottom;
+    background: url(Images/line_5.gif) repeat-x left bottom;
 }
 
 .block_big_dropdown .title p {
@@ -271,7 +271,7 @@ section img
 {
     margin-top: -10px;
     padding-bottom: 7px;
-    background: url(../../Images/line_5.gif) repeat-x left bottom;
+    background: url(Images/line_5.gif) repeat-x left bottom;
 }
 
 .block_big_dropdown .popular_posts ul
@@ -311,7 +311,7 @@ section img
     height: 30px;
     width: 1230px;
     margin: 0 auto 0 auto;
-    background: url(../../Images/bg_secondary_menu.gif) repeat-x;
+    background: url(Images/bg_secondary_menu.gif) repeat-x;
 }
 
 nav.secondary_menu {
@@ -336,7 +336,7 @@ nav.secondary_menu span {
 .block_clock {
     padding: 0 16px 0 16px;
     float: left;
-    background: url(../../Images/icon_clock.png) no-repeat right 0;
+    background: url(Images/icon_clock.png) no-repeat right 0;
     margin: 7px 0 0 0;
 }
 
@@ -351,7 +351,7 @@ nav.main_menu>ul>li.hover>a {
     margin-top: -2px;
     padding-right: 16px;
     padding-top: 2px;
-    background: url(../../Images/bg_main_menu_current.jpg) repeat-x;
+    background: url(Images/bg_main_menu_current.jpg) repeat-x;
 }
 
 .block_search_top {
@@ -370,7 +370,7 @@ nav.main_menu>ul>li.hover>a {
     float: right;
     border: 1px solid #f7482d;
     overflow: hidden;
-    background: url(../../Images/bg_field_search.png) no-repeat;
+    background: url(Images/bg_field_search.png) no-repeat;
 }
 
 .block_search_top .field input {
@@ -394,7 +394,7 @@ nav.main_menu>ul>li.hover>a {
     display: block;
     float: right;
     background-repeat: no-repeat;
-    background-image: url(../../Images/button_search.png);
+    background-image: url(Images/button_search.png);
     background-color: transparent;
     border: 0;
     font-size: 0;

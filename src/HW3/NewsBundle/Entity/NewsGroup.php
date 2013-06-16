@@ -35,6 +35,12 @@ class NewsGroup
     private $users;
 
     /**
+     * @var \HW3\NewsBundle\Entity\News
+     */
+    private $top_news;
+
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -153,6 +159,16 @@ class NewsGroup
     public function getUsers()
     {
         return $this->users;
+    }
+
+    public function getTopNews()
+    {
+        return $this->top_news;
+    }
+
+    public function setTopNews($news)
+    {
+        $this->top_news = $news;
     }
 
     public function __toString()

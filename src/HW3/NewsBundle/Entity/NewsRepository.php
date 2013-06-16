@@ -12,4 +12,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class NewsRepository extends EntityRepository
 {
+    function getNewsFromGroup($group, $from, $limit)
+    {
+        return $this->findBy(array(
+            'newsgroup' => $group
+        ), array(
+            'creation_date' => 'ASC',
+        ), $limit, $from);
+    }
+
+    function getNewsCount($group)
+    {
+        return count($this->findBy(array(
+            'newsgroup' => $group
+        )));
+    }
 }

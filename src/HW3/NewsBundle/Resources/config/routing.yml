@@ -1,15 +1,27 @@
-news_sample:
-    pattern: /sample
-    defaults: {_controller: NewsBundle:Default:sample}
-
 news_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: NewsBundle:Default:index }
+    pattern:  /home
+    defaults: { _controller: NewsBundle:Default:home }
+
+news_header:
+    pattern: /header
+    defaults: { _controller: NewsBundle:Default:header }
+
+news_category:
+    pattern: /category/{id}
+    defaults: { _controller: NewsBundle:Default:category}
+
+news_single:
+    pattern: /news/{id}
+    defaults: { _controller: NewsBundle:Default:single }
+
+news_search:
+    pattern: /news/search
+    defaults: { _controller: NewsBundle:Default:search}
 
 news_crud:
     resource: "@NewsBundle/Resources/config/routing/news.yml"
-    prefix:   /
+    prefix:   /user/news
 
 newsgroup_crud:
     resource: "@NewsBundle/Resources/config/routing/newsgroup.yml"
-    prefix:   /newsgroup
+    prefix:   /user/news/newsgroup

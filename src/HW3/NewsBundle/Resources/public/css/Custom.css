@@ -6,7 +6,7 @@ body, h1, h2, h3, h4, h5, h6, dl#tabs dt.tabs span h3, dl.tabs dt.tabs span h3, 
 }
 
 body {
-    background: #FFF url('../../Images/bg8.png') repeat!important;
+    background: #FFF url('Images/bg8.png') repeat!important;
 }
 
 .content ul li {
@@ -27,6 +27,45 @@ body {
 
 .content ul li a:hover {
     color: #a59c83;
+}
+
+.pagination {
+    width: 100%;
+    float: right;
+    border-top: 1px solid #e2e2e2;
+    padding: 35px 0 35px 0;
+}
+
+.pagination span.pages {
+    float: right;
+    display: block;
+    font-size: 14px;
+    color: #666;
+    padding: 0 20px 0 0;
+}
+
+.pagination a, .pagination span.current {
+    display: block;
+    float: right;
+    padding: 0 9px 0 9px;
+    border: 1px solid #c6c6c6;
+    font-size: 14px;
+    color: #999;
+    -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    margin: 0 6px 0 0;
+}
+
+span.current {
+    display: block;
+    float: right;
+    padding: 0 9px 0 9px;
+    border: 1px solid #c6c6c6;
+    font-size: 14px;
+    color: #999;
+    -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    margin: 0 6px 0 0;
 }
 
 .block_big_dropdown .image p a:hover {
@@ -254,7 +293,7 @@ ul.LeftTopTabs li.first {
     text-indent: 29px;
 }
 ul.LeftTopTabs li {
-    background: transparent url('../../Images/navigation.png') no-repeat;
+    background: transparent url('Images/navigation.png') no-repeat;
     list-style: none;
     float: right;
     position: absolute;
@@ -400,7 +439,7 @@ ul.LeftTopTabs li.last:hover {
     text-align: center;
     font: 11px tahoma;
     color: #E30303;
-    background: url('../../Images/r_mi.gif') no-repeat;
+    background: url('Images/r_mi.gif') no-repeat;
 }
 
 .rateDownLink {
@@ -409,7 +448,7 @@ ul.LeftTopTabs li.last:hover {
     display: block;
     text-decoration: none;
     float: right;
-    background: url('../../Images/l_mi.gif') no-repeat;
+    background: url('Images/l_mi.gif') no-repeat;
     cursor: pointer;
     margin-left: 5px;
 
@@ -421,7 +460,7 @@ ul.LeftTopTabs li.last:hover {
     display: block;
     text-decoration: none;
     float: right;
-    background: url('../../Images/r_po.gif') no-repeat;
+    background: url('Images/r_po.gif') no-repeat;
     cursor: pointer;
 }
 
@@ -433,7 +472,7 @@ ul.LeftTopTabs li.last:hover {
     text-align: center;
     font: 11px tahoma;
     color: #116DD6;
-    background: url('../../Images/l_po.gif') no-repeat;
+    background: url('Images/l_po.gif') no-repeat;
 
 }
 
@@ -538,45 +577,6 @@ span.nspDate {
     float: left;
     font-size: 14px;
     margin: -5px 0 0 0;
-}
-
-.pagination {
-    width: 100%;
-    float: right;
-    border-top: 1px solid #e2e2e2;
-    padding: 35px 0 35px 0;
-}
-
-.pagination span.pages {
-    float: right;
-    display: block;
-    font-size: 14px;
-    color: #666;
-    padding: 0 20px 0 0;
-}
-
-.pagination a, .pagination span.current {
-    display: block;
-    float: right;
-    padding: 0 9px 0 9px;
-    border: 1px solid #c6c6c6;
-    font-size: 14px;
-    color: #999;
-    -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.1);
-    -moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
-    margin: 0 6px 0 0;
-}
-
-span.current {
-    display: block;
-    float: right;
-    padding: 0 9px 0 9px;
-    border: 1px solid #c6c6c6;
-    font-size: 14px;
-    color: #999;
-    -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.1);
-    -moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
-    margin: 0 6px 0 0;
 }
 
 .splitHeader {

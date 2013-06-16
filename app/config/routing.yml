@@ -12,14 +12,6 @@ user:
     requirements:
         _locale: en|fa
 
-
-news:
-    resource: "@NewsBundle/Resources/config/routing.yml"
-    prefix: /{_locale}/user/news/
-    defaults: {_locale: fa}
-    requirements:
-        _locale: en|fa
-
 login:
     pattern: /{_locale}/user/login
     defaults: {_controller: UserBundle:Default:login, _locale: fa}
@@ -31,3 +23,10 @@ logout:
 
 login_check:
     pattern: /{_locale}/user/login_check
+
+news:
+    resource: "@NewsBundle/Resources/config/routing.yml"
+    prefix: /{_locale}/
+    defaults: {_locale: fa}
+    requirements:
+        _locale: en|fa

@@ -90,7 +90,7 @@ div.content {
 }
 
 #gkContent, #gkPageContent {
-    background: transparent url('../../Images/line.png') repeat-y 0 0;
+    background: transparent url('Images/line.png') repeat-y 0 0;
 }
 
 #gkPageContent {

@@ -1,6 +1,13 @@
 <div class='commentBox' id="{{ comment.id }}">
     <div class='commentInfoBar'>
         <div class='commentUser'>{{this.name}}</div>
+        <div class="commentRating">
+            {#ridam///////////////////////////#}
+            <div class="ratingDown" id="down_rate_7556175">{{ 10 }}</div>
+            <a  class="rateDownLink" id="up_button_7556175"></a>
+            <a  class="rateUpLink" id="down_button_7556175"></a>
+            <div class="ratingUp" id="up_rate_7556175">{{ 10 }}</div>
+        </div>
     </div>
     <div class='commentContent'>
         <img style='padding-left:3px;' src="{{ asset('/bundles/news/Images/comments.gif') }}" alt=''>{{ comment.content }}

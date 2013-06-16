@@ -1,111 +1,123 @@
+{% set _locale = app.request.locale %}
 <header>
-<div id=header>
-<section class="top">
-    <div class="inner">
-        <div class="fr">
-            <div class="block_top_menu">
-                <ul>
-                    {% if lang == 'en' %}
-                    <li><a href="{% path('__homepagefa',{'lang':'fa'}) %}" target="_blank">فارسی</a></li>
-                    {% else %}
-                    <li><a href="{% path('__homepage',{'lang':'en'}) %}" target="_blank">english</a></li>
-                </ul>
-            </div>
+    <div id=header>
+        <section class="top">
+            <div class="inner">
+                <div class="fr">
+                    <div class="block_top_menu">
+                        <ul>
+                            <li><a href="{{ path('news_homepage',{'_locale' : 'fa'}) }}">فارسی</a></li>
+                            <li><a href="{{ path('news_homepage',{'_locale' : 'en'}) }}">english</a></li>
+                        </ul>
+                    </div>
 
-            <div class="block_social_top">
-                <ul>
-                    <li><a href="/rss/feed/?c=1&amp;m=6&amp;alt=????? ?????" class="rss">RSS</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="clearboth"></div>
-    </div>
-</section>
-<section class="bottom">
-    <div class="inner">
-        <div id="logo_top">
-
-        </div>
-
-
-
-
-
-        <div class="clearboth"></div>
-    </div>
-
-</section>
-<section class="section_main_menu">
-    <div class="inner">
-        <nav class="main_menu">
-            <ul>
-                <li class="big_dropdown current_page_item" data-content="MainPage"><a href="{{ path("__homepage") }}"  target="_self">صفحه اصلی</a>
-                {% for  val in groups %}
-                    <li class="big_dropdown current_page_item" data-content="{{ val['group'].id }}"><a href="{{ path("__category",{'id' : val['group'].id}) }}"  target="_self">{{ val['group'].name }}</a>
-                    </li>
-                {% endfor %}
-
-            </ul>
-        </nav>
-    </div>
-</section>
-<section class="section_big_dropdown">
-    <div class="inner">
-        {%  for index,val in groups %}
-
-                <div class="block_big_dropdown" data-menu="{{ val['group'].name }}" style="display: none;">
-                    <div class="content">
-                        {% for index,post in val['posts']  %}
-                            {% if index<2 %}
-                                <div class="image">
-                                    <a href="{{ path('__single',{'id': post.id}) }}"  target="_blank"  class ="pic" >
-                                        <img src="{{ post.image }}" alt=""></a>
-                                    <p><a href="{{ path("__single",{'id':post.id}) }}" target="_blank">{{ post.title }}</a></p>
-                                </div>
-                                <div class="line"></div>
-                            {% endif %}
-                        {% endfor %}
-                        <div class="popular_posts">
-                            <div class="title">
-                                <p>گزیده ای از اخبار</p>
-                            </div>
-                            <ul>
-
-                        {% for index,post in val['posts'] %}
-                            {% if index<7 %}
-                                <li><a href="{{ path('__single',{'id':post.id}) }}" target="_blank">{{ post.title }}
-                                </a></li>
-                            {% endif %}
-                        {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="line"></div>
-
-                        <div class="clearboth"></div>
+                    <div class="block_social_top">
+                        <ul>
+                            <li><a href="/rss/feed/?c=1&amp;m=6&amp;alt=????? ?????" class="rss">RSS</a></li>
+                        </ul>
                     </div>
                 </div>
 
+                <div class="clearboth"></div>
+            </div>
+        </section>
+        <section class="bottom">
+            <div class="inner">
+                <div id="logo_top">
 
-        {% endfor %}
+                </div>
+
+
+                <div class="clearboth"></div>
+            </div>
+
+        </section>
+        <section class="section_main_menu">
+            <div class="inner">
+                <nav class="main_menu">
+                    <ul>
+                        <li class="big_dropdown current_page_item" data-content="MainPage">
+                            <a href="{{ path("news_homepage", {'_locale': _locale}) }}">
+                                {% trans %}Main window{% endtrans %}
+                            </a>
+                        </li>
+                        {% for  group in groups %}
+                            <li class="big_dropdown current_page_item" data-content="{{ group.id }}">
+                                <a href="{{ path("news_category", {'_locale': _locale , 'id' : group.id}) }}">
+                                    {{ group.name | trans() }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        <section class="section_big_dropdown">
+            <div class="inner">
+                {% for group_index, group in groups %}
+                    <div class="block_big_dropdown" data-menu="{{ group.name }}" style="display: none;">
+                        <div class="content">
+                            {% for news_index, news in group.getTopNews() %}
+                                {% if news_index < 2 %}
+                                    <div class="image">
+                                        <a href="{{ path('news_single',{'_locale': _locale, 'id': news.id}) }}"
+                                           class="pic">
+                                            <img src="{{ asset('upload/' ~ news.id ~'/' ~ news.image) }}">
+                                        </a>
+
+                                        <p>
+                                            <a href="{{ path("news_single", {'_locale': _locale, 'id' : news.id}) }}">
+                                                {{ news.title }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="line">
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                            <div class="popular_posts">
+                                <div class="title">
+                                    <p>
+                                        {% trans %}Selection of news{% endtrans %}
+                                    </p>
+                                </div>
+                                <ul>
+                                    {% for news_index, news in group.getTopNews() %}
+                                        {% if news_index < 7 %}
+                                            <li>
+                                                <a href="{{ path('news_single',{'_locale': _locale, 'id':news.id}) }}">
+                                                    {{ news.title }}
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="line">
+                            </div>
+                            <div class="clearboth"></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        <section class="section_secondary_menu">
+            <div class="inner">
+                <div class="block_clock">
+                    <div id="ticker-wrapper-1370343347641" class="ticker-wrapper has-js right">
+                        <div id="ticker-1370343347641" class="ticker">
+                            <div id="ticker-title-1370343347641" class="ticker-title" style="display: block;"><span
+                                        style=""></span></div>
+                            <p id="ticker-content-1370343347641" class="ticker-content"
+                               style="display: block; opacity: 1; right: 20px;">الإثنین، ۲۴ رجب ۱۴۳۴ ۱:۱۳:۵۱ م</p>
+
+                            <div id="ticker-swipe-1370343347641" class="ticker-swipe"
+                                 style="right: 20px; margin-right: 42.3px;"><span
+                                        style="display: block;"><!-- --></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-</section>
-<section class="section_secondary_menu">
-    <div class="inner">
-        <nav class="secondary_menu">
-
-            <span>گزیده ای از اخبار :</span>
-            <div id="ticker-wrapper-1370343347593" class="ticker-wrapper has-js right"><div id="ticker-1370343347593" class="ticker"><div id="ticker-title-1370343347593" class="ticker-title" style="display: block;"><span style=""></span></div><p id="ticker-content-1370343347593" class="ticker-content" style="display: block; opacity: 1; right: 30px;"><a href="/Home/Single/69716">امام خمینی (ره) نقشه سیاسی جهان را عوض کرد</a></p><div id="ticker-swipe-1370343347593" class="ticker-swipe" style="right: 30px; margin-right: 227px; display: none;"><span style="display: block;"><!-- --></span></div></div></div>
-
-        </nav>
-
-        <div class="block_clock">
-
-            <div id="ticker-wrapper-1370343347641" class="ticker-wrapper has-js right"><div id="ticker-1370343347641" class="ticker"><div id="ticker-title-1370343347641" class="ticker-title" style="display: block;"><span style=""></span></div><p id="ticker-content-1370343347641" class="ticker-content" style="display: block; opacity: 1; right: 20px;">الإثنین، ۲۴ رجب ۱۴۳۴ ۱:۱۳:۵۱ م</p><div id="ticker-swipe-1370343347641" class="ticker-swipe" style="right: 20px; margin-right: 42.3px;"><span style="display: block;"><!-- --></span></div></div></div>
-
-        </div>
-
-    </div>
-</section>
-</div>
 </header>
