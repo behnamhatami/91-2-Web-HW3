@@ -5,6 +5,7 @@ namespace HW3\NewsBundle\Controller;
 use HW3\NewsBundle\Entity\News;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -62,9 +63,9 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         if ($action and $id) {
             $repo = $em->getRepository('CommentBundle:Comment');
-            $comment = $repo->findById($id);
+            $comment = $repo->findOneById($id);
 
-            if (($action != 'neg' and $action != 'pos') or !$action)
+            if (($action != 'neg' and $action != 'pos') or !$comment)
                 return new JsonResponse(array('result' => 'no'));
 
             if ($action == 'neg')
