@@ -39,7 +39,7 @@
                             </header>
                             <div class="actionBox">
                                 <a href="javascript:Print('70598');">
-                                    <img src="{{ asset('bundles/news/Images/print.png') }}" alt="print">
+                                    <img src="{{ asset('bundles/news/img/print.png') }}" alt="print">
                                     <span>Print version</span>
                                 </a>
                             </div>
@@ -55,61 +55,76 @@
 
         </section>
         <aside id="gkSidebar">
+
             <div class="box nsp color">
-                <div class="splitHeader"><a href="/Home/Category/1">{% trans %}Hot news{% endtrans %}</a></div>
+                <div class="splitHeader"><a href="/Home/Category/1" target="_blank">اخبار داغ</a></div>
                 <div class="content side catList">
-                    {% for hnews in hot_news %}
+                    {% for post in hotnews %}
                         <div class="nspArt nspCol1">
-                            <a href="{{ path('news_single',{'_locale': _locale, 'id': hnews.id}) }}"
+                            <a href="{{ path('news_show',{'id':post.id}) }}" target="_blank"
                                class="nspImageWrapper tleft fleft gkResponsive">
                                 <img class="nspImage tleft fleft gkResponsive"
-                                     src="{{ asset('upload/' ~ hnews.id ~'/' ~ hnews.image) }}"></a>
+                                     src="{{ asset('upload/' ~ post.id ~'/' ~ post.image) }}"></a>
 
                             <div class="gkArtContentWrap">
-                                <h4 class="nspHeader tleft fnone">
-                                    <a href="{{ path('news_single',{'_locale': _locale, 'id': hnews.id}) }}">
-                                        {{ hnews.title }}
-                                    </a>
-                                </h4>
+                                <h4 class="nspHeader tleft fnone"><a href="{{ path('news_show',{'id':post.id}) }}"
+                                                                     target="_blank">{{ post.title }}</a></h4>
                             </div>
                         </div>
                     {% endfor %}
                 </div>
             </div>
+
         </aside>
         <div id="gkCommentWrap">
             <section class='gkComment'>
                 <div class="comBorder">
                     {#<a id="postcomment" style="font-size: 20px;position:relative ;left:10px; top:-20px;"> پاسخ</a>#}
                     <div class="comHeader">
+
                         <div>
-                            {% trans %}Viewer comments{% endtrans %}
+                            نظرات بینندگان
                         </div>
                     </div>
                     <div class="comHeader comReply" style=" right:94%;">
+
                         <div>
-                            {% trans %}Answer{% endtrans %}
+                            پاسخ
                         </div>
                     </div>
+
                 </div>
                 <div class="comment box nsp clear light header">
                     {% set curlevel = -1 %}
-                    {% for i in range (0, news.comments |length -1) %}
+                    {% for i in range (0,news.comments |length -1) %}
                     {% if news.comments[i] is defined %}
                     {% for j in range(news.comments[i].level,curlevel) %}
+                    {% if news.comments[i].level<= curlevel %}
                 </div>
+                {% endif %}
                 {% endfor %}
                 {% include 'CommentBundle::comment.html.twig' with {'comment' : news.comments[i]} %}
                 {% set curlevel=news.comments[i].level %}
                 {% endif %}
                 {% endfor %}
                 {% if news.comments|length > 0 %}
-                {% endif %}
         </div>
+        {% endif %}
+
+
     </div>
     </section>
+
+
+
     </div>
+
+
+
+
+
     </div>
+
     <div class="commentReply" style="display : none" parentid="0">
         <div class="commentReplyHeader">
             <label style="margin : 5px">name:</label>
@@ -128,6 +143,7 @@
 {% endblock %}
 {% block javascripts %}
     <script>
+        mainNavigation();
         newComment();
         likeDislike();
     </script>

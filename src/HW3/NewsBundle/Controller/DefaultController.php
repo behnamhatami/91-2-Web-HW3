@@ -13,15 +13,15 @@ class DefaultController extends Controller
     public function homeAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $news = $em->getRepository('NewsBundle:News')->findall();
+        $repo = $em->getRepository('NewsBundle:News');
 
         return $this->render('NewsBundle::homepage.html.twig', array(
             'groups' => $this->getAllNewsGroups(),
-            'news' => $news,
-            'important_news' => $news[0],
-            "chosenews" => $news,
-            "top_news" => $news,
-            "recentnews" => $news
+            'news' => $repo->findAll(),
+            'important_news' => $repo->findAll()[0],
+            "chosenews" => $repo->getHotNews(10),
+            "top_news" => $repo->getHotNews(10),
+            "recentnews" => $repo->getRecentNews(19)
         ));
     }
 
@@ -62,14 +62,20 @@ class DefaultController extends Controller
 
     public function singleAction($id)
     {
-        $news = $this->getDoctrine()->getManager()->getRepository('NewsBundle:News')->findOneById($id);
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('NewsBundle:News');
+        $news = $repo->findOneById($id);
+
         if (!$news)
             throw $this->createNotFoundException('Unable to find News entity.');
+        $news->setVisit($news->getVisit() + 1);
+        $em->persist($news);
+        $em->flush();
 
         return $this->render('NewsBundle::singlepost.html.twig', array(
             'groups' => $this->getAllNewsGroups(),
             'news' => $news,
-            'hot_news' => $this->getAllNews(),
+            'hotnews' => $repo->getHotNews(10),
         ));
     }
 

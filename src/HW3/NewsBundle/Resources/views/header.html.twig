@@ -42,7 +42,7 @@
                             </a>
                         </li>
                         {% for  group in groups %}
-                            <li class="big_dropdown current_page_item" data-content="{{ group.id }}">
+                            <li class="big_dropdown" data-content="{{ group.id }}">
                                 <a href="{{ path("news_category", {'_locale': _locale , 'id' : group.id}) }}">
                                     {{ group.name | trans() }}
                                 </a>
@@ -55,7 +55,7 @@
         <section class="section_big_dropdown">
             <div class="inner">
                 {% for group_index, group in groups %}
-                    <div class="block_big_dropdown" data-menu="{{ group.name }}" style="display: none;">
+                    <div class="block_big_dropdown" data-menu="{{ group.id }}" style="display: none;">
                         <div class="content">
                             {% for news_index, news in group.getTopNews() %}
                                 {% if news_index < 2 %}

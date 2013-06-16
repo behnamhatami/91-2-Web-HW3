@@ -3,6 +3,7 @@
 namespace HW3\NewsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Debug\Exception\FatalErrorException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -333,9 +334,11 @@ class News
         if (!$this->id) {
             $this->image->move($this->getTmpUploadRootDir(), $this->image->getClientOriginalName());
         } else {
-            $this->image->move($this->getUploadRootDir(), $this->image->getClientOriginalName());
+            if (!is_string($this->image))
+                $this->image->move($this->getUploadRootDir(), $this->image->getClientOriginalName());
         }
-        $this->setImage($this->image->getClientOriginalName());
+        if (!is_string($this->image))
+            $this->setImage($this->image->getClientOriginalName());
     }
 
     public function moveImage()

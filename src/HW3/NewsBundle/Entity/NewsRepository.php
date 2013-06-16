@@ -17,7 +17,7 @@ class NewsRepository extends EntityRepository
         return $this->findBy(array(
             'newsgroup' => $group
         ), array(
-            'creation_date' => 'ASC',
+            'creation_date' => 'DESC',
         ), $limit, $from);
     }
 
@@ -26,5 +26,24 @@ class NewsRepository extends EntityRepository
         return count($this->findBy(array(
             'newsgroup' => $group
         )));
+    }
+
+    function getHotNews($limit)
+    {
+        $db = $this->createQueryBuilder('n')
+            ->where('n.creation_date > :date')
+            ->setParameter('date', new \DateTime('yesterday'))
+            ->addOrderBy('n.visit', 'DESC')
+            ->addOrderBy('n.creation_date', 'DESC')
+            ->setMaxResults($limit);
+        return $db->getQuery()->getResult();
+    }
+
+    function getRecentNews($limit)
+    {
+        $db = $this->createQueryBuilder('n')
+            ->addOrderBy('n.creation_date', 'DESC')
+            ->setMaxResults($limit);
+        return $db->getQuery()->getResult();
     }
 }
