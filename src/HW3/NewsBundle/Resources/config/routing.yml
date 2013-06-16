@@ -14,6 +14,10 @@ news_single:
     pattern: /news/{id}
     defaults: { _controller: NewsBundle:Default:single }
 
+news_ajax:
+    pattern: /ajax
+    defaults: { _controller: NewsBundle:Default:ajax }
+
 news_search:
     pattern: /news/search
     defaults: { _controller: NewsBundle:Default:search}

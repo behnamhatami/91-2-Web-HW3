@@ -55,6 +55,32 @@ class DefaultController extends Controller
         ));
     }
 
+    public function ajaxAction()
+    {
+        $action = $this->getRequest()->get('action');
+        $id = $this->getRequest()->get('id');
+        $em = $this->getDoctrine()->getManager();
+        if ($action and $id) {
+            $repo = $em->getRepository('CommentBundle:Comment');
+            $comment = $repo->findById($id);
+
+            if (($action != 'neg' and $action != 'pos') or !$action)
+                return new JsonResponse(array('result' => 'no'));
+
+            if ($action == 'neg')
+                $comment->setNeg($comment->getNeg() + 1);
+
+            if ($action == 'pos')
+                $comment->setPos($comment->getPos() + 1);
+
+            $em->persist($comment);
+            $em->flush();
+            return new JsonResponse(array('result' => 'yes'));
+        }
+
+        return new JsonResponse(array('result' => 'no'));
+    }
+
     public function searchAction()
     {
         return new Response('salam');
