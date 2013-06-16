@@ -190,7 +190,9 @@ function newComment()
         $('.gkPage').css('opacity',1);
         $('.commentReply').hide();
 		
-        $.getJSON('',{'content' : $('textarea',$(this).parent().parent()).val(),'parent' :$(this).parent().parent().attr('parentid'),'name':$('input',$(this).parent().parent()).val()});
+        $.getJSON('../../../en/ajax',{'news':$(this).parent().parent().attr('newsid'),'action':'create',
+		'content' : $('textarea',$(this).parent().parent()).val(),'parent' :$(this).parent().parent().attr('parentid'),
+		'composer':$('input',$(this).parent().parent()).val()});
         //        TODO json
     });
     $('.commentcancel').click(function()
