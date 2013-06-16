@@ -2,11 +2,16 @@
 
 namespace HW3\NewsBundle\Controller;
 
+use HW3\CommentBundle\Entity\Comment;
+use HW3\CommentBundle\Form\CommentType;
 use HW3\NewsBundle\Entity\News;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 
 class DefaultController extends Controller
@@ -58,9 +63,9 @@ class DefaultController extends Controller
 
     public function ajaxAction()
     {
+        $em = $this->getDoctrine()->getManager();
         $action = $this->getRequest()->get('action');
         $id = $this->getRequest()->get('id');
-        $em = $this->getDoctrine()->getManager();
         if ($action and $id) {
             $repo = $em->getRepository('CommentBundle:Comment');
             $comment = $repo->findOneById($id);
@@ -76,7 +81,21 @@ class DefaultController extends Controller
 
             $em->persist($comment);
             $em->flush();
-            return new JsonResponse(array('result' => 'yes'));
+            return new JsonResponse(array('result' => 'yes', 'neg' => $comment->getNeg(),
+                'pos' => $comment->getPos()));
+        }
+
+        if ($action == 'create') {
+            $entity = new Comment();
+            $request = $this->getRequest();
+            $entity->setComposer($request->get('composer'));
+            $entity->setParent($em->getRepository('CommentBundle:Comment')->findOneById($request->get('parent')));
+            $entity->setNews($em->getRepository('NewsBundle:News')->findOneById($request->get('news')));
+            $entity->setContent($request->get('content'));
+            $em->persist($entity);
+            $em->flush();
+            return new JsonResponse(
+                array('result' => 'yes'));
         }
 
         return new JsonResponse(array('result' => 'no'));
@@ -120,5 +139,12 @@ class DefaultController extends Controller
         foreach ($groups as $group)
             $group->setTopNews($em->getRepository('NewsBundle:News')->getNewsFromGroup($group, 0, 7));
         return $groups;
+    }
+
+    private function getJson($entity)
+    {
+        $serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new
+        JsonEncoder()));
+        return $serializer->serialize($entity, 'json');
     }
 }

@@ -5,20 +5,22 @@
  * Time: 2:04 PM
  * To change this template use File | Settings | File Templates.
  */
+ var an;
 var currentnavelem = null ;
 function homepageSidebar()
 {
     $("div.tabbed_area .LeftTopTabs li.first  a").click(function()
     {
-        $('div#content_1').attr({display : 'block'});
-        $('div#content_2').attr({display : 'none'});
+		console.log('bye');
+        $('div#content_1').show();
+        $('div#content_2').hide()
         $('this').parent().attr('class','first active');
         $("div.tabbed_area .LeftTopTabs li.middle").attr('class','middle');
     });
     $("div.tabbed_area .LeftTopTabs li.middle  a").click(function()
     {
-        $('div#content_2').css({display : 'block'});
-        $('div#content_1').css({display : 'none'});
+        $('div#content_2').show()
+        $('div#content_1').hide();
         $('this').parent().attr('class','middle active');
         $("div.tabbed_area .LeftTopTabs li.first").attr('class','first');
     });
@@ -46,7 +48,9 @@ function mainNavigation()
            console.log("1 \n");
            var position = currentnavelem.offset() ;
            console.log(position.top+" "+ e.screenY) ;
-           if(position.top > e.screenY)
+		   an = e ;
+		   console.log(an);
+           if(position.top+40> e.screenY)
            {
                if($(this).attr('class')!='big_dropdown current_page_item')
                     $(this).attr('class','big_dropdown');
@@ -185,6 +189,8 @@ function newComment()
     {
         $('.gkPage').css('opacity',1);
         $('.commentReply').hide();
+		
+        $.getJSON('',{'content' : $('textarea',$(this).parent().parent()).val(),'parent' :$(this).parent().parent().attr('parentid'),'name':$('input',$(this).parent().parent()).val()});
         //        TODO json
     });
     $('.commentcancel').click(function()
