@@ -32,6 +32,7 @@ class NewsController extends Controller
     }
 
     /*
+
      * Creates a new News entity.
      *
      */
@@ -105,9 +106,9 @@ class NewsController extends Controller
             throw $this->createNotFoundException('Unable to find News entity.');
         }
 
-        $entity->image_valid = false;
+        $entity->inValidImage();
         $editForm = $this->createForm(new NewsType($this->getRequest()->getLocale()), $entity);
-        $entity->image_valid = true;
+        $entity->validImage();
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('NewsBundle:News:edit.html.twig', array(
@@ -132,9 +133,9 @@ class NewsController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $entity->image_valid = false;
+        $entity->inValidImage();
         $editForm = $this->createForm(new NewsType($this->getRequest()->getLocale()), $entity);
-        $entity->image_valid = true;
+        $entity->validImage();
         $editForm->bind($request);
 
         if ($editForm->isValid()) {

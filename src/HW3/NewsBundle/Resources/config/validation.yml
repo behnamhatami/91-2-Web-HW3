@@ -25,10 +25,16 @@ HW3\NewsBundle\Entity\News:
             - NotBlank: ~
             - Range:
                 min: 0
+        confirmed:
+            - NotBlank: ~
         user:
             - NotNull: ~
         newsgroup:
             - NotNull: ~
+        tags:
+            - Count:
+                min: 0
+                max: 10
 
 HW3\NewsBundle\Entity\NewsGroup:
     constraints:
@@ -53,3 +59,28 @@ HW3\NewsBundle\Entity\NewsGroup:
             - Range:
                 min: 0
                 minMessage: Level should be possitive integer.
+
+HW3\NewsBundle\Entity\Subscription:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [email, newsgroup_id]
+            message: This Subscription already exists.
+    properties:
+        email:
+            - NotBlank:
+                message: Please enter your email.
+            - Email:
+                message: The email "{{ value }}" is not a valid email.
+
+        newsgroup:
+            - NotNull: ~
+
+HW3\NewsBundle\Entity\Tag:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: name
+            message: Tag with this name already exists.
+    properties:
+        name:
+            - NotBlank:
+                message: Please enter proper name.

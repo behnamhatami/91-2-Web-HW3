@@ -35,12 +35,20 @@
             <td>{{ entity.content }}</td>
         </tr>
         <tr>
-            <th>{% trans %}User{% endtrans %}</th>
-            <td>{{ entity.user }}</td>
-        </tr>
-        <tr>
             <th>{% trans %}Visit{% endtrans %}</th>
             <td>{{ entity.visit }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Selected{% endtrans %}</th>
+            <td>{{ entity.selected ? 'True' : 'False'}}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Confirmed{% endtrans %}</th>
+            <td>{{ entity.confirmed ? 'True' : 'False' }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}User{% endtrans %}</th>
+            <td>{{ entity.user}}</td>
         </tr>
         </tbody>
     </table>

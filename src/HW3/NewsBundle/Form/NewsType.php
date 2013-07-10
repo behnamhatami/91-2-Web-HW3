@@ -29,7 +29,9 @@ class NewsType extends AbstractType
                     'ui_color' => '#ffffff',
                     'language' => $this->locale
                 )))
-            ->add('newsgroup');
+            ->add('newsgroup')
+            ->add('tags')
+            ->add('selected');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

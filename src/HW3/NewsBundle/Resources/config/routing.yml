@@ -29,3 +29,11 @@ news_crud:
 newsgroup_crud:
     resource: "@NewsBundle/Resources/config/routing/newsgroup.yml"
     prefix:   /user/news/newsgroup
+
+subscription_crud:
+    resource: "@NewsBundle/Resources/config/routing/subscription.yml"
+    prefix:   /user/subscription
+
+tag_crud:
+    resource: "@NewsBundle/Resources/config/routing/tag.yml"
+    prefix:   /user/tag

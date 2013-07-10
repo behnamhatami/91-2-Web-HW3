@@ -34,11 +34,25 @@
                 <div class="text-error">{{ form_errors(form.abstract) }}</div>
             </div>
             <div class="control-group">
+                {{ form_label(form.tags) }}
+                <div class="controls">
+                    {{ form_widget(form.tags) }}
+                </div>
+                <div class="text-error">{{ form_errors(form.tags) }}</div>
+            </div>
+            <div class="control-group">
                 {{ form_label(form.content) }}
                 <div id="content" class="controls">
                     {{ form_widget(form.content) }}
                 </div>
                 <div class="text-error">{{ form_errors(form.content) }}</div>
+            </div>
+            <div class="control-group">
+                {{ form_label(form.selected) }}
+                <div class="controls">
+                    {{ form_widget(form.selected) }}
+                </div>
+                <div class="text-error">{{ form_errors(form.selected) }}</div>
             </div>
             <div class="control-group">
                 <div class="controls">
