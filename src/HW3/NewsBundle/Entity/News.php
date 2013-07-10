@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * News
  */
-class News
+class News // implements \JsonSerializable
 {
     /**
      * @var boolean
@@ -357,6 +357,14 @@ class News
     {
         unlink($this->getFullImagePath());
         rmdir($this->getUploadRootDir());
+    }
+
+    public function jsonSerialize()
+    {
+        return array(
+            'id' => $this->id,
+            'title' => $this->title,
+        );
     }
 
     public function __toString()

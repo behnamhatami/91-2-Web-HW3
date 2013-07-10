@@ -125,6 +125,17 @@ class DefaultController extends Controller
         ));
     }
 
+
+    private function getSerializer($ignore_list)
+    {
+        $normalizer = new GetSetMethodNormalizer();
+        $normalizer->setIgnoredAttributes($ignore_list);
+        $encoder = new JsonEncoder();
+
+        $serializer = new Serializer(array($normalizer), array($encoder));
+        return $serializer;
+    }
+
     private function getAllNews()
     {
         $em = $this->getDoctrine()->getManager();

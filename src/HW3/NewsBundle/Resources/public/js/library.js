@@ -156,14 +156,15 @@ function likeDislike()
 {
     $('.commentInfoBar  .rateUpLink').click(function ()
     {
-        $.getJSON('',{'like' : true},function(data,status,xhr){
+		
+        $.getJSON('../../../en/ajax',{'action' : 'pos','id':$(this).parent().parent().parent().attr('id')},function(data,status,xhr){
             $('.ratingUp',$(this).parent()).text(data['pos']);
             $('.ratingDown',$(this).parent()).text(data['neg']);
         });
     });
     $('.commentInfoBar  .rateDownLink').click(function ()
     {
-        $.getJSON('',{'like' : false},function(data,status,xhr){
+        $.getJSON('../../../en/ajax',{'action' : 'neg','id':$(this).parent().parent().parent().attr('id')},function(data,status,xhr){
             $('.ratingUp',$(this).parent()).text(data['pos']);
             $('.ratingDown',$(this).parent()).text(data['neg']);
         });
@@ -171,10 +172,10 @@ function likeDislike()
 }
 function newComment()
 {
-    $('.commentInfoBar a.newComment').click(function(){
+    $('.commentInfoBar .commentRating a.newComment').click(function(){
         $('.gkPage').css('opacity',0.3);
         $('.commentReply').show();
-        $('.commentReply').attr('parentid',$(this).parent().parent().attr('id'));
+        $('.commentReply').attr('parentid',$(this).parent().parent().parent().attr('id'));
 
     });
     $('.comReply').click(function(){
