@@ -63,7 +63,7 @@ HW3\NewsBundle\Entity\NewsGroup:
 HW3\NewsBundle\Entity\Subscription:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
-            fields: [email, newsgroup_id]
+            fields: [email, newsgroup]
             message: This Subscription already exists.
     properties:
         email:

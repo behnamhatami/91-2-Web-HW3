@@ -15,7 +15,8 @@ class NewsRepository extends EntityRepository
     function getNewsFromGroup($group, $from, $limit)
     {
         return $this->findBy(array(
-            'newsgroup' => $group
+            'newsgroup' => $group,
+            'confirmed' => True
         ), array(
             'creation_date' => 'DESC',
         ), $limit, $from);
@@ -32,18 +33,81 @@ class NewsRepository extends EntityRepository
     {
         $db = $this->createQueryBuilder('n')
             ->where('n.creation_date > :date')
+            ->andWhere('n.confirmed')
             ->setParameter('date', new \DateTime('yesterday'))
             ->addOrderBy('n.visit', 'DESC')
             ->addOrderBy('n.creation_date', 'DESC')
             ->setMaxResults($limit);
-        return $db->getQuery()->getResult();
+        $result = $db->getQuery()->getResult();
+
+        if (count($result) < $limit / 2) {
+            $db = $this->createQueryBuilder('n')
+                ->where('n.confirmed')
+                ->addOrderBy('n.visit', 'DESC')
+                ->addOrderBy('n.creation_date', 'DESC')
+                ->setMaxResults($limit);
+            $result = $db->getQuery()->getResult();
+        }
+        return $result;
     }
 
     function getRecentNews($limit)
     {
         $db = $this->createQueryBuilder('n')
+            ->where('n.confirmed')
             ->addOrderBy('n.creation_date', 'DESC')
             ->setMaxResults($limit);
         return $db->getQuery()->getResult();
+    }
+
+    function getRelatedNews($news, $limit)
+    {
+        $tags = $news->getTags();
+        $result = [];
+        foreach ($tags as $tag) {
+            $news = $tag . getNews();
+            foreach ($news as $new)
+                if ($new . getConfirmed())
+                    $result[] = $new;
+        }
+        return $result;
+    }
+
+    function search($query, $fields, $from, $to, $newsgroups)
+    {
+        $db = $this->createQueryBuilder('n')
+            ->where('n.confirmed');
+
+        if ($from != null)
+            $db = $db->andWhere('n.creation_date >= :from_date')
+                ->setParameter('from_date', $from);
+
+        if ($to != null)
+            $db = $db->andWhere('n.creation_date <= :to_date')
+                ->setParameter('n.creation_date', $to);
+
+        foreach ($newsgroup as $group)
+            $db = $db->where('n.newsgroup = :group')
+                ->setParameter('group', $group);
+
+        foreach ($fields as $field)
+            $db = $db->where('n.' . $field + ' LIKE %:value%')
+                ->setParameter('value', $query);
+
+        $db = $db->addOrderBy('n.creation_date', 'DESC')
+            ->setMaxResults($limit);
+
+        return $db->getQuery()->getResult();
+    }
+
+    function getSelectedNews($limit)
+    {
+        $db = $this->createQueryBuilder('n')
+            ->where('n.selected')
+            ->where('n.confirmed')
+            ->addOrderBy('n.creation_date', 'DESC')
+            ->setMaxResults($limit);
+        $result = $db->getQuery()->getResult();
+        return $result;
     }
 }

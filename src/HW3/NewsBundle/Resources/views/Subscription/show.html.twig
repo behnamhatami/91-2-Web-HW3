@@ -1,38 +1,41 @@
-{% extends '::base.html.twig' %}
+{% extends 'UserBundle:Default:home.html.twig' %}
+{% set _locale = app.request.locale %}
 
-{% block body -%}
-    <h1>Subscription</h1>
+{% block content %}
+    <h3>
+        {% trans %}Subscription{% endtrans %}
+    </h3>
 
-    <table class="record_properties">
+    <table class="record_properties table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ entity.email }}</td>
-            </tr>
+        <tr>
+            <th>{% trans %}Id{% endtrans %}</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Email{% endtrans %}</th>
+            <td>{{ entity.email }}</td>
+        </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('subscription') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('subscription_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('subscription_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('subscription', {'_locale': _locale}) }}">
+                {% trans %}Back to the list{% endtrans %}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('subscription_edit', { 'id': entity.id, '_locale': _locale }) }}">
+                {% trans %}Edit{% endtrans %}
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('subscription_delete', { 'id': entity.id, '_locale': _locale}) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE"/>
+                {{ form_widget(delete_form) }}
+                <button type="submit">{% trans %}Delete{% endtrans %}</button>
+            </form>
+        </li>
+    </ul>
 {% endblock %}

@@ -1,7 +1,10 @@
 {% extends 'UserBundle:Default:home.html.twig' %}
+{% set _locale = app.request.locale %}
 
 {% block content %}
-    <h3>{% trans %}News{% endtrans %}</h3>
+    <h3>
+        {% trans %}News{% endtrans %}
+    </h3>
 
     <table class="table">
         <tbody>
@@ -40,7 +43,7 @@
         </tr>
         <tr>
             <th>{% trans %}Selected{% endtrans %}</th>
-            <td>{{ entity.selected ? 'True' : 'False'}}</td>
+            <td>{{ entity.selected ? 'True' : 'False' }}</td>
         </tr>
         <tr>
             <th>{% trans %}Confirmed{% endtrans %}</th>
@@ -48,27 +51,29 @@
         </tr>
         <tr>
             <th>{% trans %}User{% endtrans %}</th>
-            <td>{{ entity.user}}</td>
+            <td>{{ entity.user }}</td>
         </tr>
         </tbody>
     </table>
 
     <ul class="record_actions">
         <li>
-            <a href="{{ path('news') }}">
+            <a href="{{ path('news', {'_locale': _locale}) }}">
                 {% trans %}Back to the list{% endtrans %}
             </a>
         </li>
         <li>
-            <a href="{{ path('news_edit', { 'id': entity.id }) }}">
+            <a href="{{ path('news_edit', { 'id': entity.id, '_locale': _locale }) }}">
                 {% trans %}Edit{% endtrans %}
             </a>
         </li>
         <li>
-            <form action="{{ path('news_delete', { 'id': entity.id }) }}" method="post">
+            <form action="{{ path('news_delete', { 'id': entity.id, '_locale': _locale }) }}" method="post">
                 <input type="hidden" name="_method" value="DELETE"/>
                 {{ form_widget(delete_form) }}
-                <button type="submit">{% trans %}Delete{% endtrans %}</button>
+                <button type="submit">
+                    {% trans %}Delete{% endtrans %}
+                </button>
             </form>
         </li>
     </ul>

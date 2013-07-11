@@ -41,6 +41,11 @@ class Comment
     private $neg;
 
     /**
+     * @var integer
+     */
+    private $level;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $children;
@@ -54,11 +59,6 @@ class Comment
      * @var \HW3\CommentBundle\Entity\Comment
      */
     private $parent;
-
-    /**
-     * @var integer
-     */
-    private $level;
 
 
     /**
@@ -166,6 +166,18 @@ class Comment
     }
 
     /**
+     * like
+     *
+     * @return Comment
+     */
+    public function like()
+    {
+        $this->pos = $this->pos + 1;
+
+        return $this;
+    }
+
+    /**
      * Get pos
      *
      * @return integer
@@ -187,6 +199,19 @@ class Comment
 
         return $this;
     }
+
+    /**
+     * dislike
+     *
+     * @return Comment
+     */
+    public function dislike()
+    {
+        $this->neg = $neg + 1;
+
+        return $this;
+    }
+
 
     /**
      * Get neg
@@ -211,6 +236,21 @@ class Comment
 
         return $this;
     }
+
+    /**
+     * Set level Automaticaly
+     *
+     * @return Comment
+     */
+    public function setLevelFromParent()
+    {
+        $this->level = $level;
+        if ($this->getParent() == null)
+            $this->setLevel(0);
+        else $this->setLevel($this->getParent()->getLevel() + 1);
+        return $this;
+    }
+
 
     /**
      * Get level
@@ -287,9 +327,7 @@ class Comment
     public function setParent(\HW3\CommentBundle\Entity\Comment $parent = null)
     {
         $this->parent = $parent;
-        if ($this->parent == null)
-            $this->setLevel(0);
-        else $this->setLevel($this->getParent()->getLevel() + 1);
+        $this->setLevelFromParent();
         return $this;
     }
 

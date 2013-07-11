@@ -1,7 +1,10 @@
 {% extends 'UserBundle:Default:home.html.twig' %}
+{% set _locale = app.request.locale %}
 
 {% block content %}
-    <h2>{% trans %}User list{% endtrans %}</h2>
+    <h2>
+        {% trans %}User list{% endtrans %}
+    </h2>
 
     <table class="table">
         <thead>
@@ -12,25 +15,39 @@
             <th>{% trans %}Username{% endtrans %}</th>
             <th>{% trans %}Creation Date{% endtrans %}</th>
             <th>{% trans %}Showname{% endtrans %}</th>
+            <th>{% trans %}Role{% endtrans %}</th>
             <th>{% trans %}Actions{% endtrans %}</th>
         </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>
+                    <a href="{{ path('user_show', { 'id': entity.id, '_locale': _locale}) }}">
+                        {{ entity.id }}
+                    </a>
+                </td>
                 <td>{{ entity.firstname }}</td>
                 <td>{{ entity.lastname }}</td>
                 <td>{{ entity.username }}</td>
-                <td>{% if entity.creationdate %}{{ entity.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    {% if entity.creationdate %}
+                        {{ entity.creationdate|date('Y-m-d H:i:s') }}
+                    {% endif %}
+                </td>
                 <td>{{ entity.showname }}</td>
+                <td>{{ entity.role }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('user_show', { 'id': entity.id }) }}">{% trans %}show{% endtrans %}</a>
+                            <a href="{{ path('user_show', { 'id': entity.id, '_locale': _locale }) }}">
+                                {% trans %}show{% endtrans %}
+                            </a>
                         </li>
                         <li>
-                            <a href="{{ path('user_edit', { 'id': entity.id }) }}">{% trans %}edit{% endtrans %}</a>
+                            <a href="{{ path('user_edit', { 'id': entity.id, '_locale': _locale }) }}">
+                                {% trans %}edit{% endtrans %}
+                            </a>
                         </li>
                     </ul>
                 </td>
@@ -38,10 +55,9 @@
         {% endfor %}
         </tbody>
     </table>
-
     <ul>
         <li>
-            <a href="{{ path('user_new') }}">
+            <a href="{{ path('user_new', {'_locale': _locale}) }}">
                 {% trans %}Create a new entry{% endtrans %}
             </a>
         </li>

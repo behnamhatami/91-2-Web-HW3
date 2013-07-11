@@ -3,18 +3,19 @@ html {
 }
 
 html, button, input, select, textarea {
-    font-family: Bnazanin,Tahoma;
+    font-family: Bnazanin, Tahoma;
 }
+
 html {
     border-bottom: 1px solid transparent;
     min-height: 100%;
 }
-header
-{
+
+header {
     display: block;
 }
-body>header
-{
+
+body>header {
     clear: both;
     margin: 0 auto;
 }
@@ -28,17 +29,14 @@ article::after, .box::after,
     direction: rtl;
 }
 
-
-
-body
-{
-    margin : 0 ;
+body {
+    margin: 0;
     min-height: 100%;
     font-size: 12px;
     line-height: 1.6;
 }
-body>header:first-child
-{
+
+body>header:first-child {
     margin-top: 0;
 }
 
@@ -64,16 +62,15 @@ ul li {
 a {
     color: #363636;
     -webkit-transition: color .2s linear;
-  /*  -moz-transition: color .2s linear;
-    -o-transition: color .2s linear;*/
+    /*  -moz-transition: color .2s linear;
+      -o-transition: color .2s linear;*/
     transition: color .2s linear;
     text-decoration: none;
     -webkit-transform: translateZ(0);
 }
 
-.clearboth
-{
-    clear : both;
+.clearboth {
+    clear: both;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
@@ -105,7 +102,7 @@ div.content {
     -ms-box-sizing: border-box;
     -o-box-sizing: border-box;
     box-sizing: border-box;
-    margin: 0 auto!important;
+    margin: 0 auto !important;
 }
 
 section#gkContent, section#gkComponentWrap, aside#gkSidebar {
@@ -116,9 +113,11 @@ section#gkContent, section#gkComponentWrap, aside#gkSidebar {
     box-sizing: border-box;
     float: right;
 }
+
 a:hover, a:active, a:focus {
     color: rgb(191, 7, 7);
 }
+
 body>footer:first-child, body>header:first-child, body>section:first-child, section#gkPage>section:first-child, section#gkContent>section:first-child, section#gkComponentWrap>section:first-child {
     margin-top: 0;
 }
@@ -129,10 +128,9 @@ body>footer:first-child, body>header:first-child, body>section:first-child, sect
 }
 
 .box.light {
-    background: #f8f8f8!important;
+    background: #f8f8f8 !important;
     padding: 20px;
 }
-
 
 .nsp {
     position: relative;
@@ -154,6 +152,7 @@ body>footer:first-child, body>header:first-child, body>section:first-child, sect
 .nspFs100 {
     font-size: 100%;
 }
+
 .nspMain {
     overflow: hidden;
 }
@@ -161,9 +160,11 @@ body>footer:first-child, body>header:first-child, body>section:first-child, sect
 .nspArts.right {
     float: right;
 }
+
 .nspArts {
     overflow: hidden;
 }
+
 .nsp {
     position: relative;
 }
@@ -171,15 +172,18 @@ body>footer:first-child, body>header:first-child, body>section:first-child, sect
 .bigtitle .nspArt:first-child {
     border-top: 0;
 }
+
 .nsphover .nspArt {
-    border: none!important;
+    border: none !important;
     margin: 0;
     overflow: hidden;
     position: relative;
 }
+
 .bigtitle .nspArt {
     border-top: 1px solid #d2d0d0;
 }
+
 .nspCol1 {
     width: 100%;
 }
@@ -199,9 +203,11 @@ body>footer:first-child, body>header:first-child, body>section:first-child, sect
     width: 100%;
     float: none;
 }
+
 .nspArt .tcenter {
     text-align: center;
 }
+
 .nspArt div {
     overflow: hidden;
 }
@@ -209,9 +215,11 @@ body>footer:first-child, body>header:first-child, body>section:first-child, sect
 .gkResponsive {
     position: relative;
 }
+
 .gkResponsive {
     line-height: 1;
 }
+
 .box.header .nspImageWrapper {
     position: relative;
 }
@@ -219,11 +227,13 @@ body>footer:first-child, body>header:first-child, body>section:first-child, sect
 .nsphover .nspImageWrapper {
     position: relative;
 }
+
 .nspArt .fnone {
     clear: both;
     width: 100%;
     float: none;
 }
+
 .nspArt .tcenter {
     text-align: center;
 }
@@ -231,14 +241,17 @@ body>footer:first-child, body>header:first-child, body>section:first-child, sect
 .nspArt .nspImageWrapper {
     overflow: hidden;
 }
+
 .gkResponsive a, a.gkResponsive {
     display: block;
     position: relative;
 }
+
 .gkResponsive a, a.gkResponsive {
     display: block;
     position: relative;
 }
+
 .nspArt a {
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
@@ -268,10 +281,11 @@ body>footer:first-child, body>header:first-child, body>section:first-child, sect
 }
 
 section img {
-    height: auto!important;
-    max-width: 100%!important;
+    height: auto !important;
+    max-width: 100% !important;
     float: right;
 }
+
 img {
     border: 0;
     -ms-interpolation-mode: bicubic;
@@ -306,18 +320,21 @@ img {
     margin-bottom: 15px;
     padding: 10px 10px 0 10px;
 }
+
 h4.nspHeader {
     color: #363636;
     font-size: 13px;
     line-height: 1.2;
     margin-bottom: 10px;
 }
+
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
     color: #000;
     font-weight: normal;
 }
+
 h4 {
     font-size: 125%;
 }
@@ -366,6 +383,7 @@ h4 {
 .nspArt div {
     overflow: hidden;
 }
+
 .nsphover .nspHoverOverlay .nspHeader, .nsphover .nspHoverOverlay .nspHeader a {
     color: #fff;
 }
@@ -378,10 +396,12 @@ h4 {
     font-weight: bold;
     text-align: justify;
 }
+
 .nsphover .nspText {
     bottom: -200px;
     position: absolute;
 }
+
 div.nspText {
     line-height: 22px;
     padding: 10px 0 0 0;
@@ -398,9 +418,10 @@ div.nspText {
 .nspPages4 {
     width: 400%;
 }
+
 .nspLinks .nspLinkScroll1 div ul {
-    padding: 0!important;
-    list-style-type: none!important;
+    padding: 0 !important;
+    list-style-type: none !important;
 }
 
 .box.light ul {
@@ -409,21 +430,24 @@ div.nspText {
 }
 
 .box.header .nspLinks .nspLinkScroll1 div ul li {
-    margin: 0 5px 0 5px!important;
-    padding: 7px 7px 0 7px!important;
+    margin: 0 5px 0 5px !important;
+    padding: 7px 7px 0 7px !important;
     -webkit-transition: all .3s ease-out;
     -moz-transition: all .3s ease-out;
     -ms-transition: all .3s ease-out;
     -o-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
+
 .box.light ul li:first-child {
     border-top: 0;
 }
+
 .nspLinks .nspLinkScroll1 div ul li {
-    margin: 0!important;
+    margin: 0 !important;
     padding: 14px 0;
 }
+
 .box.light ul li {
     border-bottom: 1px solid #ddd;
     position: relative;
@@ -433,9 +457,11 @@ ul li {
     list-style-position: outside;
     line-height: 2.0;
 }
+
 .nspArt img.nspImage {
     max-width: 100%;
 }
+
 .nspArt img.nspImage {
     border: 0;
     -webkit-transition: all .4s ease 0s;
@@ -459,6 +485,7 @@ ul li {
 .header .nspLinks ul li h4 a {
     color: #333;
 }
+
 .nspLinks ul li h4 a {
     text-decoration: none;
 }
@@ -468,6 +495,7 @@ ul li {
     margin-top: 0;
     text-align: center;
 }
+
 .nspBotInterface div, .nspTopInterface div {
     float: right;
 }
@@ -476,14 +504,16 @@ ul li {
     display: inline-block;
     float: none;
 }
+
 .box.light ul {
     margin: 0;
     padding: 0;
 }
+
 .nspPagination {
-    list-style-type: none!important;
-    margin: 5px 0 0!important;
-    padding: 0!important;
+    list-style-type: none !important;
+    margin: 5px 0 0 !important;
+    padding: 0 !important;
     float: left;
 }
 
@@ -491,21 +521,21 @@ ul li {
     float: left;
     width: 8px;
     height: 8px;
-    margin: 1px 3px 0 1px!important;
+    margin: 1px 3px 0 1px !important;
     background: #d6d6d6;
-    border: none!important;
+    border: none !important;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    padding: 0!important;
+    padding: 0 !important;
     text-indent: -999em;
     cursor: pointer;
 }
 
-.nspPagination li.active,.nspPagination li:hover {
+.nspPagination li.active, .nspPagination li:hover {
     background: #bf0707;
     height: 10px;
-    margin: 0 2px 0 0!important;
+    margin: 0 2px 0 0 !important;
     width: 10px;
 }
 
@@ -523,7 +553,7 @@ ul li {
     color: #fff;
 }
 
-#gkContentWrap,#gkCommentWrap {
+#gkContentWrap, #gkCommentWrap {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -533,7 +563,7 @@ ul li {
     padding: 10px 20px;
 }
 
-.gkMainbodyTop,.gkComment {
+.gkMainbodyTop, .gkComment {
     margin: -10px -19px 0 -20px;
     border-bottom: 1px solid #d2d0d0;
     border-top: 1px solid #d2d0d0;
@@ -569,6 +599,7 @@ ul li {
 .nspArt .tjustify {
     text-align: justify;
 }
+
 .nspLinksWrap.aright {
     float: right;
 }
@@ -584,6 +615,7 @@ ul li {
 .header .nspLinks ul li h4 {
     font-size: 13px;
 }
+
 .nspLinks ul li h4 {
     color: #2f3133;
     font-size: 13px;
@@ -594,6 +626,7 @@ ul li {
 button, input {
     line-height: normal;
 }
+
 button, input, select, textarea {
     font-size: 100%;
     margin: 0;
@@ -611,7 +644,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="url"],
     font-size: 10px;
     height: 32px;
     line-height: 33px;
-    max-width: 100%!important;
+    max-width: 100% !important;
     padding: 0 12px;
 }
 
@@ -661,6 +694,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
 #gkFooter {
     border-top: 2px solid #bf0707;
 }
+
 #gkFooter {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -671,7 +705,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
     color: #777;
     font-size: 12px;
     line-height: 21px;
-    margin: 0 auto 20px auto!important;
+    margin: 0 auto 20px auto !important;
 }
 
 #gkBreadcrumb {
@@ -693,6 +727,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
 section article:first-child, section.blog .items-more ol {
     margin-top: 0;
 }
+
 section article {
     margin-top: 10px;
 }
@@ -761,6 +796,7 @@ article header .Abstract {
 .bigtitle p.nspInfo {
     font-size: 14px;
 }
+
 .nspArt p.nspInfo {
     color: #999;
     font-size: 11px;
@@ -773,6 +809,7 @@ article header .Abstract {
 .nspArt .fright {
     float: left;
 }
+
 .nspArt .tright {
     text-align: left;
 }
@@ -780,7 +817,7 @@ article header .Abstract {
 .bigtitle p.nspText {
     font-size: 16px;
 }
-p.nspText
-{
-    clear : both ;
+
+p.nspText {
+    clear: both;
 }

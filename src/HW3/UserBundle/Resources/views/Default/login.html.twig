@@ -15,7 +15,9 @@
 {% block body %}
     <div class="container">
         <form class="form-signin" action="{{ path('login_check') }}" method="post">
-            <h2 class="form-signin-heading">{% trans %}Please sign in{% endtrans %}</h2>
+            <h2 class="form-signin-heading">
+                {% trans %}Please sign in{% endtrans %}
+            </h2>
             <input id="username" name="_username" type="text" class="input-block-level"
                    placeholder="{% trans %}Username{% endtrans %}">
             <input id="password" name="_password" type="password" class="input-block-level"
@@ -23,7 +25,9 @@
             {% if error %}
                 <p class="text-error">{{ error.message | trans() }}</p>
             {% endif %}
-            <button class="btn btn-large btn-primary" type="submit">{% trans %}Sign in{% endtrans %}</button>
+            <button class="btn btn-large btn-primary" type="submit">
+                {% trans %}Sign in{% endtrans %}
+            </button>
         </form>
     </div>
     <!-- /container -->

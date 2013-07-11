@@ -15,6 +15,12 @@ HW3\NewsBundle\Entity\NewsGroup:
             type: datetime
         level:
             type: integer
+
+    oneToMany:
+        subcriptions:
+            targetEntity: HW3\NewsBundle\Entity\Subscription
+            mappedBy: newsgroup
+
     manyToMany:
         users:
             targetEntity: HW3\UserBundle\Entity\User

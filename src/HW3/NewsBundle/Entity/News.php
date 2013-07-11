@@ -67,6 +67,20 @@ class News // implements \JsonSerializable
      */
     private $newsgroup;
 
+    /**
+     * @var boolean
+     */
+    private $confirmed;
+
+    /**
+     * @var boolean
+     */
+    private $selected;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tags;
 
     /**
      * Constructor
@@ -81,11 +95,13 @@ class News // implements \JsonSerializable
         $this->setConfirmed(false);
     }
 
-    public function validImage(){
+    public function validateImage()
+    {
         $this->image_valid = true;
     }
 
-    public function inValidImage(){
+    public function inValidImage()
+    {
         $this->image_valid = false;
     }
 
@@ -229,6 +245,17 @@ class News // implements \JsonSerializable
         return $this;
     }
 
+
+    /**
+     * visit
+     *
+     * @return News
+     */
+    public function visit()
+    {
+        $this->visit = $this->visit + 1;
+    }
+
     /**
      * Get visit
      *
@@ -365,29 +392,11 @@ class News // implements \JsonSerializable
 
     public function removeImage()
     {
-        if(is_file($this->getFullImagePath()))
+        if (is_file($this->getFullImagePath()))
             unlink($this->getFullImagePath());
-        if(is_dir($this->getUploadRootDir()))
+        if (is_dir($this->getUploadRootDir()))
             rmdir($this->getUploadRootDir());
     }
-
-    public function jsonSerialize()
-    {
-        return array(
-            'id' => $this->id,
-            'title' => $this->title,
-        );
-    }
-
-    public function __toString()
-    {
-        return $this->getTitle();
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $tags;
-
 
     /**
      * Add tags
@@ -398,7 +407,7 @@ class News // implements \JsonSerializable
     public function addTag(\HW3\NewsBundle\Entity\Tag $tags)
     {
         $this->tags[] = $tags;
-    
+
         return $this;
     }
 
@@ -415,22 +424,12 @@ class News // implements \JsonSerializable
     /**
      * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {
         return $this->tags;
     }
-    /**
-     * @var boolean
-     */
-    private $confirmed;
-
-    /**
-     * @var boolean
-     */
-    private $selected;
-
 
     /**
      * Set confirmed
@@ -441,14 +440,14 @@ class News // implements \JsonSerializable
     public function setConfirmed($confirmed)
     {
         $this->confirmed = $confirmed;
-    
+
         return $this;
     }
 
     /**
      * Get confirmed
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getConfirmed()
     {
@@ -464,17 +463,22 @@ class News // implements \JsonSerializable
     public function setSelected($selected)
     {
         $this->selected = $selected;
-    
+
         return $this;
     }
 
     /**
      * Get selected
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getSelected()
     {
         return $this->selected;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 }

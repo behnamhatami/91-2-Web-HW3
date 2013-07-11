@@ -50,7 +50,6 @@ class User implements UserInterface
      */
     private $newsgroups;
 
-
     /**
      * @var string
      */
@@ -64,7 +63,6 @@ class User implements UserInterface
     {
         $this->newsgroups = new \Doctrine\Common\Collections\ArrayCollection();
         $this->setCreationDate('now');
-        $this->setRole('ROLE_USER');
     }
 
     /**

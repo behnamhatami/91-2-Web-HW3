@@ -1,7 +1,10 @@
 {% extends 'UserBundle:Default:home.html.twig' %}
+{% set _locale = app.request.locale %}
 
 {% block content %}
-    <h3>{% trans %}NewsGroup list{% endtrans %}</h3>
+    <h3>
+        {% trans %}NewsGroup list{% endtrans %}
+    </h3>
 
     <table class="table">
         <thead>
@@ -16,19 +19,22 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('newsgroup_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('newsgroup_show', { 'id': entity.id, '_locale': _locale }) }}">
+                        {{ entity.id }}
+                    </a>
+                </td>
                 <td>{{ entity.name }}</td>
                 <td>{% if entity.creationdate %}{{ entity.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.level }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('newsgroup_show', { 'id': entity.id }) }}">{% trans %}
-                                show{% endtrans %}</a>
+                            <a href="{{ path('newsgroup_show', { 'id': entity.id, '_locale': _locale }) }}">
+                                {% trans %}show{% endtrans %}</a>
                         </li>
                         <li>
-                            <a href="{{ path('newsgroup_edit', { 'id': entity.id }) }}">{% trans %}
-                                edit{% endtrans %}</a>
+                            <a href="{{ path('newsgroup_edit', { 'id': entity.id, '_locale': _locale }) }}">
+                                {% trans %}edit{% endtrans %}</a>
                         </li>
                     </ul>
                 </td>
@@ -39,7 +45,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('newsgroup_new') }}">
+            <a href="{{ path('newsgroup_new', {'_locale': _locale}) }}">
                 {% trans %}Create a new entry{% endtrans %}
             </a>
         </li>

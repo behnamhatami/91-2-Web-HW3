@@ -1,46 +1,51 @@
 {% extends 'UserBundle:Default:home.html.twig' %}
+{% set _locale = app.request.locale %}
 
 {% block content %}
-    <h3>NewsGroup</h3>
+    <h3>
+        {% trans %}NewsGroup{% endtrans %}
+    </h3>
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>{% trans %}Id{% endtrans %}</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>{% trans %}Name{% endtrans %}</th>
-                <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>{% trans %}Creation Date{% endtrans %}</th>
-                <td>{{ entity.creationdate|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>{% trans %}Level{% endtrans %}</th>
-                <td>{{ entity.level}}</td>
-            </tr>
+        <tr>
+            <th>{% trans %}Id{% endtrans %}</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Name{% endtrans %}</th>
+            <td>{{ entity.name }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Creation Date{% endtrans %}</th>
+            <td>{{ entity.creationdate|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Level{% endtrans %}</th>
+            <td>{{ entity.level }}</td>
+        </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('newsgroup') }}">
-            {% trans %}Back to the list{% endtrans %}
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('newsgroup_edit', { 'id': entity.id }) }}">
-            {% trans %}Edit{% endtrans %}
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('newsgroup_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">{% trans %}Delete{% endtrans %}</button>
-        </form>
-    </li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('newsgroup', {'_locale': _locale}) }}">
+                {% trans %}Back to the list{% endtrans %}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('newsgroup_edit', { 'id': entity.id, '_loclae': _locale }) }}">
+                {% trans %}Edit{% endtrans %}
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('newsgroup_delete', { 'id': entity.id, '_locale': _locale }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE"/>
+                {{ form_widget(delete_form) }}
+                <button type="submit">
+                    {% trans %}Delete{% endtrans %}
+                </button>
+            </form>
+        </li>
+    </ul>
 {% endblock %}

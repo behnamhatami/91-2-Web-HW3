@@ -18,12 +18,13 @@ class Subscription
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
+
     /**
      * @var string
      */
@@ -44,14 +45,14 @@ class Subscription
     public function setEmail($email)
     {
         $this->email = $email;
-    
+
         return $this;
     }
 
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -67,14 +68,14 @@ class Subscription
     public function setNewsgroup(\HW3\NewsBundle\Entity\NewsGroup $newsgroup = null)
     {
         $this->newsgroup = $newsgroup;
-    
+
         return $this;
     }
 
     /**
      * Get newsgroup
      *
-     * @return \HW3\NewsBundle\Entity\NewsGroup 
+     * @return \HW3\NewsBundle\Entity\NewsGroup
      */
     public function getNewsgroup()
     {

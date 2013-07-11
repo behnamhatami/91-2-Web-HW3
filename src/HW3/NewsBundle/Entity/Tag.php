@@ -13,45 +13,10 @@ class Tag
      * @var integer
      */
     private $id;
-
     /**
      * @var string
      */
     private $name;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return tag
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
@@ -64,7 +29,40 @@ class Tag
     {
         $this->news = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return tag
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
     /**
      * Add news
      *
@@ -74,7 +72,7 @@ class Tag
     public function addNew(\HW3\NewsBundle\Entity\News $news)
     {
         $this->news[] = $news;
-    
+
         return $this;
     }
 
@@ -91,7 +89,7 @@ class Tag
     /**
      * Get news
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getNews()
     {

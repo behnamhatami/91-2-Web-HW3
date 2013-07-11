@@ -1,9 +1,12 @@
 {% extends 'UserBundle:Default:home.html.twig' %}
+{% set _locale = app.request.locale %}
 
 {% block content %}
-    <form action="{{ path('newsgroup_create') }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('newsgroup_create', {'_locale': _locale}) }}" method="post" {{ form_enctype(form) }}>
         <fieldset>
-            <legend>{% trans %}News Group Creation{% endtrans %}</legend>
+            <legend>
+                {% trans %}News Group Creation{% endtrans %}
+            </legend>
             <div class="text-error">{{ form_errors(form) }}</div>
             <div class="control-group">
                 {{ form_label(form.name) }}
@@ -30,7 +33,7 @@
     <br>
     <ul class="record_actions">
         <li>
-            <a href="{{ path('newsgroup') }}">
+            <a href="{{ path('newsgroup', {'_locale': _locale}) }}">
                 {% trans %}Back to the list{% endtrans %}
             </a>
         </li>

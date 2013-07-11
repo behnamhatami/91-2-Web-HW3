@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>{% block title %}خبرگزاری{% endblock %}</title>
     {% block stylesheets %}
-        {% if lang == 'en' %}
-        {% else %}
+    {% if lang == 'en' %}
+    {% else %}
 
     {% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 <body>
 {% block body %}{% endblock %}
@@ -20,11 +19,11 @@
 {% extends "TwigBundle::layout.html.twig" %}
 
 {% block head %}
-    <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
-    <link rel="stylesheet" href="{{ asset('bundles/acmedemo/css/demo.css') }}" />
+    <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/acmedemo/css/demo.css') }}"/>
 {% endblock %}
 
-{% block title  %}
+{% block title %}
 
 {% block body %}
     {% for flashMessage in app.session.flashbag.get('notice') %}

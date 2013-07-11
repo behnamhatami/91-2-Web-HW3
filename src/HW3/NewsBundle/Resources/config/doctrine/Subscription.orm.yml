@@ -15,8 +15,9 @@ HW3\NewsBundle\Entity\Subscription:
 
     manyToOne:
         newsgroup:
-            targetEntity: NewsGroup
+            targetEntity: HW3\NewsBundle\Entity\NewsGroup
             joinColumn:
                 name: newsgroup_id
                 referencedColumnName: id
+
     lifecycleCallbacks: {  }

@@ -1,7 +1,10 @@
 {% extends 'UserBundle:Default:home.html.twig' %}
+{% set _locale = app.request.locale %}
 
 {% block content %}
-    <h2>{% trans %}User{% endtrans %}</h2>
+    <h2>
+        {% trans %}User{% endtrans %}
+    </h2>
 
     <table class="table">
         <tbody>
@@ -29,25 +32,31 @@
             <th>{% trans %}Showname{% endtrans %}</th>
             <td>{{ entity.showname }}</td>
         </tr>
+        <tr>
+            <th>{% trans %}Role{% endtrans %}</th>
+            <td>{{ entity.role }}</td>
+        </tr>
         </tbody>
     </table>
 
     <ul class="record_actions">
         <li>
-            <a href="{{ path('user') }}">
+            <a href="{{ path('user', {'_locale': _locale}) }}">
                 {% trans %}Back to the list{% endtrans %}
             </a>
         </li>
         <li>
-            <a href="{{ path('user_edit', { 'id': entity.id }) }}">
+            <a href="{{ path('user_edit', { 'id': entity.id , '_locale': _locale}) }}">
                 {% trans %}Edit{% endtrans %}
             </a>
         </li>
         <li>
-            <form action="{{ path('user_delete', { 'id': entity.id }) }}" method="post">
+            <form action="{{ path('user_delete', { 'id': entity.id, '_locale': _locale}) }}" method="post">
                 <input type="hidden" name="_method" value="DELETE"/>
                 {{ form_widget(delete_form) }}
-                <button type="submit">{% trans %}Delete{% endtrans %}</button>
+                <button type="submit">
+                    {% trans %}Delete{% endtrans %}
+                </button>
             </form>
         </li>
     </ul>

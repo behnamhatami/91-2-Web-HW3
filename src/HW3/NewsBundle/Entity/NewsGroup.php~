@@ -175,4 +175,42 @@ class NewsGroup
     {
         return $this->getName();
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $subcriptions;
+
+
+    /**
+     * Add subcriptions
+     *
+     * @param \HW3\NewsBunle\Entity\Subsciption $subcriptions
+     * @return NewsGroup
+     */
+    public function addSubcription(\HW3\NewsBunle\Entity\Subsciption $subcriptions)
+    {
+        $this->subcriptions[] = $subcriptions;
+    
+        return $this;
+    }
+
+    /**
+     * Remove subcriptions
+     *
+     * @param \HW3\NewsBunle\Entity\Subsciption $subcriptions
+     */
+    public function removeSubcription(\HW3\NewsBunle\Entity\Subsciption $subcriptions)
+    {
+        $this->subcriptions->removeElement($subcriptions);
+    }
+
+    /**
+     * Get subcriptions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSubcriptions()
+    {
+        return $this->subcriptions;
+    }
 }

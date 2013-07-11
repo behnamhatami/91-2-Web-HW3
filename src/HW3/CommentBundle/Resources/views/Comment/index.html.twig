@@ -1,25 +1,28 @@
-{% extends '::base.html.twig' %}
+{% extends 'UserBundle:Default:home.html.twig' %}
 
-{% block body -%}
-    <h1>Comment list</h1>
+{% block content %}
+    <h3>
+        {% trans %}Comment list{% endtrans %}
+    </h3>
 
     <table class="records_list">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Content</th>
-                <th>Composer</th>
-                <th>Creation_date</th>
-                <th>Pos</th>
-                <th>Neg</th>
-                <th>Level</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>{% trans %}Id{% endtrans %}</th>
+            <th>{% trans %}Content{% endtrans %}</th>
+            <th>{% trans %}Composer{% endtrans %}</th>
+            <th>{% trans %}Creation_date{% endtrans %}</th>
+            <th>{% trans %}Pos{% endtrans %}</th>
+            <th>{% trans %}Neg{% endtrans %}</th>
+            <th>{% trans %}Level{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('comment_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('comment_show', { 'id': entity.id. '_locale': _locale }) }}">{{ entity.id }}</a>
+                </td>
                 <td>{{ entity.content }}</td>
                 <td>{{ entity.composer }}</td>
                 <td>{% if entity.creationdate %}{{ entity.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
@@ -27,25 +30,29 @@
                 <td>{{ entity.neg }}</td>
                 <td>{{ entity.level }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('comment_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('comment_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    <ul>
+                        <li>
+                            <a href="{{ path('comment_show', { 'id': entity.id, '_locale': _locale}) }}">
+                                {% trans %}show{% endtrans %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('comment_edit', { 'id': entity.id, '_locale': _locale}) }}">
+                                {% trans %}edit{% endtrans %}
+                            </a>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
+    <ul>
         <li>
-            <a href="{{ path('comment_new') }}">
-                Create a new entry
+            <a href="{{ path('comment_new', {'_locale': _locale}) }}">
+                {% trans %}Create a new entry{% endtrans %}
             </a>
         </li>
     </ul>
-    {% endblock %}
+{% endblock %}

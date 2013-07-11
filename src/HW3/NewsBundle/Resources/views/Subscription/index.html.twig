@@ -1,41 +1,50 @@
-{% extends '::base.html.twig' %}
+{% extends 'UserBundle:Default:home.html.twig' %}
+{% set _locale = app.request.locale %}
 
-{% block body -%}
-    <h1>Subscription list</h1>
+{% block content %}
+    <h3>
+        {% trans %}Subscription list{% endtrans %}
+    </h3>
 
-    <table class="records_list">
+    <table class="records_list table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>{% trans %}Id{% endtrans %}</th>
+            <th>{% trans %}Email{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('subscription_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('subscription_show', { 'id': entity.id, '_locale': _locale }) }}">
+                        {{ entity.id }}
+                    </a>
+                </td>
                 <td>{{ entity.email }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('subscription_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('subscription_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    <ul>
+                        <li>
+                            <a href="{{ path('subscription_show', { 'id': entity.id, '_locale': _locale }) }}">
+                                {% trans %}show{% endtrans %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('subscription_edit', { 'id': entity.id, '_locale': _locale }) }}">
+                                {% trans %}edit{% endtrans %}
+                            </a>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
+    <ul>
         <li>
-            <a href="{{ path('subscription_new') }}">
-                Create a new entry
+            <a href="{{ path('subscription_new', {'_locale': _locale}) }}">
+                {% trans %}Create a new entry{% endtrans %}
             </a>
         </li>
     </ul>
-    {% endblock %}
+{% endblock %}

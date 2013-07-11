@@ -35,6 +35,11 @@ class NewsGroup
     private $users;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $subcriptions;
+
+    /**
      * @var \HW3\NewsBundle\Entity\News
      */
     private $top_news;
@@ -46,6 +51,7 @@ class NewsGroup
     public function __construct()
     {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->subcriptions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->setCreationDate('now');
     }
 
@@ -174,5 +180,38 @@ class NewsGroup
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * Add subcriptions
+     *
+     * @param \HW3\NewsBunle\Entity\Subscription $subcriptions
+     * @return NewsGroup
+     */
+    public function addSubcription(\HW3\NewsBundle\Entity\Subscription $subcriptions)
+    {
+        $this->subcriptions[] = $subcriptions;
+
+        return $this;
+    }
+
+    /**
+     * Remove subcriptions
+     *
+     * @param \HW3\NewsBunle\Entity\Subscription $subcriptions
+     */
+    public function removeSubcription(\HW3\NewsBundle\Entity\Subscription $subcriptions)
+    {
+        $this->subcriptions->removeElement($subcriptions);
+    }
+
+    /**
+     * Get subscriptions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSubcriptions()
+    {
+        return $this->subcriptions;
     }
 }
