@@ -18,13 +18,15 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('NewsBundle:News');
 
+        $groups = $this->getAllNewsGroups();
+
         return $this->render('NewsBundle::homepage.html.twig', array(
             'groups' => $this->getAllNewsGroups(),
-            'news' => $repo->findAll(),
-            'important_news' => $repo->findAll()[0],
-            "chosenews" => $repo->getHotNews(10),
+            'news' => $repo->getConfirmedNews(50),
+            'important_news' => $repo->getConfirmedNews(50)[0],
+            "chosenews" => $repo->getSelectedNews(10),
             "top_news" => $repo->getHotNews(10),
-            "recentnews" => $repo->getRecentNews(19)
+            "recentnews" => $repo->getRecentNews(20)
         ));
     }
 
@@ -117,6 +119,9 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('NewsBundle:News');
+        $groups = $this->getAllNewsGroups();
+//        return $repo->search('حداد', array('abstract', 'content', 'title'), new \DateTime('yesterday'), new \DateTime('now'), $groups, 10, 0);
+
         $news = $repo->findOneById($id);
 
         if (!$news)
@@ -128,7 +133,7 @@ class DefaultController extends Controller
         return $this->render('NewsBundle::singlepost.html.twig', array(
             'groups' => $this->getAllNewsGroups(),
             'news' => $news,
-            'hotnews' => $repo->getHotNews(10),
+            'hotnews' => $repo->getRelatedNews($news, 10),
         ));
     }
 
@@ -140,12 +145,6 @@ class DefaultController extends Controller
 
         $serializer = new Serializer(array($normalizer), array($encoder));
         return $serializer;
-    }
-
-    private function getAllNews()
-    {
-        $em = $this->getDoctrine()->getManager();
-        return $em->getRepository('NewsBundle:News')->findAll();
     }
 
     private function getJson($entity)

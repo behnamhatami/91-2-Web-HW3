@@ -42,14 +42,14 @@
 
                                                         <div class="nspHoverOverlay">
                                                             <h4 class="nspHeader tleft fnone">
-                                                                <a href="{{ path("news_single",{'_locale': _locale, 'id':latest_news[0].id }) }}">
-                                                                    {{ latest_news[0].title }}
+                                                                <a href="{{ path("news_single",{'_locale': _locale, 'id':latest_news[index].id }) }}">
+                                                                    {{ latest_news[index].title }}
                                                                 </a>
                                                             </h4>
 
                                                             <div class="nspText">
-                                                                <a href="{{ path("news_single", {'_locale': _locale, 'id':latest_news[0].id }) }}">
-                                                                    {{ latest_news[0].abstract }}
+                                                                <a href="{{ path("news_single", {'_locale': _locale, 'id':latest_news[index].id }) }}">
+                                                                    {{ latest_news[index].abstract }}
                                                                 </a>
                                                             </div>
                                                         </div>
