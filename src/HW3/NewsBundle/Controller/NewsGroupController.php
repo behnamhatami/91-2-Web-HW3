@@ -27,6 +27,10 @@ class NewsGroupController extends Controller
 
         $entities = $em->getRepository('NewsBundle:NewsGroup')->findAll();
 
+
+        if (count($entities) == 0)
+            $this->get('session')->getFlashBag()->add('info', 'News Group list is empty.');
+
         return $this->render('NewsBundle:NewsGroup:index.html.twig', array(
             'entities' => $entities,
         ));
@@ -47,9 +51,11 @@ class NewsGroupController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add('success', 'News Group created successfully.');
             return $this->redirect($this->generateUrl('newsgroup_show', array('id' => $entity->getId())));
         }
 
+        $this->get('session')->getFlashBag()->add('error', 'News Group creation failed.');
         return $this->render('NewsBundle:NewsGroup:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
@@ -138,9 +144,11 @@ class NewsGroupController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add('success', 'News Group updated successfully.');
             return $this->redirect($this->generateUrl('newsgroup_edit', array('id' => $id)));
         }
 
+        $this->get('session')->getFlashBag()->add('error', 'News Group update failed.');
         return $this->render('NewsBundle:NewsGroup:edit.html.twig', array(
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
@@ -166,6 +174,7 @@ class NewsGroupController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->get('session')->getFlashBag()->add('info', 'News Group deleted successfully.');
         }
 
         return $this->redirect($this->generateUrl('newsgroup'));

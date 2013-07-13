@@ -25,6 +25,10 @@ class TagController extends Controller
 
         $entities = $em->getRepository('NewsBundle:Tag')->findAll();
 
+        if (count($entities) == 0)
+            $this->get('session')->getFlashBag()->add('info', 'Tag list is empty.');
+
+
         return $this->render('NewsBundle:Tag:index.html.twig', array(
             'entities' => $entities,
         ));
@@ -42,16 +46,14 @@ class TagController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-//            foreach ($entity->getNews() as $news) {
-//                $news->addTag($entity);
-//                $em->persist($news);
-//            }
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add('success', 'Tag created successfully.');
             return $this->redirect($this->generateUrl('tag_show', array('id' => $entity->getId())));
         }
 
+        $this->get('session')->getFlashBag()->add('error', 'Tag creation failed.');
         return $this->render('NewsBundle:Tag:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
@@ -153,9 +155,12 @@ class TagController extends Controller
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->add('success', 'Tag updated successfully.');
             return $this->redirect($this->generateUrl('tag_show', array('id' => $id)));
         }
 
+        $this->get('session')->getFlashBag()->add('error', 'Tag update failed.');
         return $this->render('NewsBundle:Tag:edit.html.twig', array(
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
@@ -182,6 +187,7 @@ class TagController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->get('session')->getFlashBag()->add('info', 'Tag deleted successfully.');
         }
 
         return $this->redirect($this->generateUrl('tag'));

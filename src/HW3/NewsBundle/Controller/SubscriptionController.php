@@ -25,6 +25,9 @@ class SubscriptionController extends Controller
 
         $entities = $em->getRepository('NewsBundle:Subscription')->findAll();
 
+        if (count($entities) == 0)
+            $this->get('session')->getFlashBag()->add('info', 'Subscription list is empty.');
+
         return $this->render('NewsBundle:Subscription:index.html.twig', array(
             'entities' => $entities,
         ));
@@ -44,9 +47,11 @@ class SubscriptionController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add('success', 'Subscription created successfully.');
             return $this->redirect($this->generateUrl('subscription_show', array('id' => $entity->getId())));
         }
 
+        $this->get('session')->getFlashBag()->add('error', 'Subscription creation failed.');
         return $this->render('NewsBundle:Subscription:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
@@ -135,9 +140,11 @@ class SubscriptionController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add('success', 'Subscription updated successfully.');
             return $this->redirect($this->generateUrl('subscription_edit', array('id' => $id)));
         }
 
+        $this->get('session')->getFlashBag()->add('error', 'Subscription update failed.');
         return $this->render('NewsBundle:Subscription:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
@@ -163,6 +170,8 @@ class SubscriptionController extends Controller
 
             $em->remove($entity);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->add('info', 'Subscription deleted successfully.');
         }
 
         return $this->redirect($this->generateUrl('subscription'));

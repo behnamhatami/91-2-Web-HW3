@@ -26,6 +26,9 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('UserBundle:User')->findAll();
 
+        if (count($entities) == 0)
+            $this->get('session')->getFlashBag()->add('info', 'User list is empty');
+
         return $this->render('UserBundle:User:index.html.twig', array(
             'entities' => $entities,
         ));
@@ -50,8 +53,11 @@ class UserController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add('success', 'User created.');
             return $this->redirect($this->generateUrl('user_show', array('id' => $entity->getId())));
         }
+
+        $this->get('session')->getFlashBag()->add('error', 'User creation failed.');
         return $this->render('UserBundle:User:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
@@ -158,9 +164,11 @@ class UserController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add('success', 'User updated successfully.');
             return $this->redirect($this->generateUrl('user_show', array('id' => $id)));
         }
 
+        $this->get('session')->getFlashBag()->add('error', 'User update failed.');
         return $this->render('UserBundle:User:edit.html.twig', array(
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
@@ -186,6 +194,8 @@ class UserController extends Controller
 
             $em->remove($entity);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->add('info', 'User deleted successfully.');
         }
 
         return $this->redirect($this->generateUrl('user'));

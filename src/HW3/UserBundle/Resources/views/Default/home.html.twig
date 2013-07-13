@@ -46,7 +46,7 @@
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="{{ path('user', {'id': app.user.id, '_locale': _locale}) }}">
+                                        <a href="{{ path('user', {'_locale': _locale}) }}">
                                             {% trans %}List Users{% endtrans %}
                                         </a>
                                     </li>
@@ -146,6 +146,75 @@
         </div>
         <!--/span-->
         <div class="span9">
+            {% set message = app.session.flashbag.get('error') %}
+            {% if message %}
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {% if message|length > 1 %}
+                        <ul style="margin-bottom:0px;">
+                            {% for flashMessage in message %}
+                                <li>{{ flashMessage }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {% for flashMessage in message %}
+                            {{ flashMessage }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {% set message = app.session.flashbag.get('info') %}
+            {% if  message %}
+                <div class="alert alert-info">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {% if message|length > 1 %}
+                        <ul style="margin-bottom:0px;">
+                            {% for flashMessage in message %}
+                                <li>{{ flashMessage }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {% for flashMessage in message %}
+                            {{ flashMessage }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% set message = app.session.flashbag.get('success') %}
+            {% if message %}
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {% if message|length > 1 %}
+                        <ul style="margin-bottom:0px;">
+                            {% for flashMessage in message %}
+                                <li>{{ flashMessage }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {% for flashMessage in message %}
+                            {{ flashMessage }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% set message = app.session.flashbag.get('warning') %}
+            {% if  message %}
+                <div class="alert">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {% if message|length > 1 %}
+                        <ul style="margin-bottom:0px;">
+                            {% for flashMessage in message %}
+                                <li>{{ flashMessage }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {% for flashMessage in message %}
+                            {{ flashMessage }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endif %}
             {% block content %}
             {% endblock %}
         </div>

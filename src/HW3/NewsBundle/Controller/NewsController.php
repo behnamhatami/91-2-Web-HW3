@@ -26,6 +26,9 @@ class NewsController extends Controller
         $repository = $em->getRepository('NewsBundle:News');
         $entities = $repository->findByUser($this->getUser());
 
+        if (count($entities) == 0)
+            $this->get('session')->getFlashBag()->add('info', 'News list is empty.');
+
         return $this->render('NewsBundle:News:index.html.twig', array(
             'entities' => $entities,
         ));
@@ -41,6 +44,9 @@ class NewsController extends Controller
 
         $repository = $em->getRepository('NewsBundle:News');
         $entities = $repository->getUnconfirmedNews();
+
+        if (count($entities) == 0)
+            $this->get('session')->getFlashBag()->add('info', 'News list is empty.');
 
         return $this->render('NewsBundle:News:index.html.twig', array(
             'entities' => $entities,
@@ -64,9 +70,11 @@ class NewsController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add('success', 'News created successfully.');
             return $this->redirect($this->generateUrl('news_show', array('id' => $entity->getId())));
         }
 
+        $this->get('session')->getFlashBag()->add('error', 'News creation failed.');
         return $this->render('NewsBundle:News:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
@@ -140,6 +148,7 @@ class NewsController extends Controller
         $entity->setConfirmed(True);
         $em->persist($entity);
         $em->flush();
+        $this->get('session')->getFlashBag()->add('success', 'News confirmed successfully.');
         return $this->redirect($this->generateUrl('news_show', array('id' => $id)));
     }
 
@@ -193,9 +202,11 @@ class NewsController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add('success', 'News updated successfully.');
             return $this->redirect($this->generateUrl('news_show', array('id' => $id)));
         }
 
+        $this->get('session')->getFlashBag()->add('error', 'News update failed.');
         return $this->render('NewsBundle:News:edit.html.twig', array(
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
@@ -222,6 +233,7 @@ class NewsController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->get('session')->getFlashBag()->add('info', 'News deleted successfully.');
         }
 
         return $this->redirect($this->generateUrl('news'));
