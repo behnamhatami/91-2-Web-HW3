@@ -1,0 +1,20 @@
+HW3\NewsBundle\Entity\Tag:
+    type: entity
+    table: tag
+    repositoryClass: HW3\NewsBundle\Entity\TagRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: 255
+
+    manyToMany:
+        news:
+            targetEntity: HW3\NewsBundle\Entity\News
+            mappedBy: tags
+
+    lifecycleCallbacks: {  }

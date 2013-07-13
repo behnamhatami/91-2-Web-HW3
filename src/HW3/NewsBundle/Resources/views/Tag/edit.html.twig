@@ -1,0 +1,37 @@
+{% extends 'UserBundle:Default:home.html.twig' %}
+{% set _locale = app.request.locale %}
+
+{% block content %}
+    <h3>
+        {% trans %}Tag edit{% endtrans %}
+    </h3>
+
+    <form action="{{ path('tag_update', { 'id': entity.id, '_locale': _locale }) }}"
+          method="post" {{ form_enctype(edit_form) }}>
+        <input type="hidden" name="_method" value="PUT"/>
+
+        {{ form_widget(edit_form) }}
+        <p>
+            <button type="submit">
+                {% trans %}Edit{% endtrans %}
+            </button>
+        </p>
+    </form>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('tag', {'_locale': _locale }) }}">
+                {% trans %}Back to the list{% endtrans %}
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('tag_delete', { 'id': entity.id, '_locale': _locale  }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE"/>
+                {{ form_widget(delete_form) }}
+                <button type="submit">
+                    {% trans %}Delete{% endtrans %}
+                </button>
+            </form>
+        </li>
+    </ul>
+{% endblock %}
