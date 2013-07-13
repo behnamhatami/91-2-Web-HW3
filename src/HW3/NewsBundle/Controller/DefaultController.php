@@ -119,13 +119,13 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('NewsBundle:News');
-        $groups = $this->getAllNewsGroups();
-//        return $repo->search('حداد', array('abstract', 'content', 'title'), new \DateTime('yesterday'), new \DateTime('now'), $groups, 10, 0);
 
         $news = $repo->findOneById($id);
 
         if (!$news)
             throw $this->createNotFoundException('Unable to find News entity.');
+
+        $repo->getRelatedNews($news, 10);
         $news->visit();
         $em->persist($news);
         $em->flush();
@@ -133,7 +133,7 @@ class DefaultController extends Controller
         return $this->render('NewsBundle::singlepost.html.twig', array(
             'groups' => $this->getAllNewsGroups(),
             'news' => $news,
-            'hotnews' => $repo->getRelatedNews($news, 10),
+            'hotnews' => $repo->getHotNews(10),
         ));
     }
 

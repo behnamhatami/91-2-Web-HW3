@@ -3,6 +3,7 @@
 namespace HW3\NewsBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Security\Acl\Domain\DoctrineAclCache;
 
 /**
  * NewsRepository
@@ -62,30 +63,39 @@ class NewsRepository extends EntityRepository
 
     function getRelatedNews($news, $limit)
     {
+
+        $query = $this->createQueryBuilder('n')
+            ->add('select', 'n, count(tag.id) AS ct')
+            ->join('n.tags', 'tag');
+
         $tags = $news->getTags();
-        $result = [];
-        foreach ($tags as $tag) {
-            $news = $tag->getNews();
-            foreach ($news as $new)
-                if ($new->getConfirmed())
-                    $result[] = $new;
-        }
+        foreach ($tags as $tag)
+            $query = $query->orWhere('tag.id = ' . $tag->getId());
+
+        $query = $query->groupBy('n.id')
+            ->addOrderBy('ct', 'DESC')
+            ->setMaxResults($limit);
+
+        $result = array();
+        foreach ($query->getQuery()->getResult() as $res)
+            $result[] = $res[0];
+
         return $result;
     }
 
-    function search($query, $fields, $from, $to, $newsgroups, $limit, $offset)
+    function search($query_string, $fields, $from, $to, $newsgroups, $limit, $offset)
     {
-        $query = '%' . $query . '%';
+        $query_string = '%' . $query_string . '%';
 
-        $db = $this->createQueryBuilder('n')
+        $query = $this->createQueryBuilder('n')
             ->where('n.confirmed = true');
 
         if ($from != null)
-            $db = $db->andWhere('n.creation_date >= :from_date')
+            $query = $query->andWhere('n.creation_date >= :from_date')
                 ->setParameter('from_date', $from);
 
         if ($to != null)
-            $db = $db->andWhere('n.creation_date <= :to_date')
+            $query = $query->andWhere('n.creation_date <= :to_date')
                 ->setParameter('to_date', $to);
 
         $str_cont = '';
@@ -95,7 +105,7 @@ class NewsRepository extends EntityRepository
             $str_cont = $str_cont . 'n.newsgroup = ' . $group->getID();
         }
         if (strlen($str_cont) > 0)
-            $db = $db->andWhere($str_cont);
+            $query = $query->andWhere($str_cont);
 
 
         $str_cont = '';
@@ -105,15 +115,15 @@ class NewsRepository extends EntityRepository
             $str_cont = $str_cont . 'n.' . $field . ' LIKE :' . $field;
         }
         if (strlen($str_cont) > 0)
-            $db = $db->andWhere($str_cont);
+            $query = $query->andWhere($str_cont);
         foreach ($fields as $field)
-            $db = $db->setParameter($field, $query);
+            $query = $query->setParameter($field, $query_string);
 
-        $db = $db->addOrderBy('n . creation_date', 'DESC')
+        $query = $query->addOrderBy('n . creation_date', 'DESC')
             ->setMaxResults($limit)
             ->setFirstResult($offset);
 
-        return $db->getQuery()->getResult();
+        return $query->getQuery()->getResult();
     }
 
     function getSelectedNews($limit)
