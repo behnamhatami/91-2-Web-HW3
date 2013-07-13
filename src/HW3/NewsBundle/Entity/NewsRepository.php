@@ -16,7 +16,7 @@ class NewsRepository extends EntityRepository
     {
         return $this->findBy(array(
             'newsgroup' => $group,
-            'confirmed' => True
+            'confirmed' => true
         ), array(
             'creation_date' => 'DESC',
         ), $limit, $from);
@@ -107,6 +107,15 @@ class NewsRepository extends EntityRepository
             ->where('n.confirmed')
             ->addOrderBy('n.creation_date', 'DESC')
             ->setMaxResults($limit);
+        $result = $db->getQuery()->getResult();
+        return $result;
+    }
+
+    function getUnconfirmedNews()
+    {
+        $db = $this->createQueryBuilder('n')
+            ->where('n.confirmed = false')
+            ->addOrderBy('n.creation_date', 'DESC');
         $result = $db->getQuery()->getResult();
         return $result;
     }

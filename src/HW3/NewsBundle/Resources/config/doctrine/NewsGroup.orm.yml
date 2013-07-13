@@ -1,6 +1,6 @@
 HW3\NewsBundle\Entity\NewsGroup:
     type: entity
-    table: null
+    table: newsgroup
     repositoryClass: HW3\NewsBundle\Entity\NewsGroupRepository
     fields:
         id:

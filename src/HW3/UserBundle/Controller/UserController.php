@@ -3,11 +3,11 @@
 namespace HW3\UserBundle\Controller;
 
 use Doctrine\DBAL\Cache\CacheException;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use HW3\UserBundle\Entity\User;
 use HW3\UserBundle\Form\UserType;
+use HW3\UserBundle\Form\UserUpdateType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -95,6 +95,20 @@ class UserController extends Controller
     }
 
     /**
+     * Creates a form to delete a User entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder(array('id' => $id))
+            ->add('id', 'hidden')
+            ->getForm();
+    }
+
+    /**
      * Displays a form to edit an existing User entity.
      *
      */
@@ -108,7 +122,7 @@ class UserController extends Controller
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
-        $editForm = $this->createForm(new UserType(), $entity);
+        $editForm = $this->createForm(new UserUpdateType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('UserBundle:User:edit.html.twig', array(
@@ -133,8 +147,8 @@ class UserController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new UserType(), $entity);
-        $editForm->bind($request);
+        $editForm = $this->createForm(new UserUpdateType(), $entity);
+        $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $factory = $this->get('security.encoder_factory');
@@ -144,7 +158,7 @@ class UserController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('user_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('user_show', array('id' => $id)));
         }
 
         return $this->render('UserBundle:User:edit.html.twig', array(
@@ -175,19 +189,5 @@ class UserController extends Controller
         }
 
         return $this->redirect($this->generateUrl('user'));
-    }
-
-    /**
-     * Creates a form to delete a User entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm();
     }
 }

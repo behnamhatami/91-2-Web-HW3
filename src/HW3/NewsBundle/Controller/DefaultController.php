@@ -2,17 +2,14 @@
 
 namespace HW3\NewsBundle\Controller;
 
+
 use HW3\CommentBundle\Entity\Comment;
-use HW3\CommentBundle\Form\CommentType;
-use HW3\NewsBundle\Entity\News;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Serializer;
-
 
 class DefaultController extends Controller
 {
@@ -29,6 +26,16 @@ class DefaultController extends Controller
             "top_news" => $repo->getHotNews(10),
             "recentnews" => $repo->getRecentNews(19)
         ));
+    }
+
+    private function getAllNewsGroups()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $groups = $em->getRepository('NewsBundle:NewsGroup')->findAll();
+
+        foreach ($groups as $group)
+            $group->setTopNews($em->getRepository('NewsBundle:News')->getNewsFromGroup($group, 0, 7));
+        return $groups;
     }
 
     public function headerAction()
@@ -114,7 +121,7 @@ class DefaultController extends Controller
 
         if (!$news)
             throw $this->createNotFoundException('Unable to find News entity.');
-        $news->setVisit($news->getVisit() + 1);
+        $news->visit();
         $em->persist($news);
         $em->flush();
 
@@ -124,7 +131,6 @@ class DefaultController extends Controller
             'hotnews' => $repo->getHotNews(10),
         ));
     }
-
 
     private function getSerializer($ignore_list)
     {
@@ -140,16 +146,6 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         return $em->getRepository('NewsBundle:News')->findAll();
-    }
-
-    private function getAllNewsGroups()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $groups = $em->getRepository('NewsBundle:NewsGroup')->findAll();
-
-        foreach ($groups as $group)
-            $group->setTopNews($em->getRepository('NewsBundle:News')->getNewsFromGroup($group, 0, 7));
-        return $groups;
     }
 
     private function getJson($entity)

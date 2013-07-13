@@ -2,11 +2,11 @@
 
 namespace HW3\NewsBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use HW3\NewsBundle\Entity\News;
 use HW3\NewsBundle\Form\NewsType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * News controller.
@@ -31,11 +31,28 @@ class NewsController extends Controller
         ));
     }
 
+    /**
+     * Lists all Unconfirmed News entities.
+     *
+     */
+    public function indexUnconfirmedAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $repository = $em->getRepository('NewsBundle:News');
+        $entities = $repository->getUnconfirmedNews();
+
+        return $this->render('NewsBundle:News:index.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+
     /*
 
      * Creates a new News entity.
      *
      */
+
     public function createAction(Request $request)
     {
         $entity = new News($this->getUser());
@@ -93,6 +110,40 @@ class NewsController extends Controller
     }
 
     /**
+     * Creates a form to delete a News entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder(array('id' => $id))
+            ->add('id', 'hidden')
+            ->getForm();
+    }
+
+    /**
+     * Finds and confirms a News entity.
+     *
+     */
+    public function confirmAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('NewsBundle:News')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find News entity.');
+        }
+
+        $entity->setConfirmed(True);
+        $em->persist($entity);
+        $em->flush();
+        return $this->redirect($this->generateUrl('news_show', array('id' => $id)));
+    }
+
+    /**
      * Displays a form to edit an existing News entity.
      *
      */
@@ -106,9 +157,9 @@ class NewsController extends Controller
             throw $this->createNotFoundException('Unable to find News entity.');
         }
 
-        $entity->inValidImage();
+        $entity->inValidateImage();
         $editForm = $this->createForm(new NewsType($this->getRequest()->getLocale()), $entity);
-        $entity->validImage();
+        $entity->validateImage();
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('NewsBundle:News:edit.html.twig', array(
@@ -133,16 +184,16 @@ class NewsController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $entity->inValidImage();
+        $entity->inValidateImage();
         $editForm = $this->createForm(new NewsType($this->getRequest()->getLocale()), $entity);
-        $entity->validImage();
+        $entity->validateImage();
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('news_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('news_show', array('id' => $id)));
         }
 
         return $this->render('NewsBundle:News:edit.html.twig', array(
@@ -174,19 +225,5 @@ class NewsController extends Controller
         }
 
         return $this->redirect($this->generateUrl('news'));
-    }
-
-    /**
-     * Creates a form to delete a News entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm();
     }
 }

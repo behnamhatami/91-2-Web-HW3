@@ -1,6 +1,6 @@
 HW3\NewsBundle\Entity\News:
     type: entity
-    table: null
+    table: news
     repositoryClass: HW3\NewsBundle\Entity\NewsRepository
     fields:
         id:
@@ -47,7 +47,7 @@ HW3\NewsBundle\Entity\News:
             targetEntity: HW3\NewsBundle\Entity\Tag
             inversedBy: news
             joinTable:
-                name: newsTag
+                name: newstag
                 joinColumns:
                     news_id:
                         referencedColumnName: id

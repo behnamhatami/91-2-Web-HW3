@@ -36,6 +36,13 @@
                 <div class="text-error">{{ form_errors(edit_form.abstract) }}</div>
             </div>
             <div class="control-group">
+                {{ form_label(edit_form.tags) }}
+                <div id="content" class="controls">
+                    {{ form_widget(edit_form.tags) }}
+                </div>
+                <div class="text-error">{{ form_errors(edit_form.tags) }}</div>
+            </div>
+            <div class="control-group">
                 {{ form_label(edit_form.content) }}
                 <div id="content" class="controls">
                     {{ form_widget(edit_form.content) }}

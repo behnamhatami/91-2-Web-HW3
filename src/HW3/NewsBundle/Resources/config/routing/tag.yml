@@ -22,7 +22,7 @@ tag_edit:
 tag_update:
     pattern:  /{id}/update
     defaults: { _controller: "NewsBundle:Tag:update" }
-    requirements: { _method: post|put }
+#    requirements: { _method: post|put }
 
 tag_delete:
     pattern:  /{id}/delete

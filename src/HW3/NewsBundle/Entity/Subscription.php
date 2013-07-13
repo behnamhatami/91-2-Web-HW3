@@ -81,4 +81,8 @@ class Subscription
     {
         return $this->newsgroup;
     }
+
+    public function __toString(){
+        return $this->email;
+    }
 }

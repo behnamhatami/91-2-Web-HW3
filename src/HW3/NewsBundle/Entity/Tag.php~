@@ -5,7 +5,7 @@ namespace HW3\NewsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * tag
+ * Tag
  */
 class Tag
 {
@@ -34,7 +34,7 @@ class Tag
      * Set name
      *
      * @param string $name
-     * @return tag
+     * @return Tag
      */
     public function setName($name)
     {

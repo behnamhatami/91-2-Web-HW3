@@ -26,7 +26,7 @@ HW3\NewsBundle\Entity\News:
             - Range:
                 min: 0
         confirmed:
-            - NotBlank: ~
+            - NotNull: ~
         user:
             - NotNull: ~
         newsgroup:
@@ -84,3 +84,5 @@ HW3\NewsBundle\Entity\Tag:
         name:
             - NotBlank:
                 message: Please enter proper name.
+        news:
+            - NotNull: ~

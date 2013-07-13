@@ -16,7 +16,15 @@ class UserType extends AbstractType
             ->add('username')
             ->add('showname')
             ->add('newsgroups')
-            ->add('role')
+            ->add('role', 'choice', array(
+                'choices' => array(
+                    'ROLE_USER' => 'Normal User',
+                    'ROLE_ADMIN' => 'Admin User',
+                    'ROLE_MANAGER' => 'Manager User',
+                    'ROLE_SUPER_ADMIN' => 'Super Admin User',
+                ),
+                'required' => true,
+            ))
             ->add('password', 'repeated', array(
                 'type' => 'password',
                 'invalid_message' => 'The password fields must match.',

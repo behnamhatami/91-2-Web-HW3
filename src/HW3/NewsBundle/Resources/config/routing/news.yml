@@ -15,6 +15,15 @@ news_create:
     defaults: { _controller: "NewsBundle:News:create" }
     requirements: { _method: post }
 
+news_unconfirmed:
+    pattern: /unconfirmed
+    defaults: { _controller: "NewsBundle:News:indexUnconfirmed"}
+
+news_confirm:
+    pattern: /{id}/confirm
+    defaults: { _controller: "NewsBundle:News:confirm"}
+    requirements: {_method: get}
+
 news_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "NewsBundle:News:edit" }

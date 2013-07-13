@@ -1,6 +1,6 @@
 HW3\NewsBundle\Entity\Subscription:
     type: entity
-    table: null
+    table: subscription
     repositoryClass: HW3\NewsBundle\Entity\SubscriptionRepository
     fields:
         id:
@@ -16,6 +16,7 @@ HW3\NewsBundle\Entity\Subscription:
     manyToOne:
         newsgroup:
             targetEntity: HW3\NewsBundle\Entity\NewsGroup
+            inversedBy: subcriptions
             joinColumn:
                 name: newsgroup_id
                 referencedColumnName: id

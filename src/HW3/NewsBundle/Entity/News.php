@@ -100,7 +100,7 @@ class News // implements \JsonSerializable
         $this->image_valid = true;
     }
 
-    public function inValidImage()
+    public function inValidateImage()
     {
         $this->image_valid = false;
     }

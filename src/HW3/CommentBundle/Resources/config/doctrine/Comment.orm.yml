@@ -1,6 +1,6 @@
 HW3\CommentBundle\Entity\Comment:
     type: entity
-    table: null
+    table: comment
     repositoryClass: HW3\CommentBundle\Entity\CommentRepository
     fields:
         id:

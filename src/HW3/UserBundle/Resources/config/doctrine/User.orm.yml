@@ -1,6 +1,6 @@
 HW3\UserBundle\Entity\User:
     type: entity
-    table: null
+    table: user
     repositoryClass: HW3\UserBundle\Entity\UserRepository
     fields:
         id:

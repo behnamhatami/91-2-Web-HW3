@@ -38,7 +38,7 @@
             </a>
         </li>
         <li>
-            <form action="{{ path('newsgroup_delete', { 'id': entity.id, '_locale': _locale }}) }}" method="post">
+            <form action="{{ path('newsgroup_delete', { 'id': entity.id, '_locale': _locale }) }}" method="post">
                 <input type="hidden" name="_method" value="DELETE"/>
                 {{ form_widget(delete_form) }}
                 <button class="btn" type="submit">

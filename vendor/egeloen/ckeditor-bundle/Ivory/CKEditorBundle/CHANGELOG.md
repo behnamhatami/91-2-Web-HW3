@@ -1,5 +1,12 @@
 # CHANGELOG
 
+### 1.1.4 - 2.1.4 (2013-06-17)
+
+ * 43d2675 - Upgrade CKEditor to 4.1.1
+ * cb9598b - [Travis] Use --prefer-source to avoid random build fail
+ * 4da8e71 - PSR2 compatibility
+ * 133ef7b - [Composer] Add PHPUnit in require-dev & use it in travis
+
 ### 1.1.3 - 2.1.3 (2013-03-18)
 
  * 464fd64 - Add PHP templating engine support

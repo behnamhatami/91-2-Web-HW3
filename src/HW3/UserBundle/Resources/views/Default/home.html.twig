@@ -86,6 +86,13 @@
                             {% trans %}My Old News{% endtrans %}
                         </a>
                     </li>
+                    {% if is_granted('ROLE_MANAGER') %}
+                        <li>
+                            <a href="{{ path('news_unconfirmed', {'_locale': _locale}) }}">
+                                {% trans %}Uncofirmed News{% endtrans %}
+                            </a>
+                        </li>
+                    {% endif %}
                     <li class="nav-header">{% trans %}News Group{% endtrans %}</li>
                     <li>
                         <a href="{{ path('newsgroup', {'_locale': _locale}) }}">
@@ -95,6 +102,30 @@
                     <li>
                         <a href="{{ path('newsgroup_new', {'_locale': _locale}) }}">
                             {% trans %}Create News Group{% endtrans %}
+                        </a>
+                    </li>
+                    <br>
+                    <li class="nav-header">{% trans %}Tags{% endtrans %}</li>
+                    <li>
+                        <a href="{{ path('tag_new', {'_locale': _locale}) }}">
+                            {% trans %}Create Tag{% endtrans %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('tag', {'_locale': _locale}) }}">
+                            {% trans %}View Tags{% endtrans %}
+                        </a>
+                    </li>
+                    <br>
+                    <li class="nav-header">{% trans %}Subscriptions{% endtrans %}</li>
+                    <li>
+                        <a href="{{ path('subscription_new', {'_locale': _locale}) }}">
+                            {% trans %}Create Subscription{% endtrans %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('subscription', {'_locale': _locale}) }}">
+                            {% trans %}View Subscriptions{% endtrans %}
                         </a>
                     </li>
                     <br>

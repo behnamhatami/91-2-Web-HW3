@@ -33,6 +33,16 @@
             <td>{{ entity.showname }}</td>
         </tr>
         <tr>
+            <th>{% trans %}News Group{% endtrans %}</th>
+            <td>
+                <ul>
+                    {% for group in entity.newsgroups %}
+                        <li>{{ group }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
             <th>{% trans %}Role{% endtrans %}</th>
             <td>{{ entity.role }}</td>
         </tr>

@@ -22,7 +22,7 @@
                 <td>{{ entity.title }}</td>
                 <td>{{ entity.newsgroup }}</td>
                 <td>{% if entity.creationdate %}{{ entity.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.visit }}</td>
+                <td>{{ entity.getVisit() }}</td>
                 <td>
                     <ul>
                         <li>
@@ -35,6 +35,15 @@
                                 {% trans %}edit{% endtrans %}
                             </a>
                         </li>
+                        {% if is_granted('ROLE_MANAGER') %}
+                            {% if entity.confirmed == false %}
+                                <li>
+                                    <a href="{{ path('news_confirm', { 'id': entity.id, '_locale': _locale}) }}">
+                                        {% trans %}confirm{% endtrans %}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endif %}
                     </ul>
                 </td>
             </tr>

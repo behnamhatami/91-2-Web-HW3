@@ -39,7 +39,7 @@
         </tr>
         <tr>
             <th>{% trans %}Visit{% endtrans %}</th>
-            <td>{{ entity.visit }}</td>
+            <td>{{ entity.getVisit() }}</td>
         </tr>
         <tr>
             <th>{% trans %}Selected{% endtrans %}</th>
@@ -48,6 +48,16 @@
         <tr>
             <th>{% trans %}Confirmed{% endtrans %}</th>
             <td>{{ entity.confirmed ? 'True' : 'False' }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Tags{% endtrans %}</th>
+            <td>
+                <ul>
+                    {% for tag in entity.tags %}
+                        <li>{{ tag }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
         </tr>
         <tr>
             <th>{% trans %}User{% endtrans %}</th>
