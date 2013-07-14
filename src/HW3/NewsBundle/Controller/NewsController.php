@@ -145,11 +145,31 @@ class NewsController extends Controller
             throw $this->createNotFoundException('Unable to find News entity.');
         }
 
-        $entity->setConfirmed(True);
-        $em->persist($entity);
-        $em->flush();
+        $group = $entity->getNewsGroup();
+
+        foreach ($group->getSubcriptions() as $subs) {
+            $this->sendMail($entity, $group->getName(), $subs->getEmail());
+        }
+        $this->get('session')->getFlashBag()->add('success', 'Email address sended.');
+
+
+//        $entity->setConfirmed(True);
+//        $em->persist($entity);
+//        $em->flush();
         $this->get('session')->getFlashBag()->add('success', 'News confirmed successfully.');
         return $this->redirect($this->generateUrl('news_show', array('id' => $id)));
+    }
+
+    public function sendMail($news, $groupname, $email)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject($groupname)
+            ->setFrom('rezaei70@gmail.com')
+            ->setTo($email)
+            ->setBody(
+                $this->renderView("NewsBundle::email.html.twig", array('news' => $news)), 'text/html'
+            );
+        $this->get('mailer')->send($message);
     }
 
     /**
@@ -237,22 +257,5 @@ class NewsController extends Controller
         }
 
         return $this->redirect($this->generateUrl('news'));
-    }
-
-    public function sendMail($news,$groupname,$email)
-    {
-        ////////////////
-        $message = \Swift_Message::newInstance()
-            ->setSubject($groupname)
-            ->setFrom('rezaei70@gmail.com')
-            ->setTo($email)
-            ->setBody(
-
-                $this->renderView("NewsBundle::email.html.twig",array('news'=>$news)),'text/html'
-            )
-        ;
-        $this->get('mailer')->send($message);
-
-
     }
 }

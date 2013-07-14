@@ -244,7 +244,6 @@ class Comment
      */
     public function setLevelFromParent()
     {
-        $this->level = $level;
         if ($this->getParent() == null)
             $this->setLevel(0);
         else $this->setLevel($this->getParent()->getLevel() + 1);
