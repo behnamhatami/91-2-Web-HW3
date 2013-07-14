@@ -172,12 +172,14 @@ class NewsRepository extends EntityRepository
         return $result;
     }
 
-    function getConfirmedNews($group, $limit)
+    function getConfirmedNews($group, $limit, $offset = 0)
     {
         $db = $this->createQueryBuilder('n')
             ->where('n . confirmed = true')
             ->addOrderBy('n . creation_date', 'DESC')
-            ->setMaxResults($limit);
+            ->setMaxResults($limit)
+            ->setFirstResult($offset);
+
         if ($group != null)
             $db = $db->andWhere('n.newsgroup = :newsgroup')
                 ->setParameter('newsgroup', $group);

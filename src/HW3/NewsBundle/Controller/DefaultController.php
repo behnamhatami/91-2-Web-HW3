@@ -136,7 +136,25 @@ class DefaultController extends Controller
 
     public function RSSAction()
     {
-        $news = $this->getDoctrine()->getManager()->getRepository('NewsBundle:News')->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('NewsBundle:News');
+
+        $request = $this->getRequest();
+        $query_string = $request->get('query');
+        $fields = $request->get('positions');
+        $newsgroups = $request->get('services');
+        $to_date = $request->get('dateto');
+        $from_date = $request->get('datefrom');
+        $page = $request->get('page');
+        $news = null;
+
+        if ($query_string != null) {
+            $news = $repo->search($query_string, $fields, $from_date,
+                $to_date, $newsgroups, 15, ($page - 1) * 15);
+        } else {
+            $news = $repo->getConfirmedNews(null, 15, ($page - 1) * 15);
+        }
+
         $feed = $this->get('eko_feed.feed.manager')->get('news');
         $feed->addFromArray($news);
 

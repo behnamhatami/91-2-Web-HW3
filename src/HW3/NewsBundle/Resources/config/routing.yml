@@ -19,8 +19,8 @@ news_search:
     defaults: { _controller: NewsBundle:Default:search, page: 1}
 
 news_rss:
-    pattern: /news/rss
-    defaults: { _controller: NewsBundle:Default:RSS }
+    pattern: /news/rss/{page}
+    defaults: { _controller: NewsBundle:Default:RSS, page: 1}
 
 news_single:
     pattern: /news/{id}

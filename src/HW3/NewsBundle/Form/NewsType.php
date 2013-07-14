@@ -31,7 +31,7 @@ class NewsType extends AbstractType
                 )))
             ->add('newsgroup')
             ->add('tags')
-            ->add('selected');
+            ->add('selected', 'checkbox', array('required' => false));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
