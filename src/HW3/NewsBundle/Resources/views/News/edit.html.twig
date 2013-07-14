@@ -68,7 +68,7 @@
             <form action="{{ path('news_delete', { 'id': entity.id, '_locale': _locale }) }}" method="post">
                 <input type="hidden" name="_method" value="DELETE"/>
                 {{ form_widget(delete_form) }}
-                <button type="submit">Delete</button>
+                <button type="submit">{% trans %}Delete{% endtrans %}</button>
             </form>
         </li>
     </ul>

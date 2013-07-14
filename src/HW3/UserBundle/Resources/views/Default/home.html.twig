@@ -89,19 +89,19 @@
                     {% if is_granted('ROLE_MANAGER') %}
                         <li>
                             <a href="{{ path('news_unconfirmed', {'_locale': _locale}) }}">
-                                {% trans %}Uncofirmed News{% endtrans %}
+                                {% trans %}Unconfirmed News{% endtrans %}
                             </a>
                         </li>
                     {% endif %}
                     <li class="nav-header">{% trans %}News Group{% endtrans %}</li>
                     <li>
-                        <a href="{{ path('newsgroup', {'_locale': _locale}) }}">
-                            {% trans %}View News Groups{% endtrans %}
+                        <a href="{{ path('newsgroup_new', {'_locale': _locale}) }}">
+                            {% trans %}Create News Group{% endtrans %}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('newsgroup_new', {'_locale': _locale}) }}">
-                            {% trans %}Create News Group{% endtrans %}
+                        <a href="{{ path('newsgroup', {'_locale': _locale}) }}">
+                            {% trans %}View News Groups{% endtrans %}
                         </a>
                     </li>
                     <br>
