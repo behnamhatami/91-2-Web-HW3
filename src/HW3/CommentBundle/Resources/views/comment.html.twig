@@ -1,19 +1,20 @@
 <div class='commentBox' id="{{ comment.id }}">
     <div class='commentInfoBar'>
-        <div class='commentUser'>{{comment.composer}}</div>
+        <div class='commentUser'>{{ comment.composer }}</div>
         <div class='oncommentReply'>
             <a>پاسخ</a>
         </div>
         <div class="commentRating">
             {#ridam///////////////////////////#}
             <div class="ratingDown" id="down_rate_7556175">{{ comment.neg }}</div>
-            <a  class="rateDownLink" id="up_button_7556175"></a>
-            <a  class="rateUpLink" id="down_button_7556175"></a>
+            <a class="rateDownLink" id="up_button_7556175"></a>
+            <a class="rateUpLink" id="down_button_7556175"></a>
+
             <div class="ratingUp" id="up_rate_7556175">{{ comment.pos }}</div>
         </div>
     </div>
     <div class='commentContent'>
-        <img style='padding-left:3px;' src="{{ asset('bundles/news/Images/comments.gif') }}" alt=''>{{ comment.content }}
+        <img style='padding-left:3px;' src="{{ asset('bundles/news/img/comments.gif') }}" alt=''>{{ comment.content }}
         <div>
         </div>
     </div>
