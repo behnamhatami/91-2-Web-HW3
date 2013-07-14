@@ -115,15 +115,21 @@ class DefaultController extends Controller
         $repo = $em->getRepository('NewsBundle:News');
 
         $request = $this->getRequest();;
+        $query_string = $request->get('query');
+        $fields = $request->get('positions');
+        $newsgroups = $request->get('services');
+        $to_date = $request->get('dateto');
+        $from_date = $request->get('datefrom');
 
         return $this->render('NewsBundle::search.html.twig', array(
             'groups' => $this->getAllNewsGroups(),
             'news' => $repo->getConfirmedNews(null, 50),
-            'search_results' => $repo->search($request->get('query'), $request->get('positions'), null,
-                null, $request->get('services'), 15, ($page - 1) * 15),
+            'search_results' => $repo->search($query_string, $fields, $from_date,
+                $to_date, $newsgroups, 15, ($page - 1) * 15),
             'selected_news' => $repo->getSelectedNews(null, 10),
             'hot_news' => $repo->getHotNews(null, 10),
-            'news_count' => 100,
+            'news_count' => $repo->search($query_string, $fields, $from_date,
+                $to_date, $newsgroups, 15, ($page - 1) * 15, true),
             'current_page' => $page,
         ));
     }

@@ -96,12 +96,20 @@ class NewsRepository extends EntityRepository
         return $result;
     }
 
-    function search($query_string, $fields, $from, $to, $newsgroups, $limit, $offset)
+    function search($query_string, $fields, $from, $to, $newsgroups, $limit, $offset, $count = false)
     {
         $query_string = '%' . $query_string . '%';
 
-        $query = $this->createQueryBuilder('n')
-            ->where('n.confirmed = true');
+        $query = null;
+
+        if ($count)
+            $query = $this->createQueryBuilder('n')
+                ->add('select', 'count(n.id)')
+                ->where('n.confirmed = true');
+        else
+            $query = $this->createQueryBuilder('n')
+                ->where('n.confirmed = true');
+
 
         if ($from != null)
             $query = $query->andWhere('n.creation_date >= :from_date')
@@ -133,14 +141,20 @@ class NewsRepository extends EntityRepository
                 $query = $query->andWhere($str_cont);
             foreach ($fields as $field)
                 $query = $query->setParameter($field, $query_string);
-
+        } else {
+            if (!$count)
+                return array();
+            else return 0;
         }
 
-        $query = $query->addOrderBy('n . creation_date', 'DESC')
-            ->setMaxResults($limit)
-            ->setFirstResult($offset);
+        if (!$count)
+            $query = $query->addOrderBy('n . creation_date', 'DESC')
+                ->setMaxResults($limit)
+                ->setFirstResult($offset);
 
-        return $query->getQuery()->getResult();
+        if (!$count)
+            return $query->getQuery()->getResult();
+        else return $query->getQuery()->getSingleScalarResult();
     }
 
     function getSelectedNews($group, $limit)
