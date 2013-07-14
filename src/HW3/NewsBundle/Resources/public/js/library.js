@@ -168,7 +168,7 @@ function likeDislike()
     $('.commentInfoBar  .rateUpLink').click(function ()
     {
         var temp = jQuery($(this).parent());
-        $.getJSON('../../ajax',{'action' : 'pos','id':$(this).parent().parent().parent().attr('id')},function(data,status,xhr){
+        $.getJSON('../../../fa/ajax',{'action' : 'pos','id':$(this).parent().parent().parent().attr('id')},function(data,status,xhr){
             $('.ratingUp',temp).text(data['pos']);
             $('.ratingDown',temp).text(data['neg']);
         });
@@ -176,7 +176,7 @@ function likeDislike()
     $('.commentInfoBar  .rateDownLink').click(function ()
     {
         var temp = jQuery($(this).parent());
-        $.getJSON('../../ajax',{'action' : 'neg','id':$(this).parent().parent().parent().attr('id')},function(data,status,xhr){
+        $.getJSON('../../../fa/ajax',{'action' : 'neg','id':$(this).parent().parent().parent().attr('id')},function(data,status,xhr){
             $('.ratingUp',temp).text(data['pos']);
             $('.ratingDown',temp).text(data['neg']);
             console.log(data['neg']);
