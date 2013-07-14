@@ -15,13 +15,10 @@
                         <ul>
                             {% set rsslink = path('news_rss') %}
                             {% if cur_cat_id is defined %}
-                            {% set rsslink = rsslink ~ '?' ~ 'services=' ~ cur_cat_id %}
+                                {% set rsslink = path('news_rss', {'services': cur_cat_id}) %}
                             {% endif %}
                             {% if rss is defined %}
-                                {% set rsslink = rsslink ~ '?' %}
-                            {% for key,val in rss  %}
-                            {% set rsslink = rsslink ~ key ~ '=' ~ val ~ '&' %}
-                            {% endfor %}
+                                {% set rsslink = path('news_rss', rss) %}
                             {% endif %}
                             <li><a href="{{ rsslink }}"
                                    class="rss">RSS</a></li>
@@ -47,15 +44,13 @@
             <div class="inner">
                 <nav class="main_menu">
                     <ul>
-                        <li {% if cur_cat_id is defined  %}class="big_dropdown"{% else %} class="big_dropdown current_page_item" {% endif %}
+                        <li {% if cur_cat_id is defined %}class="big_dropdown"{% else %} class="big_dropdown current_page_item" {% endif %}
                             data-content="MainPage">
                             <a href="{{ path("news_homepage", {'_locale': _locale}) }}">
                                 {% trans %}Main window{% endtrans %}
                             </a>
                         </li>
                         {% for  group in groups %}
-
-
                             <li {% if cur_cat_id is defined and cur_cat_id == group.id %}class="big_dropdown current_page_item"
                                 {% else %}class="big_dropdown" {% endif %} data-content="{{ group.id }}">
                                 <a href="{{ path("news_category", {'_locale': _locale , 'id' : group.id}) }}">
@@ -122,10 +117,14 @@
                 <nav class="secondary_menu">
 
                     <span>گزیده ای از اخبار :</span>
-                    {% for index,news in hotnews %}
-                    <div id ='{{index}}' style="display:none" class="ticker-wrapper has-js right"><p class="ticker-content"><a href="{{ path('news_single',{id : hotnews[index].id}) }}">{{ hotnews[index].title }}</a></p></div>
+                    {% for index,news in selected_news %}
+                        <div id='{{ index }}' style="display:none" class="ticker-wrapper has-js right"><p
+                                    class="ticker-content"><a
+                                        href="{{ path('news_single',{id : selected_news[index].id}) }}">{{ selected_news[index].title }}</a>
+                            </p></div>
                     {% endfor %}
-                    <div numofnews='{{ hotnews |length }}' id='0' class='ticker-swipe'><span style="display : block"></span></div>
+                    <div numofnews='{{ selected_news |length }}' id='0' class='ticker-swipe'><span
+                                style="display : block"></span></div>
                 </nav>
 
             </div>

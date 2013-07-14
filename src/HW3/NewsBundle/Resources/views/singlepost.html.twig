@@ -2,7 +2,7 @@
 {% set _locale = app.request.locale %}
 
 {% block body %}
-    {% include 'NewsBundle::header.html.twig' with {'groups' : groups,'hotnews':hotnews} %}
+    {% include 'NewsBundle::header.html.twig' with {'groups' : groups,'selected_news':selected_news} %}
     <div id="gkPageContent" class="gkPage">
         <section id='gkContent'>
             <div id='gkContentCategory'>
@@ -57,9 +57,9 @@
         <aside id="gkSidebar">
 
             <div class="box nsp color">
-                <div class="splitHeader"><a>اخبار داغ</a></div>
+                <div class="splitHeader"><a>ااخبار مرتبط</a></div>
                 <div class="content side catList">
-                    {% for post in hotnews %}
+                    {% for post in related_news %}
                         <div class="nspArt nspCol1">
                             <a href="{{ path('news_single',{'id':post.id}) }}" target="_blank"
                                class="nspImageWrapper tleft fleft gkResponsive">
@@ -118,12 +118,12 @@
                 <input type="text"></input>
             </div>
             <div id="commenteditor">
-                <textarea  style="width : 100% ; height : auto" rows="5">
+                <textarea style="width : 100% ; height : auto" rows="5">
                 </textarea>
             </div>
             <div class="controls" style="margin : 0px 5px ">
-                <button type = "submit" class="btn commentsend">send</button>
-                <button type= "submit" class="btn commentcancel">cancel</button>
+                <button type="submit" class="btn commentsend">send</button>
+                <button type="submit" class="btn commentcancel">cancel</button>
             </div>
         </div>
 

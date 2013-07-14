@@ -20,12 +20,10 @@ class DefaultController extends Controller
 
         return $this->render('NewsBundle::homepage.html.twig', array(
             'groups' => $this->getAllNewsGroups(),
-            'news' => $repo->getConfirmedNews(null, 50),
             'important_news' => $repo->getHotNews(null, 1)[0],
-            "chosenews" => $repo->getSelectedNews(null, 10),
+            "selected_news" => $repo->getSelectedNews(null, 15),
             "top_news" => $repo->getHotNews(null, 12),
-            "recentnews" => $repo->getRecentNews(null, 20),
-            "hotnews"=> $repo->getHotNews(null, 10),
+            "recent_news" => $repo->getRecentNews(null, 15),
         ));
     }
 
@@ -46,18 +44,13 @@ class DefaultController extends Controller
         ));
     }
 
-    public function categoryAction($id)
+    public function categoryAction($id, $page)
     {
-        $page = 1;
-        if ($this->getRequest()->get('page'))
-            $page = $this->getRequest()->get('page');
-
         $em = $this->getDoctrine()->getManager();
         $news_repo = $em->getRepository('NewsBundle:News');
         $group = $em->getRepository('NewsBundle:NewsGroup')->findOneById($id);
         if (!$group)
             throw $this->createNotFoundException('Unable to find News entity.');
-
         $latest_news = $news_repo->getNewsFromGroup($group, 0, 3);
         $news = $news_repo->getNewsFromGroup($group, ($page - 1) * 15, 15);
 
@@ -68,8 +61,7 @@ class DefaultController extends Controller
             'all_news' => $news,
             'latest_news' => $latest_news,
             'current_page' => $page,
-            'selective_news' => $news_repo->getSelectedNews($group, 10),
-            'hotnews' => $news_repo->getHotNews($group, 10),
+            'selected_news' => $news_repo->getSelectedNews($group, 10),
         ));
     }
 
@@ -78,7 +70,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $action = $this->getRequest()->get('action');
         $id = $this->getRequest()->get('id');
-        if (($action=='pos' ||$action == 'neg') and $id) {
+        if (($action == 'pos' || $action == 'neg') and $id) {
             $repo = $em->getRepository('CommentBundle:Comment');
             $comment = $repo->findOneById($id);
 
@@ -106,45 +98,33 @@ class DefaultController extends Controller
             $entity->setContent($request->get('content'));
             $em->persist($entity);
             $em->flush();
-            $parentid = null ;
-            if($entity->getParent() != null)
+            $parentid = null;
+            if ($entity->getParent() != null)
                 $parentid = $entity->getParent()->getId();
             return new JsonResponse(
-                array('result' => 'yes','id'=>$entity->getId(),'parent'=>$parentid,'content'=>$entity->getContent(),
-                    'pos'=>$entity->getPos(),'neg'=>$entity->getNeg(),'composer'=>$entity->getComposer()));
-       }
+                array('result' => 'yes', 'id' => $entity->getId(), 'parent' => $parentid, 'content' => $entity->getContent(),
+                    'pos' => $entity->getPos(), 'neg' => $entity->getNeg(), 'composer' => $entity->getComposer()));
+        }
 
         return new JsonResponse(array('result' => 'no'));
     }
 
-
-    public function removeqsvar($url, $varname) {
-        return preg_replace('/([?&])'.$varname.'=[^&]+(&|$)/','$1',$url);
-    }
-
-    public function searchAction()
+    public function searchAction($page)
     {
-        //if($this->getRequest()->get('query') == NULL)
-        //age site dar asar search oomade bashe
-        //if(!is_null($this->getRequest()->get('submited')))
-        //age site dar asare search oomade bashe
-        $page = 1;
-        if ($this->getRequest()->get('page'))
-            $page = $this->getRequest()->get('page');
-
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('NewsBundle:News');
 
-        $urlwithoutpage = $this->removeqsvar($this->getRequest()->getRequestUri(),'page');
+        $request = $this->getRequest();;
+
         return $this->render('NewsBundle::search.html.twig', array(
             'groups' => $this->getAllNewsGroups(),
             'news' => $repo->getConfirmedNews(null, 50),
-            'searchresults'=>$repo->findAll(),
-            "hotnews"=> $repo->getHotNews(null, 10),
-            'news_count' => 100 ,
+            'search_results' => $repo->search($request->get('query'), $request->get('positions'), null,
+                null, $request->get('services'), 15, ($page - 1) * 15),
+            'selected_news' => $repo->getSelectedNews(null, 10),
+            'hot_news' => $repo->getHotNews(null, 10),
+            'news_count' => 100,
             'current_page' => $page,
-            'rawurl'=>$urlwithoutpage,
-
         ));
     }
 
@@ -174,8 +154,9 @@ class DefaultController extends Controller
         return $this->render('NewsBundle::singlepost.html.twig', array(
             'groups' => $this->getAllNewsGroups(),
             'news' => $news,
-            'hotnews' => $repo->getHotNews(null, 10),
+            'related_news' => $repo->getRelatedNews($news, 10),
             'comments' => $news->sortComments(),
+            'selected_news' => $repo->getSelectedNews(null, 10)
         ));
     }
 

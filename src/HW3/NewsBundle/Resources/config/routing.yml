@@ -7,16 +7,16 @@ news_header:
     defaults: { _controller: NewsBundle:Default:header }
 
 news_category:
-    pattern: /category/{id}
-    defaults: { _controller: NewsBundle:Default:category}
+    pattern: /category/{id}/{page}
+    defaults: { _controller: NewsBundle:Default:category, page: 1}
 
 news_ajax:
     pattern: /ajax
     defaults: { _controller: NewsBundle:Default:ajax }
 
 news_search:
-    pattern: /news/search
-    defaults: { _controller: NewsBundle:Default:search}
+    pattern: /news/search/{page}
+    defaults: { _controller: NewsBundle:Default:search, page: 1}
 
 news_rss:
     pattern: /news/rss

@@ -39,10 +39,10 @@ class NewsRepository extends EntityRepository
             ->addOrderBy('n.visit', 'DESC')
             ->addOrderBy('n.creation_date', 'DESC')
             ->setMaxResults($limit);
-        
-        if($group != null)
-            $db = $db->andWhere('n.group = :group')
-                    ->setParameter('group', $group);
+
+        if ($group != null)
+            $db = $db->andWhere('n.newsgroup = :newsgroup')
+                ->setParameter('newsgroup', $group);
         $result = $db->getQuery()->getResult();
 
         if (count($result) < $limit / 2) {
@@ -51,10 +51,10 @@ class NewsRepository extends EntityRepository
                 ->addOrderBy('n.visit', 'DESC')
                 ->addOrderBy('n.creation_date', 'DESC')
                 ->setMaxResults($limit);
-            if($group != null)
-                $db = $db->andWhere('n.group = :group')
-                        ->setParameter('group', $group);
-        
+            if ($group != null)
+                $db = $db->andWhere('n.newsgroup = :newsgroup')
+                    ->setParameter('newsgroup', $group);
+
             $result = $db->getQuery()->getResult();
         }
         return $result;
@@ -66,10 +66,10 @@ class NewsRepository extends EntityRepository
             ->where('n.confirmed = true')
             ->addOrderBy('n.creation_date', 'DESC')
             ->setMaxResults($limit);
-        if($group != null)
-            $db = $db->andWhere('n.group = :group')
-                    ->setParameter('group', $group);
-        
+        if ($group != null)
+            $db = $db->andWhere('n.newsgroup = :newsgroup')
+                ->setParameter('newsgroup', $group);
+
 
         return $db->getQuery()->getResult();
     }
@@ -111,26 +111,30 @@ class NewsRepository extends EntityRepository
             $query = $query->andWhere('n.creation_date <= :to_date')
                 ->setParameter('to_date', $to);
 
-        $str_cont = '';
-        foreach ($newsgroups as $group) {
+        if ($newsgroups != null) {
+            $str_cont = '';
+            foreach ($newsgroups as $group) {
+                if (strlen($str_cont) > 0)
+                    $str_cont = $str_cont . ' OR ';
+                $str_cont = $str_cont . 'n.newsgroup = ' . $group;
+            }
             if (strlen($str_cont) > 0)
-                $str_cont = $str_cont . ' OR ';
-            $str_cont = $str_cont . 'n.newsgroup = ' . $group->getID();
+                $query = $query->andWhere($str_cont);
         }
-        if (strlen($str_cont) > 0)
-            $query = $query->andWhere($str_cont);
 
-
-        $str_cont = '';
-        foreach ($fields as $field) {
+        if ($fields != null) {
+            $str_cont = '';
+            foreach ($fields as $field) {
+                if (strlen($str_cont) > 0)
+                    $str_cont = $str_cont . ' OR ';
+                $str_cont = $str_cont . 'n.' . $field . ' LIKE :' . $field;
+            }
             if (strlen($str_cont) > 0)
-                $str_cont = $str_cont . ' OR ';
-            $str_cont = $str_cont . 'n.' . $field . ' LIKE :' . $field;
+                $query = $query->andWhere($str_cont);
+            foreach ($fields as $field)
+                $query = $query->setParameter($field, $query_string);
+
         }
-        if (strlen($str_cont) > 0)
-            $query = $query->andWhere($str_cont);
-        foreach ($fields as $field)
-            $query = $query->setParameter($field, $query_string);
 
         $query = $query->addOrderBy('n . creation_date', 'DESC')
             ->setMaxResults($limit)
@@ -146,10 +150,10 @@ class NewsRepository extends EntityRepository
             ->where('n . confirmed = true')
             ->addOrderBy('n . creation_date', 'DESC')
             ->setMaxResults($limit);
-        if($group != null)
-            $db = $db->andWhere('n.group = :group')
-                    ->setParameter('group', $group);
-        
+        if ($group != null)
+            $db = $db->andWhere('n.newsgroup = :newsgroup')
+                ->setParameter('newsgroup', $group);
+
         $result = $db->getQuery()->getResult();
         return $result;
     }
@@ -160,10 +164,10 @@ class NewsRepository extends EntityRepository
             ->where('n . confirmed = true')
             ->addOrderBy('n . creation_date', 'DESC')
             ->setMaxResults($limit);
-        if($group != null)
-            $db = $db->andWhere('n.group = :group')
-                    ->setParameter('group', $group);
-        
+        if ($group != null)
+            $db = $db->andWhere('n.newsgroup = :newsgroup')
+                ->setParameter('newsgroup', $group);
+
         $result = $db->getQuery()->getResult();
         return $result;
     }

@@ -1,68 +1,68 @@
 {% extends 'NewsBundle::layout.html.twig' %}
 {% set _locale = app.request.locale %}
 {% block body %}
-    {% include 'NewsBundle::header.html.twig' with {'groups' : groups,'hotnews': hotnews, 'rss' : app.request.query.all} %}
-<div id="gkPageContent" class="gkPage">
+    {% include 'NewsBundle::header.html.twig' with {'groups' : groups,'selected_news': selected_news, 'rss' : app.request.query.all} %}
     <div id="gkPageContent" class="gkPage">
-        <section id="gkContent">
-            <div id="gkContentCategory">
+    <div id="gkPageContent" class="gkPage">
+    <section id="gkContent">
+    <div id="gkContentCategory">
 
-                 <section id="gkBreadcrumb">
-                    <div class="breadcrumbs">
-                        <a href="{{ path('news_homepage') }}">صفحه اصلی</a> &gt; جستجو
-                        <h1> </h1>
+    <section id="gkBreadcrumb">
+        <div class="breadcrumbs">
+            <a href="{{ path('news_homepage') }}">صفحه اصلی</a> &gt; جستجو
+            <h1></h1>
+        </div>
+        <div class="ContentCount">
+        </div>
+        <!--[if IE 8]>
+        <div class="ie8clear"></div>
+        <![endif]-->
+    </section>
+    <section id="gkMainbody">
+    <div style="width: 100%;">
+    <div class="nsp bigtitle mobilelayout">
+    <div class="content">
+
+        <div class="search-container">
+
+            <form method="GET" action="{{ path('news_search') }}">
+                <div class="section">
+                    <div class="caption">
+                        کلیدواژه
                     </div>
-            <div class="ContentCount">
-            </div>
-            <!--[if IE 8]>
-            <div class="ie8clear"></div>
-            <![endif]-->
-        </section>
-        <section id="gkMainbody">
-            <div style="width: 100%;">
-                <div class="nsp bigtitle mobilelayout">
-                    <div class="content">
+                    <div class="element">
+                        <div class="keyword">
+                            <div class="block_search_top" style="float: right;">
 
-                        <div class="search-container">
-
-                            <form method="GET" action="{{ path('news_search') }}">
-                                <div class="section">
-                                    <div class="caption">
-                                        کلیدواژه
-                                    </div>
-                                    <div class="element">
-                                        <div class="keyword">
-                                            <div class="block_search_top" style="float: right;">
-
-                                                <div class="field" style="width: 265px;">
-                                                    <input type="text" class="w_def_text" id="search-box" name="query" value="">
-                                                </div>
-                                                <input type="hidden" name="submited" value="1">
-                                                <input type="submit" class="button" id="search-button">
-
-                                                <div class="clearboth"></div>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
+                                <div class="field" style="width: 265px;">
+                                    <input type="text" class="w_def_text" id="search-box" name="query" value="">
                                 </div>
+                                <input type="hidden" name="submited" value="1">
+                                <input type="submit" class="button" id="search-button">
+
+                                <div class="clearboth"></div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
 
-                                <div class="section">
-                                    <div class="caption">
-                                        محدوده تاریخ:
+                <div class="section">
+                    <div class="caption">
+                        محدوده تاریخ:
 
 
-                                    </div>
-                                    <div class="element">
-                                        فعال باشد
-                                        <input type="checkbox"  id="withdate" name="withdate" >
+                    </div>
+                    <div class="element">
+                        فعال باشد
+                        <input type="checkbox" id="withdate" name="withdate">
 
 
-                                        <div class="dates" style="display: block;">
+                        <div class="dates" style="display: block;">
 
-                                            <span></span>
+                            <span></span>
     <span>از تاریخ:
         <input type="date" name="datefrom" value="">
     </span>
@@ -71,110 +71,119 @@
     </span>
 
 
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                </div>
 
-                                <div class="section">
-                                    <div class="caption">
-                                        جستجو در:
+                <div class="section">
+                    <div class="caption">
+                        جستجو در:
 
-                                    </div>
-                                    <div class="element">
-                                        <div class="position">
+                    </div>
+                    <div class="element">
+                        <div class="position">
                                                     <span>تیتر
-                                                    <input type="checkbox" checked="checked" name="positions" value="title">
+                                                    <input type="checkbox" checked="checked" name="positions[]"
+                                                           value="title">
                                                     </span>
                                                     <span>جکیده
-                                                    <input type="checkbox" name="positions" value="abstract" checked="checked">
+                                                    <input type="checkbox" name="positions[]" value="abstract"
+                                                           checked="checked">
                                                     </span>
                                                     <span>متن
-                                                    <input type="checkbox" name="positions" value="body" checked="checked">
+                                                    <input type="checkbox" name="positions[]" value="content"
+                                                           checked="checked">
                                                     </span>
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                </div>
 
-                                <div class="section">
-                                    <div class="caption">
-                                        سرویس خبر:
-                                    </div>
-                                    <div class="element">
-                                        <div class="services">
+                <div class="section">
+                    <div class="caption">
+                        سرویس خبر:
+                    </div>
+                    <div class="element">
+                        <div class="services">
 
 
-                                            <div class="print-service"><table class="service-container" id="1">
-                                                    <tbody><tr>
-                                                        <td colspan="3" style="font-weight: bold;">
+                            <div class="print-service">
+                                <table class="service-container" id="1">
+                                    <tbody>
+                                    <tr>
+                                        <td colspan="3" style="font-weight: bold;">
 
-                                                            <input type="checkbox" name="services" value="-1" checked="checked">
+                                            <input type="checkbox" checked="checked">
                     <span>همه سرویس ها
                     </span>
 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                    {% for index,group in groups %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        {% for index,group in groups %}
 
-                                                        <td>
-                                                            <input type="checkbox" name="services{{ group.id }}" value="1109">
-                                                            {{ group.name }}
-                                                        </td>
-                                                        {% if index % 4 ==0  and index !=0 %}
-                                                            </tr>
-                                                            <tr>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                    </tr>
+                                        <td>
+                                            <input type="checkbox" name="services[]" value="{{ group.id }}">
+                                            {{ group.name }}
+                                        </td>
+                                        {% if index % 4 ==0  and index !=0 %}
+                                    </tr>
+                                    <tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </tr>
 
-                                                    </tbody></table></div>
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
+                                    </tbody>
+                                </table>
+                            </div>
 
 
-                            </form>
                         </div>
-
                     </div>
+                </div>
 
-                    <div class="search-result">
-                        <section id="gkmainbody">
-                            <div>
 
-                                <div class="nsp bigtitle mobilelayout">
-                                    <div class="content">
-                                        {% for news in searchresults %}
-                                        <div class="nspArt nspCol1 categoryList">
-                                            <a href="{{ path('news_single',{id : news.id}) }}" class="nspImageWrapper tleft fleft gkResponsive">
-                                                <img class="nspImage tleft fleft gkResponsive" src="{{ asset('upload/' ~ news.id ~'/' ~ news.image )}}" width="170px" height="118px">
-                                            </a>
+            </form>
+        </div>
 
-                                            <div class="gkArtContentWrap">
-                                                <p class="nspInfo  nspInfo1 tleft fleft">
-                                                </p>
+    </div>
+
+    <div class="search-result">
+        <section id="gkmainbody">
+            <div>
+
+                <div class="nsp bigtitle mobilelayout">
+                    <div class="content">
+                        {% for news in search_results %}
+                            <div class="nspArt nspCol1 categoryList">
+                                <a href="{{ path('news_single',{id : news.id}) }}"
+                                   class="nspImageWrapper tleft fleft gkResponsive">
+                                    <img class="nspImage tleft fleft gkResponsive"
+                                         src="{{ asset('upload/' ~ news.id ~'/' ~ news.image ) }}" width="170px"
+                                         height="118px">
+                                </a>
+
+                                <div class="gkArtContentWrap">
+                                    <p class="nspInfo  nspInfo1 tleft fleft">
+                                    </p>
                                                 <span class="nspDate tright fright">
                                                     {{ news.creationdate|date('Y-m-d H:i:s') }}
                                                 </span>
-                                                <h4 class="nspHeader tleft fnone">
-                                                    <a href="{{ path('news_single',{id : news.id}) }}">
-                                                        {{ news.title }}
-                                                    </a>
-                                                </h4>
+                                    <h4 class="nspHeader tleft fnone">
+                                        <a href="{{ path('news_single',{id : news.id}) }}">
+                                            {{ news.title }}
+                                        </a>
+                                    </h4>
 
-                                                <p class="nspText tleft fleft">
-                                                        {{ news.abstract }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        {% endfor %}
+                                    <p class="nspText tleft fleft">
+                                        {{ news.abstract }}
+                                    </p>
+                                </div>
+                            </div>
+                        {% endfor %}
 
-                                    </div>
-                                    <div class="pagination">
-                                        <div class="wp-pagenavi">
+                    </div>
+                    <div class="pagination">
+                        <div class="wp-pagenavi">
                                     <span class="pages">
                                         {% trans %}page{% endtrans %}
                                         {{ current_page }}
@@ -183,115 +192,117 @@
                                         {% set numofpage = ((news_count-news_count%15) / 15) + reminder %}
                                         {{ numofpage }}
                                     </span>
-                                            {% set low = current_page - 5 %}
-                                            {% set high = current_page + 5 %}
-                                            {% if current_page > 1 %}
+                            {% set low = current_page - 5 %}
+                            {% set high = current_page + 5 %}
+                            {% if current_page > 1 %}
+                                <a href="{{ path('news_search', {'page': (page-1), '': app.request.query.all}) }}">
+                                    class="previous">
+                                    {% trans %}back{% endtrans %}
+                                </a>
+                            {% endif %}
+                            {% if low > 1 %}
+                                <a href="{{ path('news_search', app.request.query.all | merge({'page': 1 })) }}"
+                                   class="page">
+                                    1
+                                </a>
+                                {% if low > 2 %}
+                                    <a href="{{ path('news_search', app.request.query.all | merge({'page': (low-1) })) }}"
+                                       class="page">
+                                        ...
+                                    </a>
+                                {% endif %}
+                            {% endif %}
+                            {% for index in range (low,high) %}
 
-                                                <a href="{{ rawurl ~ '&' ~ 'page=' ~ (page-1) }}">
-                                                   class="previous">
-                                                    {% trans %}back{% endtrans %}
-                                                </a>
-                                            {% endif %}
-                                            {% if low > 1 %}
-                                                <a href="{{ rawurl ~ '&' ~ 'page=' ~ 1 }}"
-                                                   class="page">
-                                                    1
-                                                </a>
-                                                {% if low > 2 %}
-                                                    <a href="{{ rawurl ~ '&' ~ 'page=' ~ (low-1) }}"
-                                                       class="page">
-                                                        ...
-                                                    </a>
-                                                {% endif %}
-                                            {% endif %}
-                                            {% for index in range (low,high) %}
-
-                                                {% if  index == current_page  %}
-                                                    <span class="current">
+                                {% if  index == current_page %}
+                                    <span class="current">
                                                 {{ current_page }}
                                             </span>
-                                                {% elseif (index>0 and index <= numofpage )%}
-                                                    <a href="{{ rawurl ~ '&' ~ "page=" ~index }}"
-                                                       class="page">
-                                                        {{ index }}
-                                                    </a>
-                                                {% else %}
-                                                {% endif %}
+                                {% elseif (index>0 and index <= numofpage ) %}
+                                    <a href="{{ path('news_search', app.request.query.all | merge({'page': index })) }}"
+                                       class="page">
+                                        {{ index }}
+                                    </a>
+                                {% else %}
+                                {% endif %}
 
-                                            {% endfor %}
-                                            {% if high <numofpage-1 %}
-                                                <a href="{{ rawurl ~ '&' ~ 'page=' ~ (high+1) }}"
-                                                   class="page">
-                                                    ...
-                                                </a>
+                            {% endfor %}
+                            {% if high <numofpage-1 %}
+                                <a href="{{ path('news_search', app.request.query.all | merge({'page': (high+1) })) }}"
+                                   class="page">
+                                    ...
+                                </a>
 
-                                            {% endif %}
-                                            {% if high <numofpage %}
-                                                <a href="{{ rawurl ~ '&' ~ 'page=' ~ numofpage }}"
-                                                   class="page">
-                                                    {{ numofpage }}
-                                                </a>
+                            {% endif %}
+                            {% if high <numofpage %}
+                                <a href="{{ path('news_search', app.request.query.all | merge({'page': numofpage })) }}"
+                                   class="page">
+                                    {{ numofpage }}
+                                </a>
 
-                                            {% endif %}
-                                            {% if current_page < numofpage %}
-                                                <a href="{{ rawurl ~ '&' ~ 'page=' ~ (current_page+1) }}"
-                                                   class="next">
-                                                    {% trans %} next {% endtrans %}
-                                                </a>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
+                            {% endif %}
+                            {% if current_page < numofpage %}
+                                <a href="{{ path('news_search', app.request.query.all | merge({'page': current_page + 1})) }}"
+                                   class="next">
+                                    {% trans %} next {% endtrans %}
+                                </a>
+                            {% endif %}
+                        </div>
                     </div>
-
                 </div>
             </div>
-
         </section>
+
     </div>
 
-</section>
+    </div>
+    </div>
 
-<aside id="gkSidebar" class="gkOnlyOne">
+    </section>
+    </div>
 
-    <div class="box nsp color">
-        <div class="splitHeader"><a href="{{ path('news_homepage') }}" target="_blank">برگزیده</a></div>
-        <div class="content side catList">
-            {% for news in hotnews %}
-            <div class="nspArt nspCol1">
-                <a href="{{ path('news_single',{id : news.id}) }}" class="nspImageWrapper tleft fleft gkResponsive">
-                    <img class="nspImage tleft fleft gkResponsive" src="{{ asset('upload/' ~ news.id ~'/' ~ news.image )}}" alt=""></a>
-                <div class="gkArtContentWrap">
-                    <h4 class="nspHeader tleft fnone"><a href="/Home/Single/95403">{{ news.title }}</a></h4>
-                </div>
+    </section>
+
+    <aside id="gkSidebar" class="gkOnlyOne">
+
+        <div class="box nsp color">
+            <div class="splitHeader"><a href="{{ path('news_homepage') }}" target="_blank">اخبار داغ</a></div>
+            <div class="content side catList">
+                {% for news in hot_news %}
+                    <div class="nspArt nspCol1">
+                        <a href="{{ path('news_single',{id : news.id, '_locale': _locale}) }}"
+                           class="nspImageWrapper tleft fleft gkResponsive">
+                            <img class="nspImage tleft fleft gkResponsive"
+                                 src="{{ asset('upload/' ~ news.id ~'/' ~ news.image ) }}" alt=""></a>
+
+                        <div class="gkArtContentWrap">
+                            <h4 class="nspHeader tleft fnone"><a
+                                        href="{{ path('news_single',{id : news.id, '_locale': _locale}) }}">{{ news.title }}</a>
+                            </h4>
+                        </div>
+                    </div>
+                {% endfor %}
+
             </div>
-            {% endfor %}
-
         </div>
+
+    </aside>
+    <!--[if IE 8]>
+    <div class="ie8clear"></div>
+    <![endif]-->
     </div>
 
-</aside>
-<!--[if IE 8]>
-<div class="ie8clear"></div>
-<![endif]-->
-</div>
 
-
-
-
-</div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
     <script>
-        search() ;
+        search();
         mainNavigation();
         middleContent();
         catContent();
-        homepageSidebar() ;
+        homepageSidebar();
     </script>
 {% endblock %}
 
