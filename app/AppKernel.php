@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new HW3\NewsBundle\NewsBundle(),
             new HW3\UserBundle\UserBundle(),
             new HW3\CommentBundle\CommentBundle(),
+            new Eko\FeedBundle\EkoFeedBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

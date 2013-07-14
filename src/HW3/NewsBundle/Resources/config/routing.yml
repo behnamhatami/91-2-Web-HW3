@@ -10,10 +10,6 @@ news_category:
     pattern: /category/{id}
     defaults: { _controller: NewsBundle:Default:category}
 
-news_single:
-    pattern: /news/{id}
-    defaults: { _controller: NewsBundle:Default:single }
-
 news_ajax:
     pattern: /ajax
     defaults: { _controller: NewsBundle:Default:ajax }
@@ -21,6 +17,14 @@ news_ajax:
 news_search:
     pattern: /news/search
     defaults: { _controller: NewsBundle:Default:search}
+
+news_rss:
+    pattern: /news/rss
+    defaults: { _controller: NewsBundle:Default:RSS }
+
+news_single:
+    pattern: /news/{id}
+    defaults: { _controller: NewsBundle:Default:single }
 
 news_crud:
     resource: "@NewsBundle/Resources/config/routing/news.yml"

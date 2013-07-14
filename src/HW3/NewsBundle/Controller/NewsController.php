@@ -238,4 +238,21 @@ class NewsController extends Controller
 
         return $this->redirect($this->generateUrl('news'));
     }
+
+    public function sendMail($news,$groupname,$email)
+    {
+        ////////////////
+        $message = \Swift_Message::newInstance()
+            ->setSubject($groupname)
+            ->setFrom('rezaei70@gmail.com')
+            ->setTo($email)
+            ->setBody(
+
+                $this->renderView("NewsBundle::email.html.twig",array('news'=>$news)),'text/html'
+            )
+        ;
+        $this->get('mailer')->send($message);
+
+
+    }
 }

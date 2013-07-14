@@ -341,6 +341,20 @@ class Comment
         return $this->parent;
     }
 
+    
+    public function sortChildren()
+    {
+        $result = array();
+        $result[] =clone  $this ;
+        for($i=0 ; $i<count($this->children) ; $i++)
+        {
+            $temp = $this->children[$i]->sortChildren() ;
+            for($j=0 ; $j<count($temp) ;$j++)
+                $result[] =  clone $temp[$j];
+        }
+        return $result ;
+    }
+
     public function __toString()
     {
         return $this->getContent();

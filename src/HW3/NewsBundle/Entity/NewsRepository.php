@@ -30,7 +30,7 @@ class NewsRepository extends EntityRepository
         )));
     }
 
-    function getHotNews($limit)
+    function getHotNews($group, $limit)
     {
         $db = $this->createQueryBuilder('n')
             ->where('n.creation_date > :date')
@@ -39,6 +39,10 @@ class NewsRepository extends EntityRepository
             ->addOrderBy('n.visit', 'DESC')
             ->addOrderBy('n.creation_date', 'DESC')
             ->setMaxResults($limit);
+        
+        if($group != null)
+            $db = $db->andWhere('n.group = :group')
+                    ->setParameter('group', $group);
         $result = $db->getQuery()->getResult();
 
         if (count($result) < $limit / 2) {
@@ -47,17 +51,26 @@ class NewsRepository extends EntityRepository
                 ->addOrderBy('n.visit', 'DESC')
                 ->addOrderBy('n.creation_date', 'DESC')
                 ->setMaxResults($limit);
+            if($group != null)
+                $db = $db->andWhere('n.group = :group')
+                        ->setParameter('group', $group);
+        
             $result = $db->getQuery()->getResult();
         }
         return $result;
     }
 
-    function getRecentNews($limit)
+    function getRecentNews($group, $limit)
     {
         $db = $this->createQueryBuilder('n')
             ->where('n.confirmed = true')
             ->addOrderBy('n.creation_date', 'DESC')
             ->setMaxResults($limit);
+        if($group != null)
+            $db = $db->andWhere('n.group = :group')
+                    ->setParameter('group', $group);
+        
+
         return $db->getQuery()->getResult();
     }
 
@@ -126,23 +139,31 @@ class NewsRepository extends EntityRepository
         return $query->getQuery()->getResult();
     }
 
-    function getSelectedNews($limit)
+    function getSelectedNews($group, $limit)
     {
         $db = $this->createQueryBuilder('n')
             ->where('n . selected = true')
             ->where('n . confirmed = true')
             ->addOrderBy('n . creation_date', 'DESC')
             ->setMaxResults($limit);
+        if($group != null)
+            $db = $db->andWhere('n.group = :group')
+                    ->setParameter('group', $group);
+        
         $result = $db->getQuery()->getResult();
         return $result;
     }
 
-    function getConfirmedNews($limit)
+    function getConfirmedNews($group, $limit)
     {
         $db = $this->createQueryBuilder('n')
             ->where('n . confirmed = true')
             ->addOrderBy('n . creation_date', 'DESC')
             ->setMaxResults($limit);
+        if($group != null)
+            $db = $db->andWhere('n.group = :group')
+                    ->setParameter('group', $group);
+        
         $result = $db->getQuery()->getResult();
         return $result;
     }

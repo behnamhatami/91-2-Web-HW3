@@ -64,3 +64,11 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+eko_feed:
+    feeds:
+        news:
+            title:       'My news/posts'
+            description: 'Latests news'
+            link:        'http://localhost/FinalProject/Symfony/web/app_dev.php'
+            encoding:    'utf-8'

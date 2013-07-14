@@ -21,7 +21,8 @@
         "sensio/framework-extra-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
-        "egeloen/ckeditor-bundle": "2.*"
+        "egeloen/ckeditor-bundle": "2.*",
+        "Eko/FeedBundle": "1.0.*"
     },
     "scripts": {
         "post-install-cmd": [

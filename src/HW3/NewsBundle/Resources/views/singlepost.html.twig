@@ -2,12 +2,12 @@
 {% set _locale = app.request.locale %}
 
 {% block body %}
-    {% include 'NewsBundle::header.html.twig' with {'groups' : groups} %}
+    {% include 'NewsBundle::header.html.twig' with {'groups' : groups,'hotnews':hotnews} %}
     <div id="gkPageContent" class="gkPage">
         <section id='gkContent'>
             <div id='gkContentCategory'>
                 <section id='gkBreadcrumb'>
-                    <div class='breadcrumbs'>";
+                    <div class='breadcrumbs'>
                         <a href='{{ path('news_homepage', {'_locale': _locale}) }}'>
                             {% trans %}Main Page{% endtrans %}
                         </a> &gt;
@@ -26,7 +26,7 @@
                 </section>
                 <section id='gkMainStory'>
                     <div>
-                        <article id='k2Container' class='itemView'>";
+                        <article id='k2Container' class='itemView'>
                             <img src="{{ asset('upload/' ~ news.id ~'/' ~ news.image) }}" alt="" width='400px'>
                             <header>
                                 <span>{{ news.title }}</span>
@@ -61,13 +61,13 @@
                 <div class="content side catList">
                     {% for post in hotnews %}
                         <div class="nspArt nspCol1">
-                            <a href="{{ path('news_single',{'id':post.id}) }}" target="_blank"
+                            <a href="{{ path('news_show',{'id':post.id}) }}" target="_blank"
                                class="nspImageWrapper tleft fleft gkResponsive">
                                 <img class="nspImage tleft fleft gkResponsive"
                                      src="{{ asset('upload/' ~ post.id ~'/' ~ post.image) }}"></a>
 
                             <div class="gkArtContentWrap">
-                                <h4 class="nspHeader tleft fnone"><a href="{{ path('news_single',{'id':post.id}) }}"
+                                <h4 class="nspHeader tleft fnone"><a href="{{ path('news_show',{'id':post.id}) }}"
                                                                      target="_blank">{{ post.title }}</a></h4>
                             </div>
                         </div>
@@ -78,6 +78,7 @@
         </aside>
         <div id="gkCommentWrap">
             <section class='gkComment'>
+
                 <div class="comBorder">
                     {#<a id="postcomment" style="font-size: 20px;position:relative ;left:10px; top:-20px;"> پاسخ</a>#}
                     <div class="comHeader">
@@ -94,22 +95,37 @@
                     </div>
 
                 </div>
+
                 <div class="comment box nsp clear light header">
                     {% set curlevel = -1 %}
-                    {% for i in range (0,news.comments |length -1) %}
-                    {% if news.comments[i] is defined %}
-                    {% for j in range(news.comments[i].level,curlevel) %}
-                    {% if news.comments[i].level<= curlevel %}
+                    {% for i in range (0,comments |length -1) %}
+                    {% if comments[i] is defined %}
+                    {% for j in range(comments[i].level,curlevel) %}
+                    {% if comments[i].level<= curlevel %}
                 </div>
                 {% endif %}
                 {% endfor %}
-                {% include 'CommentBundle::comment.html.twig' with {'comment' : news.comments[i]} %}
-                {% set curlevel=news.comments[i].level %}
+                {% include 'CommentBundle::comment.html.twig' with {'comment' : comments[i]} %}
+                {% set curlevel=comments[i].level %}
                 {% endif %}
                 {% endfor %}
-                {% if news.comments|length > 0 %}
+                {% if comments|length > 0 %}
         </div>
         {% endif %}
+        <div class="commentReply" style="display : none" parentid="0" newsid="{{ news.id }}">
+            <div class="commentReplyHeader">
+                <label style="margin : 5px">نام :</label>
+                <input type="text"></input>
+            </div>
+            <div id="commenteditor">
+                <textarea  style="width : 100% ; height : auto" rows="5">
+                </textarea>
+            </div>
+            <div class="controls" style="margin : 0px 5px ">
+                <button type = "submit" class="btn commentsend">send</button>
+                <button type= "submit" class="btn commentcancel">cancel</button>
+            </div>
+        </div>
 
 
     </div>
@@ -125,20 +141,6 @@
 
     </div>
 
-    <div class="commentReply" style="display : none" parentid="0" newsid="{{ news.id }}">
-        <div class="commentReplyHeader">
-            <label style="margin : 5px">name:</label>
-            <input type="text"></input>
-        </div>
-        <div id="commenteditor">
-            <textarea style="width : 100%" rows="10">
-            </textarea>
-        </div>
-        <div style="margin : 0px 5px ">
-            <button class="commentsend">send</button>
-            <button class="commentcancel">cancel</button>
-        </div>
-    </div>
 
 {% endblock %}
 {% block javascripts %}

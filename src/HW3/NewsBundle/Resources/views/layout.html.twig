@@ -3,6 +3,9 @@
 {% block stylesheets %}
     <script src="{{ asset('bundles/news/js/library.js') }}"></script>
     <script src="{{ asset('bundles/news/js/jquery-1.9.1.min.js') }}"></script>
+	{% stylesheets  'bundles/user/bootstrap/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/news/css/style.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('bundles/news/css/Header.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('bundles/news/css/Custom.css') }}" type="text/css"/>

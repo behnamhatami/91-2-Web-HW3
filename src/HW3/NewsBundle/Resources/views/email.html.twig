@@ -1,0 +1,18 @@
+<article id='k2Container' class='itemView'>
+    <a href="{{ path('news_single',{id : news.id}) }}"></a>
+    <img src="{{ asset('upload/' ~ news.id ~'/' ~ news.image) }}" alt="" width='400px'>
+    <header>
+        <span>{{ news.title }}</span>
+
+        <h1>{{ news.title }}</h1>
+
+        <div class='Abstract'>
+            {{ news.abstract }}
+        </div>
+    </header>
+    <div class="itemBody StoryBody">
+        <div class="itemFullText">
+            {{ news.content|raw }}
+        </div>
+    </div>
+</article>

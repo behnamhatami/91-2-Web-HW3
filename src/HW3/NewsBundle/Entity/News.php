@@ -5,11 +5,12 @@ namespace HW3\NewsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Debug\Exception\FatalErrorException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Eko\FeedBundle\Item\Writer\ItemInterface;
 
 /**
  * News
  */
-class News // implements \JsonSerializable
+class News implements ItemInterface
 {
     /**
      * @var boolean
@@ -475,6 +476,44 @@ class News // implements \JsonSerializable
     public function getSelected()
     {
         return $this->selected;
+    }
+
+    public function getFeedItemTitle()
+    {
+        return $this->title ;
+    }
+
+    public function getFeedItemDescription()
+    {
+       return $this->content ;
+    }
+
+    public function getFeedItemPubDate()
+    {
+        return $this->creation_date;
+    }
+
+    public function getFeedItemLink()
+    {
+        return "/FinalProject/Symfony/web/app_dev.php/fa/news/".$this->id ;
+    }
+
+
+    public function sortComments()
+    {
+        $result = array () ;
+        for( $i=0 ; $i<count($this->comments) ; $i++)
+        {
+            if($this->comments[$i]->getLevel() == 0)
+            {
+                $temp = $this->comments[$i]->sortChildren() ;
+                for($j=0 ; $j<count($temp) ;$j++)
+                {
+                    $result [] =  $temp[$j];
+                }
+            }
+        }
+        return $result ;
     }
 
     public function __toString()

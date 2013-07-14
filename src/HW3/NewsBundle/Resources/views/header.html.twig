@@ -13,7 +13,18 @@
 
                     <div class="block_social_top">
                         <ul>
-                            <li><a href="/rss/feed/?c=1&amp;m=6&amp;alt=????? ?????" class="rss">RSS</a></li>
+                            {% set rsslink = path('news_rss') %}
+                            {% if cur_cat_id is defined %}
+                            {% set rsslink = rsslink ~ '?' ~ 'services=' ~ cur_cat_id %}
+                            {% endif %}
+                            {% if rss is defined %}
+                                {% set rsslink = rsslink ~ '?' %}
+                            {% for key,val in rss  %}
+                            {% set rsslink = rsslink ~ key ~ '=' ~ val ~ '&' %}
+                            {% endfor %}
+                            {% endif %}
+                            <li><a href="{{ rsslink }}"
+                                   class="rss">RSS</a></li>
                         </ul>
                     </div>
                 </div>
@@ -36,13 +47,17 @@
             <div class="inner">
                 <nav class="main_menu">
                     <ul>
-                        <li class="big_dropdown current_page_item" data-content="MainPage">
+                        <li {% if cur_cat_id is defined  %}class="big_dropdown"{% else %} class="big_dropdown current_page_item" {% endif %}
+                            data-content="MainPage">
                             <a href="{{ path("news_homepage", {'_locale': _locale}) }}">
                                 {% trans %}Main window{% endtrans %}
                             </a>
                         </li>
                         {% for  group in groups %}
-                            <li class="big_dropdown" data-content="{{ group.id }}">
+
+
+                            <li {% if cur_cat_id is defined and cur_cat_id == group.id %}class="big_dropdown current_page_item"
+                                {% else %}class="big_dropdown" {% endif %} data-content="{{ group.id }}">
                                 <a href="{{ path("news_category", {'_locale': _locale , 'id' : group.id}) }}">
                                     {{ group.name | trans() }}
                                 </a>
@@ -93,8 +108,8 @@
                                     {% endfor %}
                                 </ul>
                             </div>
-                            <div class="line">
-                            </div>
+                            {#<div class="line">#}
+                            {#</div>#}
                             <div class="clearboth"></div>
                         </div>
                     </div>
@@ -102,22 +117,21 @@
             </div>
         </section>
         <section class="section_secondary_menu">
-            <div class="inner">
-                <div class="block_clock">
-                    <div id="ticker-wrapper-1370343347641" class="ticker-wrapper has-js right">
-                        <div id="ticker-1370343347641" class="ticker">
-                            <div id="ticker-title-1370343347641" class="ticker-title" style="display: block;"><span
-                                        style=""></span></div>
-                            <p id="ticker-content-1370343347641" class="ticker-content"
-                               style="display: block; opacity: 1; right: 20px;">الإثنین، ۲۴ رجب ۱۴۳۴ ۱:۱۳:۵۱ م</p>
 
-                            <div id="ticker-swipe-1370343347641" class="ticker-swipe"
-                                 style="right: 20px; margin-right: 42.3px;"><span
-                                        style="display: block;"><!-- --></span></div>
-                        </div>
-                    </div>
-                </div>
+            <div class="inner">
+                <nav class="secondary_menu">
+
+                    <span>گزیده ای از اخبار :</span>
+                    {% for index,news in hotnews %}
+                    <div id ='{{index}}' style="display:none" class="ticker-wrapper has-js right"><p class="ticker-content"><a href="{{ path('news_single',{id : hotnews[index].id}) }}">{{ hotnews[index].title }}</a></p></div>
+                    {% endfor %}
+                    <div numofnews='{{ hotnews |length }}' id='0' class='ticker-swipe'><span style="display : block"></span></div>
+                </nav>
+
             </div>
         </section>
     </div>
+    <script>
+        secondaryMenu();
+    </script>
 </header>
