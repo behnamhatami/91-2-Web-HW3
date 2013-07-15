@@ -153,9 +153,9 @@ class NewsController extends Controller
         $this->get('session')->getFlashBag()->add('success', 'Email address sended.');
 
 
-//        $entity->setConfirmed(True);
-//        $em->persist($entity);
-//        $em->flush();
+        $entity->setConfirmed(True);
+        $em->persist($entity);
+        $em->flush();
         $this->get('session')->getFlashBag()->add('success', 'News confirmed successfully.');
         return $this->redirect($this->generateUrl('news_show', array('id' => $id)));
     }
