@@ -364,7 +364,7 @@ function Subscription ()
         });
     });
     $('.block_email_top input[type=button]').click(function(){
-        $.getJSON('../ajax',{'action' : 'subscribe','email': $('#email-box').val(),'id' : $(this).attr('group-id') },function (data,status,xhr)
+        $.getJSON('../ajax',{'action' : 'subscribe','email': $('#email-box').val(),'id' : $('.block_email_top form').attr('group-id') },function (data,status,xhr)
         {
             if(data['result']=='yes')
                 $('.block_email_top form').append('ثبت نام شما با موفقیت انجام شد');
