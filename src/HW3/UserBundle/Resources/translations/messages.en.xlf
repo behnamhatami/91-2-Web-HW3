@@ -178,6 +178,22 @@
                 <source>Create a new entry</source>
                 <target>Create a new entry</target>
             </trans-unit>
+            <trans-unit id="listusers-17">
+                <source>Super Admin User</source>
+                <target>Super Admin User</target>
+            </trans-unit>
+            <trans-unit id="listusers-18">
+                <source>Normal User</source>
+                <target>Normal User</target>
+            </trans-unit>
+            <trans-unit id="listusers-19">
+                <source>Admin User</source>
+                <target>Admin User</target>
+            </trans-unit>
+            <trans-unit id="listusers-20">
+                <source>Manager User</source>
+                <target>Manager User</target>
+            </trans-unit>
             <!--end list users-->
 
             <!--begin user show-->

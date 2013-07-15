@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <!--begin header-->
+            <trans-unit id="header-1">
+                <source>Main window</source>
+                <target>Main Window</target>
+            </trans-unit>
+            <trans-unit id="header-2">
+                <source>Selection of news</source>
+                <target>Selection of news</target>
+            </trans-unit>
+            <trans-unit id="header-3">
+                <source>Selection of news:</source>
+                <target>Selection of news:</target>
+            </trans-unit>
+            <trans-unit id="header-4">
+                <source>Top news</source>
+                <target>Top news</target>
+            </trans-unit>
+            <!--end header-->
+
+            <!--begin homepage-->
+            <trans-unit id="homepage-1">
+                <source>Latest news</source>
+                <target>Latest</target>
+            </trans-unit>
+            <!--end homepage-->
+
+            <!--begin category-->
+            <trans-unit id="category-1">
+                <source>page %current_page% out of %numofpage%</source>
+                <target>page %current_page% out of %numofpage%</target>
+            </trans-unit>
+            <trans-unit id="category-2">
+                <source>next</source>
+                <target>next</target>
+            </trans-unit>
+            <trans-unit id="category-3">
+                <source>back</source>
+                <target>back</target>
+            </trans-unit>
+            <trans-unit id="category-4">
+                <source>Email subscription</source>
+                <target>Email subscription</target>
+            </trans-unit>
+            <!--end category-->
+
+
+            <!--begin single-->
+            <trans-unit id="single-1">
+                <source>,</source>
+                <target>,</target>
+            </trans-unit>
+            <trans-unit id="single-2">
+                <source>Related news</source>
+                <target>Related news</target>
+            </trans-unit>
+            <trans-unit id="single-3">
+                <source>Visitors Comments</source>
+                <target>Visitors Comments</target>
+            </trans-unit>
+            <trans-unit id="single-4">
+                <source>Answer</source>
+                <target>Answer</target>
+            </trans-unit>
+            <trans-unit id="single-5">
+                <source>Comment</source>
+                <target>Comment</target>
+            </trans-unit>
+            <trans-unit id="single-6">
+                <source>cancel</source>
+                <target>cancel</target>
+            </trans-unit>
+            <trans-unit id="single-7">
+                <source>send</source>
+                <target>send</target>
+            </trans-unit>
+            <trans-unit id="single-8">
+                <source>New answer</source>
+                <target>New answer</target>
+            </trans-unit>
+            <!--end single-->
+
+            <!--begin search-->
+            <trans-unit id="search-1">
+                <source>search</source>
+                <target>Search</target>
+            </trans-unit>
+            <trans-unit id="search-2">
+                <source>keyboard</source>
+                <target>Keyboard</target>
+            </trans-unit>
+            <trans-unit id="search-3">
+                <source>active</source>
+                <target>active</target>
+            </trans-unit>
+            <trans-unit id="search-4">
+                <source>date range</source>
+                <target>Date range</target>
+            </trans-unit>
+            <trans-unit id="search-5">
+                <source>to</source>
+                <target>to</target>
+            </trans-unit>
+            <trans-unit id="search-6">
+                <source>from</source>
+                <target>from</target>
+            </trans-unit>
+            <trans-unit id="search-7">
+                <source>search in</source>
+                <target>Search in</target>
+            </trans-unit>
+            <trans-unit id="search-8">
+                <source>all newsgroups</source>
+                <target>All News Group</target>
+            </trans-unit>
+            <trans-unit id="search-9">
+                <source>hot news</source>
+                <target>Hot news</target>
+            </trans-unit>
+            <!--end search-->
+        </body>
+    </file>
+</xliff>
