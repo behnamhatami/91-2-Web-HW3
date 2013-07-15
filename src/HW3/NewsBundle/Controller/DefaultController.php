@@ -4,6 +4,7 @@ namespace HW3\NewsBundle\Controller;
 
 
 use HW3\CommentBundle\Entity\Comment;
+use HW3\NewsBundle\Entity\Subscription;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -104,6 +105,20 @@ class DefaultController extends Controller
             return new JsonResponse(
                 array('result' => 'yes', 'id' => $entity->getId(), 'parent' => $parentid, 'content' => $entity->getContent(),
                     'pos' => $entity->getPos(), 'neg' => $entity->getNeg(), 'composer' => $entity->getComposer()));
+        }
+
+        if($action == 'subscribe')
+        {
+            $entity = new Subscription();
+            $request = $this->getRequest();
+
+            $group = $em->getRepository('NewsBundle:NewsGroup')->findOneById($request->get('id'));
+
+            $entity->setNewsgroup($group);
+            $entity->setEmail($request->get('email'));
+            $em->persist($entity);
+            $em->flush();
+            return new JsonResponse(array('result'=> 'yes'));
         }
 
         return new JsonResponse(array('result' => 'no'));

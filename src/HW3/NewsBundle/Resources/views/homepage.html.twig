@@ -248,6 +248,9 @@
 
 
     </footer>
+    <div id="backtotop" style="display:none;"><a>
+            <img src="{{ asset('bundles/news/img/back2up.png') }}" border="0" alt="Go to TOP"></a></div>
+
 {% endblock %}
 
 {% block javascripts %}
@@ -256,5 +259,6 @@
         middleContent();
         catContent();
         homepageSidebar();
+        backTop();
     </script>
 {% endblock %}

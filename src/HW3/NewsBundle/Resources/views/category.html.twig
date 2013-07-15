@@ -192,7 +192,7 @@
 
         {#</div>#}
         <div class="block_email_top">
-            <form action="javascript:void(0);">
+            <form action="javascript:void(0);" group-id="{{ group.id }}">
                 <label class="email-label">ایمیل اشتراک اخبار</label>
 
                 <div class="field">
@@ -241,13 +241,18 @@
             All rights reserved.
         </p>
     </footer>
+    <div id="backtotop" style="display: none;"><a>
+            <img src="{{ asset('bundles/news/img/back2up.png') }}" border="0" alt="Go to TOP"></a></div>
 {% endblock %}
 
 
 {% block javascripts %}
     <script>mainNavigation();
+        backTop();
         catContent();
         homepageSidebar();
         categoryView();
+        Subscription();
+
     </script>
 {% endblock %}

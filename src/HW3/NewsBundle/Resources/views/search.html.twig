@@ -57,7 +57,7 @@
                     </div>
                     <div class="element">
                         فعال باشد
-                        <input type="checkbox" id="withdate" name="withdate">
+                        <input type="checkbox" id="withdate" name="withdate" checked="checked">
 
 
                         <div class="dates" style="display: block;">
@@ -112,7 +112,7 @@
                                     <tr>
                                         <td colspan="3" style="font-weight: bold;">
 
-                                            <input type="checkbox" checked="checked">
+                                            <input type="checkbox" id="allservices" >
                     <span>همه سرویس ها
                     </span>
 
@@ -294,6 +294,15 @@
 
 
     </div>
+    <footer id="gkFooter" class="gkPage">
+
+
+        <p id="gkCopyrights">© <a href="http://www.tasnimnews.com/" title="Tasnim News Agency">Tasnim News Agency</a>. All rights reserved.</p>
+
+
+    </footer>
+    <div id="backtotop" style="display: none;"><a>
+            <img src="{{ asset('bundles/news/img/back2up.png') }}" border="0" alt="Go to TOP"></a></div>
 {% endblock %}
 
 {% block javascripts %}
@@ -303,6 +312,7 @@
         middleContent();
         catContent();
         homepageSidebar();
+        backTop();
     </script>
 {% endblock %}
 

@@ -140,7 +140,15 @@
 
 
     </div>
+    <footer id="gkFooter" class="gkPage">
 
+
+        <p id="gkCopyrights">© <a href="http://www.tasnimnews.com/" title="Tasnim News Agency">Tasnim News Agency</a>. All rights reserved.</p>
+
+
+    </footer>
+    <div id="backtotop" style="display: none;"><a>
+            <img src="{{ asset('bundles/news/img/back2up.png') }}" border="0" alt="Go to TOP"></a></div>
 
 {% endblock %}
 {% block javascripts %}
@@ -148,6 +156,7 @@
         mainNavigation();
         newComment();
         likeDislike();
+        backTop() ;
     </script>
 {% endblock %}
 
