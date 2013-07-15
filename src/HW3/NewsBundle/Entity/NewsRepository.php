@@ -13,24 +13,15 @@ use Symfony\Component\Security\Acl\Domain\DoctrineAclCache;
  */
 class NewsRepository extends EntityRepository
 {
-    function getNewsFromGroup($group, $from, $limit)
-    {
-        return $this->findBy(array(
-            'newsgroup' => $group->getId(),
-            'confirmed' => 1
-        ), array(
-            'creation_date' => 'DESC',
-        ), $limit, $from);
-    }
-
     function getNewsCount($group)
     {
         return count($this->findBy(array(
-            'newsgroup' => $group
+            'newsgroup' => $group,
+            'confirmed' => 1
         )));
     }
 
-    function getHotNews($group, $limit)
+    function getHotNews($group, $limit, $offset = 0)
     {
         $db = $this->createQueryBuilder('n')
             ->where('n.creation_date > :date')
@@ -38,7 +29,8 @@ class NewsRepository extends EntityRepository
             ->andWhere('n.confirmed = true')
             ->addOrderBy('n.visit', 'DESC')
             ->addOrderBy('n.creation_date', 'DESC')
-            ->setMaxResults($limit);
+            ->setMaxResults($limit)
+            ->setFirstResult($offset);
 
         if ($group != null)
             $db = $db->andWhere('n.newsgroup = :newsgroup')
@@ -50,6 +42,7 @@ class NewsRepository extends EntityRepository
                 ->where('n.confirmed = true')
                 ->addOrderBy('n.visit', 'DESC')
                 ->addOrderBy('n.creation_date', 'DESC')
+                ->setFirstResult($offset)
                 ->setMaxResults($limit);
             if ($group != null)
                 $db = $db->andWhere('n.newsgroup = :newsgroup')
@@ -60,12 +53,14 @@ class NewsRepository extends EntityRepository
         return $result;
     }
 
-    function getRecentNews($group, $limit)
+    function getRecentNews($group, $limit, $offset = 0)
     {
         $db = $this->createQueryBuilder('n')
             ->where('n.confirmed = true')
             ->addOrderBy('n.creation_date', 'DESC')
+            ->setFirstResult($offset)
             ->setMaxResults($limit);
+
         if ($group != null)
             $db = $db->andWhere('n.newsgroup = :newsgroup')
                 ->setParameter('newsgroup', $group);
@@ -74,7 +69,7 @@ class NewsRepository extends EntityRepository
         return $db->getQuery()->getResult();
     }
 
-    function getRelatedNews($news, $limit)
+    function getRelatedNews($news, $limit, $offset = 0)
     {
 
         $query = $this->createQueryBuilder('n')
@@ -85,8 +80,11 @@ class NewsRepository extends EntityRepository
         foreach ($tags as $tag)
             $query = $query->orWhere('tag.id = ' . $tag->getId());
 
+        $query = $query->andWhere('n.confirmed = true');
+
         $query = $query->groupBy('n.id')
             ->addOrderBy('ct', 'DESC')
+            ->setFirstResult($offset)
             ->setMaxResults($limit);
 
         $result = array();
@@ -157,13 +155,15 @@ class NewsRepository extends EntityRepository
         else return $query->getQuery()->getSingleScalarResult();
     }
 
-    function getSelectedNews($group, $limit)
+    function getSelectedNews($group, $limit, $offset = 0)
     {
         $db = $this->createQueryBuilder('n')
             ->where('n . selected = true')
             ->where('n . confirmed = true')
             ->addOrderBy('n . creation_date', 'DESC')
-            ->setMaxResults($limit);
+            ->setMaxResults($limit)
+            ->setFirstResult($offset);
+
         if ($group != null)
             $db = $db->andWhere('n.newsgroup = :newsgroup')
                 ->setParameter('newsgroup', $group);
@@ -175,8 +175,8 @@ class NewsRepository extends EntityRepository
     function getConfirmedNews($group, $limit, $offset = 0)
     {
         $db = $this->createQueryBuilder('n')
-            ->where('n . confirmed = true')
-            ->addOrderBy('n . creation_date', 'DESC')
+            ->where('n.confirmed = true')
+            ->addOrderBy('n.creation_date', 'DESC')
             ->setMaxResults($limit)
             ->setFirstResult($offset);
 
@@ -191,8 +191,8 @@ class NewsRepository extends EntityRepository
     function getUnconfirmedNews()
     {
         $db = $this->createQueryBuilder('n')
-            ->where('n . confirmed = false')
-            ->addOrderBy('n . creation_date', 'DESC');
+            ->where('n.confirmed = false')
+            ->addOrderBy('n.creation_date', 'DESC');
         $result = $db->getQuery()->getResult();
         return $result;
     }

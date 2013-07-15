@@ -2,223 +2,418 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="1">
+            <!-- Login -->
+            <trans-unit id="login-1">
                 <source>Login</source>
                 <target>ورود</target>
             </trans-unit>
-            <trans-unit id="2">
+            <trans-unit id="login-2">
                 <source>Please sign in</source>
-                <target>لطفا وارد شويد</target>
+                <target>لطفا وارد شوید</target>
             </trans-unit>
-            <trans-unit id="3">
+            <trans-unit id="login-3">
                 <source>Password</source>
                 <target>رمز عبور</target>
             </trans-unit>
-            <trans-unit id="4">
+            <trans-unit id="login-4">
                 <source>Username</source>
-                <target>نام کاربري</target>
+                <target>نام کاربری</target>
             </trans-unit>
-            <trans-unit id="5">
+            <trans-unit id="login-5">
                 <source>Sign in</source>
                 <target>ورود</target>
             </trans-unit>
-            <trans-unit id="6">
+            <trans-unit id="login-6">
                 <source>Bad credentials</source>
-                <target>نام کاربري و رمز عبور همخواني ندارند.</target>
+                <target>نام کاربری و رمز عبور همخوانی ندارند.</target>
             </trans-unit>
-            <trans-unit id="7">
+            <!-- End Login -->
+
+            <!--begin home-->
+            <trans-unit id="home-1">
                 <source>News Management System</source>
-                <target>سيستم مديريت اخبار</target>
+                <target>سیستم مدیریت اخبار</target>
             </trans-unit>
-            <trans-unit id="8">
+            <trans-unit id="home-2">
                 <source>News</source>
                 <target>اخبار</target>
             </trans-unit>
-            <trans-unit id="9">
+            <trans-unit id="home-3">
                 <source>Create News</source>
-                <target>ساخت خبر جديد</target>
+                <target>ساخت خبر جدید</target>
             </trans-unit>
-            <trans-unit id="10">
+            <trans-unit id="home-4">
                 <source>My Old News</source>
-                <target>خبرهاي قبلي من</target>
+                <target>خبرهای قبلی من</target>
             </trans-unit>
-            <trans-unit id="11">
+            <trans-unit id="home-5">
+                <source>Unconfirmed News</source>
+                <target>خبرهای تایید نشده</target>
+            </trans-unit>
+            <trans-unit id="home-6">
                 <source>News Group</source>
-                <target>گروه خبري</target>
+                <target>گروه خبری</target>
             </trans-unit>
-            <trans-unit id="12">
-                <source>View News Groups</source>
-                <target>مشاهده ي گروه هاي خبري</target>
-            </trans-unit>
-            <trans-unit id="13">
+            <trans-unit id="home-7">
                 <source>Create News Group</source>
-                <target>ساخت گروه خبري جديد</target>
+                <target>ساخت گروه خبری جدید</target>
             </trans-unit>
-            <trans-unit id="14">
+            <trans-unit id="home-8">
+                <source>View News Groups</source>
+                <target>مشاهده‌ی گروه‌های خبری</target>
+            </trans-unit>
+            <trans-unit id="home-9">
+                <source>Tags</source>
+                <target>برچسب</target>
+            </trans-unit>
+            <trans-unit id="home-10">
+                <source>Create Tag</source>
+                <target>ساخت برچسب جدید</target>
+            </trans-unit>
+            <trans-unit id="home-11">
+                <source>View Tags</source>
+                <target>مشاهده‌ی برچسب ها</target>
+            </trans-unit>
+            <trans-unit id="home-12">
+                <source>Subscriptions</source>
+                <target>مشترکان</target>
+            </trans-unit>
+            <trans-unit id="home-13">
+                <source>Create Subscription</source>
+                <target>ساخت اشتراک جدید</target>
+            </trans-unit>
+            <trans-unit id="home-14">
+                <source>View Subscriptions</source>
+                <target>مشاهده‌ی مشترکان</target>
+            </trans-unit>
+            <trans-unit id="home-15">
                 <source>User</source>
                 <target>کاربر</target>
             </trans-unit>
-            <trans-unit id="15">
+            <trans-unit id="home-16">
                 <source>View Profile</source>
-                <target>مشاهده ي پروفايل</target>
+                <target>مشاهده‌ی پروفایل</target>
             </trans-unit>
-            <trans-unit id="16">
+            <trans-unit id="home-17">
                 <source>Edit Profile</source>
-                <target>ويرايش پروفايل</target>
+                <target>ویرایش پروفایل</target>
             </trans-unit>
-            <trans-unit id="17">
+            <trans-unit id="home-18">
+                <source>List Users</source>
+                <target>لیست کاربران</target>
+            </trans-unit>
+            <trans-unit id="home-19">
+                <source>Create User</source>
+                <target>ساخت کاربر جدید</target>
+            </trans-unit>
+            <trans-unit id="home-20">
                 <source>Sign Out</source>
                 <target>خروج</target>
             </trans-unit>
+            <!--end home-->
 
-            <trans-unit id="18">
-                <source>List Users</source>
-                <target>ليست کاربران</target>
-            </trans-unit>
-            <trans-unit id="19">
-                <source>Create User</source>
-                <target>ساخت کاربر جديد</target>
-            </trans-unit>
-            <trans-unit id="20">
+            <!--begin list users-->
+            <trans-unit id="listusers-1">
                 <source>User list</source>
-                <target>ليست کاربران</target>
+                <target>لیست کاربران</target>
             </trans-unit>
-            <trans-unit id="21">
+            <trans-unit id="listusers-2">
                 <source>Id</source>
-                <target>شماره شناسايي</target>
+                <target>شماره‌ی شناسایی</target>
             </trans-unit>
-            <trans-unit id="22">
+            <trans-unit id="listusers-3">
                 <source>Firstname</source>
                 <target>نام</target>
             </trans-unit>
-            <trans-unit id="23">
+            <trans-unit id="listusers-4">
                 <source>Lastname</source>
-                <target>نام خانوادگي</target>
+                <target>نام خانوادگی</target>
             </trans-unit>
-            <trans-unit id="24">
+            <trans-unit id="listusers-5">
                 <source>Username</source>
-                <target>نام کاربري</target>
+                <target>نام کاربری</target>
             </trans-unit>
-            <trans-unit id="25">
+            <trans-unit id="listusers-6">
                 <source>Creation Date</source>
-                <target>زمان ساخت حساب</target>
+                <target>تاریخ ساخت</target>
             </trans-unit>
-            <trans-unit id="26">
+            <trans-unit id="listusers-7">
                 <source>Showname</source>
-                <target>نام نمايش</target>
+                <target>نام نمایش شونده</target>
             </trans-unit>
-            <trans-unit id="27">
+            <trans-unit id="listusers-8">
+                <source>Role</source>
+                <target>نقش</target>
+            </trans-unit>
+            <trans-unit id="listusers-9">
                 <source>Actions</source>
-                <target>فعاليت ها</target>
+                <target>فعالیت ها</target>
             </trans-unit>
-            <trans-unit id="28">
+            <trans-unit id="listusers-10">
                 <source>show</source>
-                <target>مشاهده</target>
+                <target>نمایش</target>
             </trans-unit>
-            <trans-unit id="29">
+            <trans-unit id="listusers-11">
                 <source>edit</source>
-                <target>ويرايش</target>
+                <target>ویرایش</target>
             </trans-unit>
-            <trans-unit id="30">
+            <trans-unit id="listusers-12">
+                <source>ROLE_SUPER_ADMIN</source>
+                <target>مدیر کل</target>
+            </trans-unit>
+            <trans-unit id="listusers-13">
+                <source>ROLE_USER</source>
+                <target>کاربر عادی</target>
+            </trans-unit>
+            <trans-unit id="listusers-14">
+                <source>ROLE_ADMIN</source>
+                <target>مدیر</target>
+            </trans-unit>
+            <trans-unit id="listusers-15">
+                <source>ROLE_MANAGER</source>
+                <target>سردبیر</target>
+            </trans-unit>
+            <trans-unit id="listusers-16">
                 <source>Create a new entry</source>
-                <target>ساخت موردي جديد</target>
+                <target>ساخت یک نمونه‌ی جدید</target>
             </trans-unit>
-            <trans-unit id="31">
-                <source>User</source>
-                <target>کاربر</target>
+            <trans-unit id="listusers-17">
+                <source>Super Admin User</source>
+                <target>مدیر کل</target>
             </trans-unit>
-            <trans-unit id="32">
+            <trans-unit id="listusers-18">
+                <source>Normal User</source>
+                <target>کاربر عادی</target>
+            </trans-unit>
+            <trans-unit id="listusers-19">
+                <source>Admin User</source>
+                <target>مدیر</target>
+            </trans-unit>
+            <trans-unit id="listusers-20">
+                <source>Manager User</source>
+                <target>سردبیر</target>
+            </trans-unit>
+            <!--end list users-->
+
+            <!--begin user show-->
+            <trans-unit id="usershow-1">
                 <source>Back to the list</source>
-                <target>بازگشت</target>
+                <target>بازگشت به لیست</target>
             </trans-unit>
-            <trans-unit id="33">
+            <trans-unit id="usershow-2">
                 <source>Edit</source>
-                <target>ويرايش</target>
+                <target>ویرایش</target>
             </trans-unit>
-            <trans-unit id="34">
+            <trans-unit id="usershow-3">
                 <source>Delete</source>
                 <target>حذف</target>
             </trans-unit>
-            <trans-unit id="35">
+            <!--end user show-->
+
+            <!--begin edit user-->
+            <trans-unit id="edituser-1">
                 <source>Edit User</source>
-                <target>ويرايش پروفايل</target>
+                <target>ویرایش کاربر</target>
             </trans-unit>
-            <trans-unit id="36">
+            <trans-unit id="edituser-2">
                 <source>Newsgroups</source>
-                <target>گروه خبري</target>
+                <target>گروه‌های خبری</target>
             </trans-unit>
-            <trans-unit id="37">
+            <trans-unit id="edituser-3">
                 <source>Repeat Password</source>
-                <target>تکرار رمزعبور</target>
+                <target>تکرار رمز عبور</target>
             </trans-unit>
-            <trans-unit id="38">
+            <!--end edit user-->
+
+            <!--begin create user-->
+            <trans-unit id="createuser-1">
                 <source>User Creation</source>
-                <target>ساخت کاربر جديد</target>
+                <target>ساخت کاربر</target>
             </trans-unit>
-            <trans-unit id="39">
+            <trans-unit id="createuser-2">
                 <source>create</source>
                 <target>ساخت</target>
             </trans-unit>
-            <trans-unit id="40">
-                <source>NewsGroup list</source>
-                <target>ليست گروه هاي خبري</target>
+            <!--end create user-->
+
+            <!--begin news groups-->
+            <trans-unit id="newsgroups-1">
+                <source>Social</source>
+                <target>اجتماعی</target>
             </trans-unit>
-            <trans-unit id="41">
-                <source>Name</source>
-                <target>نام</target>
+            <trans-unit id="newsgroups-2">
+                <source>Economical</source>
+                <target>اقتصادی</target>
             </trans-unit>
-            <trans-unit id="42">
-                <source>Level</source>
-                <target>اهميت</target>
+            <trans-unit id="newsgroups-3">
+                <source>Political</source>
+                <target>سیاسی</target>
             </trans-unit>
-            <trans-unit id="43">
-                <source>NewsGroup</source>
-                <target>گروه خبري</target>
-            </trans-unit>
-            <trans-unit id="44">
-                <source>Edit News Group</source>
-                <target>ويرايش گروه خبري</target>
-            </trans-unit>
-            <trans-unit id="45">
-                <source>News Group Creation</source>
-                <target>ساخت گروه خبري جديد</target>
-            </trans-unit>
-            <trans-unit id="46">
-                <source>News list</source>
-                <target>ليست خبر</target>
-            </trans-unit>
-            <trans-unit id="47">
-                <source>Title</source>
-                <target>تيتر</target>
-            </trans-unit>
-            <trans-unit id="48">
-                <source>Visit</source>
-                <target>شمار بازديد کنندگان</target>
-            </trans-unit>
-            <trans-unit id="49">
+            <!--end news groups-->
+
+            <!--begin create news-->
+            <trans-unit id="newscreation-1">
                 <source>News Creation</source>
-                <target>ساخت خبر</target>
+                <target>ساخت خبر جدید</target>
             </trans-unit>
-            <trans-unit id="50">
+            <trans-unit id="newscreation-2">
                 <source>Newsgroup</source>
-                <target>گروه خبري</target>
+                <target>گروه خبری</target>
             </trans-unit>
-            <trans-unit id="51">
+            <trans-unit id="newscreation-3">
                 <source>Image</source>
                 <target>عکس</target>
             </trans-unit>
-            <trans-unit id="52">
-                <source>Abstract</source>
-                <target>چکيده</target>
+            <trans-unit id="newscreation-4">
+                <source>Title</source>
+                <target>تیتر</target>
             </trans-unit>
-            <trans-unit id="53">
+            <trans-unit id="newscreation-5">
+                <source>Abstract</source>
+                <target>چکیده</target>
+            </trans-unit>
+            <trans-unit id="newscreation-6">
                 <source>Content</source>
                 <target>محتوا</target>
             </trans-unit>
-            <trans-unit id="54">
-                <source>News Edit</source>
-                <target>ويرايش خبر</target>
+            <trans-unit id="newscreation-7">
+                <source>Selected</source>
+                <target>برگزیده</target>
             </trans-unit>
+            <!--end create news-->
+
+            <!--begin show news-->
+            <trans-unit id="newsshow-1">
+                <source>Visit</source>
+                <target>تعداد بازدیدکنندگان</target>
+            </trans-unit>
+            <trans-unit id="newsshow-2">
+                <source>Confirmed</source>
+                <target>تایید</target>
+            </trans-unit>
+            <trans-unit id="newsshow-3">
+                <source>True</source>
+                <target>بلی</target>
+            </trans-unit>
+            <trans-unit id="newsshow-4">
+                <source>False</source>
+                <target>خیر</target>
+            </trans-unit>
+            <!--end show news-->
+
+            <!--begin list news-->
+            <trans-unit id="newslist-1">
+                <source>News list</source>
+                <target>لیست خبرها</target>
+            </trans-unit>
+            <!--end list news-->
+
+            <!--begin edit news-->
+            <trans-unit id="newsedit-1">
+                <source>News Edit</source>
+                <target>ویرایش خبر</target>
+            </trans-unit>
+            <!--end edit news-->
+
+            <!--begin create newsgroup-->
+            <trans-unit id="newsgroupcreation-1">
+                <source>News Group Creation</source>
+                <target>ساخت گروه خبری جدید</target>
+            </trans-unit>
+            <trans-unit id="newsgroupcreation-2">
+                <source>Name</source>
+                <target>نام</target>
+            </trans-unit>
+            <trans-unit id="newsgroupcreation-3">
+                <source>Level</source>
+                <target>سطح</target>
+            </trans-unit>
+            <!--end create newsgroup-->
+
+            <!--begin show newsgroup-->
+            <trans-unit id="newsgroupshow-1">
+                <source>NewsGroup</source>
+                <target>گروه خبری</target>
+            </trans-unit>
+            <!--end show newsgroup-->
+
+            <!--begin list newsgroups-->
+            <trans-unit id="newsgroupslist-1">
+                <source>NewsGroup list</source>
+                <target>لیست گروه‌های خبری</target>
+            </trans-unit>
+            <!--end list newsgroups-->
+
+            <!--begin edit newsgroup-->
+            <trans-unit id="newsgroupedit-1">
+                <source>Edit News Group</source>
+                <target>ویرایش گروه خبری</target>
+            </trans-unit>
+            <!--end edit newsgroup-->
+
+
+            <!--begin create tag-->
+            <trans-unit id="tagcreate-1">
+                <source>Tag creation</source>
+                <target>ساخت برچسب جدید</target>
+            </trans-unit>
+            <!--end create tag-->
+
+            <!--begin show tag-->
+            <trans-unit id="tagshow-1">
+                <source>Tag</source>
+                <target>برچسب</target>
+            </trans-unit>
+            <!--end show tag-->
+
+            <!--begin list tags-->
+            <trans-unit id="tagslist-1">
+                <source>Tag list</source>
+                <target>لیست برچسب ها</target>
+            </trans-unit>
+            <!--end list tags-->
+
+            <!--begin edit tag-->
+            <trans-unit id="tagedit-1">
+                <source>Tag edit</source>
+                <target>ویرایش برچسب</target>
+            </trans-unit>
+            <!--end edit tag-->
+            <!--begin edit subscription-->
+            <trans-unit id="subscriptioncreate-1">
+                <source>Subscription creation</source>
+                <target>ساخت اشتراک</target>
+            </trans-unit>
+            <trans-unit id="subscriptioncreate-2">
+                <source>News group</source>
+                <target>گروه خبری</target>
+            </trans-unit>
+            <trans-unit id="subscriptioncreate-3">
+                <source>Email</source>
+                <target>پست الکترونیکی</target>
+            </trans-unit>
+            <!--end create subscription-->
+
+            <!--begin show subscription-->
+            <trans-unit id="subscriptionshow-1">
+                <source>Subscription</source>
+                <target>مشترک</target>
+            </trans-unit>
+            <!--end show subscription-->
+
+            <!--begin list subscriptions-->
+            <trans-unit id="subscriptionlist-1">
+                <source>Subscription list</source>
+                <target>لیست مشترکان</target>
+            </trans-unit>
+            <!--end list subscriptions-->
+
+            <!--begin edit subscription-->
+            <trans-unit id="subscriptionedit-1">
+                <source>Subscription edit</source>
+                <target>ویرایش اشتراک</target>
+            </trans-unit>
+            <!--end edit subscription-->
         </body>
     </file>
 </xliff>

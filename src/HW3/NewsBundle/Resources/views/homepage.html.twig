@@ -111,7 +111,9 @@
                 <section class='gkMainbodyTop'>
                     <div class='catBorder'>
                         <div class='catHeader'>
-                            <div><a href='#'>{{ group.name }}</a></div>
+                            <div>
+                                <a href='{{ path("news_category", {'_locale': _locale , 'id' : group.id}) }}'>{{ group.name | trans() }}</a>
+                            </div>
                         </div>
                     </div>
                     <div class='box nsp clear light header'>
@@ -120,7 +122,6 @@
                                 <div class='nspArtScroll1'>
                                     <div class='nspArtScroll2 nspPages1'>
                                         <div class='nspArtPage nspCol1'>
-
                                             <div class='nspArt nspCol1 catMain'>
                                                 <div class='center tcenter fnone gkResponsive'>
                                                     <a href='{{ path('news_single',{'id':group.getTopNews()[0].id}) }}'
@@ -197,17 +198,17 @@
 
 
         <div style="padding: 10px 22px 0 0;">
-
         </div>
 
         <div style="padding: 2px 5px 0 0;">
-
         </div>
 
         <div class="tabbed_area">
             <ul class="LeftTopTabs">
-                <li class="first" act="content_1"><a>برگزيده</a></li>
-                <li class="middle active" act="content_2" style="float: left;"><a>آخرين اخبار</a></li>
+                <li class="first" act="content_1"><a>{% trans %}Selected{% endtrans %}</a></li>
+                <li class="middle active" act="content_2" style="float: left;">
+                    <a>{% trans %}Latest news{% endtrans %}</a>
+                </li>
             </ul>
             <div id="content_1" class="content" style="display: none; overflow: hidden;">
                 <ul style="-webkit-transform: translateZ(0); height: 950px;">
@@ -234,19 +235,18 @@
                     {% endfor %}
                 </ul>
             </div>
-
         </div>
 
 
     </aside>
     </div>
     <footer id="gkFooter" class="gkPage">
-
-
-        <p id="gkCopyrights">© <a href="http://www.tasnimnews.com/" title="Tasnim News Agency">Tasnim News Agency</a>.
-            All rights reserved.</p>
-
-
+        <p id="gkCopyrights">©
+            <a title="News Agency">
+                News Agency
+            </a>.
+            All rights reserved.
+        </p>
     </footer>
     <div id="backtotop" style="display:none;"><a>
             <img src="{{ asset('bundles/news/img/back2up.png') }}" border="0" alt="Go to TOP"></a></div>

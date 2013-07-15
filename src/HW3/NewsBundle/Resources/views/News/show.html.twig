@@ -14,7 +14,7 @@
         </tr>
         <tr>
             <th>{% trans %}Newsgroup{% endtrans %}</th>
-            <td>{{ entity.newsgroup }}</td>
+            <td>{{ entity.newsgroup | trans() }}</td>
         </tr>
         <tr>
             <th>{% trans %}Title{% endtrans %}</th>
@@ -43,11 +43,11 @@
         </tr>
         <tr>
             <th>{% trans %}Selected{% endtrans %}</th>
-            <td>{{ entity.selected ? 'True' : 'False' }}</td>
+            <td>{{ entity.selected ? 'True' | trans() : 'False' | trans() }}</td>
         </tr>
         <tr>
             <th>{% trans %}Confirmed{% endtrans %}</th>
-            <td>{{ entity.confirmed ? 'True' : 'False' }}</td>
+            <td>{{ entity.confirmed ? 'True' | trans() : 'False' | trans() }}</td>
         </tr>
         <tr>
             <th>{% trans %}Tags{% endtrans %}</th>

@@ -37,14 +37,14 @@
             <td>
                 <ul>
                     {% for group in entity.newsgroups %}
-                        <li>{{ group }}</li>
+                        <li>{{ group | trans() }}</li>
                     {% endfor %}
                 </ul>
             </td>
         </tr>
         <tr>
             <th>{% trans %}Role{% endtrans %}</th>
-            <td>{{ entity.role }}</td>
+            <td>{{ entity.role | trans() }}</td>
         </tr>
         </tbody>
     </table>

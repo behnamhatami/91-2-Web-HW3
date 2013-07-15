@@ -25,21 +25,18 @@
                         </ul>
                     </div>
                 </div>
-
                 <div class="clearboth"></div>
             </div>
         </section>
+
         <section class="bottom">
             <div class="inner">
                 <div id="logo_top">
-
                 </div>
-
-
                 <div class="clearboth"></div>
             </div>
-
         </section>
+
         <section class="section_main_menu">
             <div class="inner">
                 <nav class="main_menu">
@@ -87,9 +84,9 @@
                             {% endfor %}
                             <div class="popular_posts">
                                 <div class="title">
-                                    <p>
-                                        {% trans %}Selection of news{% endtrans %}
-                                    </p>
+                                    {#<p>#}
+                                        {% trans %}Top news{% endtrans %}
+                                    {#</p>#}
                                 </div>
                                 <ul>
                                     {% for news_index, news in group.getTopNews() %}
@@ -112,11 +109,9 @@
             </div>
         </section>
         <section class="section_secondary_menu">
-
             <div class="inner">
                 <nav class="secondary_menu">
-
-                    <span>گزیده ای از اخبار :</span>
+                    <span>{% trans %}Selection of news:{% endtrans %} </span>
                     {% for index,news in selected_news %}
                         <div id='{{ index }}' style="display:none" class="ticker-wrapper has-js right"><p
                                     class="ticker-content"><a
@@ -126,7 +121,6 @@
                     <div numofnews='{{ selected_news |length }}' id='0' class='ticker-swipe'><span
                                 style="display : block"></span></div>
                 </nav>
-
             </div>
         </section>
     </div>

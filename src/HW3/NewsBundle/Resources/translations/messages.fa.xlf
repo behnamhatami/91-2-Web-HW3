@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <!--begin header-->
+            <trans-unit id="header-1">
+                <source>Main window</source>
+                <target>صفحه‌ی اصلی</target>
+            </trans-unit>
+            <trans-unit id="header-2">
+                <source>Selection of news</source>
+                <target>گزیده‌ای از اخبار</target>
+            </trans-unit>
+            <trans-unit id="header-3">
+                <source>Selection of news:</source>
+                <target>گزیده‌ای از اخبار:</target>
+            </trans-unit>
+            <trans-unit id="header-4">
+                <source>Top news</source>
+                <target>اخبار داغ</target>
+            </trans-unit>
+            <!--end header-->
+
+            <!--begin homepage-->
+            <trans-unit id="homepage-1">
+                <source>Latest news</source>
+                <target>آخرین اخبار</target>
+            </trans-unit>
+            <!--end homepage-->
+            <!--begin category-->
+            <trans-unit id="category-1">
+                <source>page %current_page% out of %numofpage%</source>
+                <target>صفحه‌ی %current_page% از %numofpage%</target>
+            </trans-unit>
+            <trans-unit id="category-2">
+                <source>next</source>
+                <target>بعدی</target>
+            </trans-unit>
+            <trans-unit id="category-3">
+                <source>back</source>
+                <target>قبلی</target>
+            </trans-unit>
+            <trans-unit id="category-4">
+                <source>Email subscription</source>
+                <target>ایمیل اشتراک اخبار</target>
+            </trans-unit>
+            <!--end category-->
+
+            <!--begin single-->
+            <trans-unit id="single-1">
+                <source>,</source>
+                <target>،</target>
+            </trans-unit>
+            <trans-unit id="single-2">
+                <source>Related news</source>
+                <target>اخبار مرتبط</target>
+            </trans-unit>
+            <trans-unit id="single-3">
+                <source>Visitors Comments</source>
+                <target>نظرات بینندگان</target>
+            </trans-unit>
+            <trans-unit id="single-4">
+                <source>Answer</source>
+                <target>نظر جدید</target>
+            </trans-unit>
+            <trans-unit id="single-5">
+                <source>Comment</source>
+                <target>نظر</target>
+            </trans-unit>
+            <trans-unit id="single-6">
+                <source>cancel</source>
+                <target>انصراف</target>
+            </trans-unit>
+            <trans-unit id="single-7">
+                <source>send</source>
+                <target>ارسال</target>
+            </trans-unit>
+            <trans-unit id="single-8">
+                <source>New answer</source>
+                <target>پاسخ جدید</target>
+            </trans-unit>
+            <!--end single-->
+
+            <!--begin search-->
+            <trans-unit id="search-1">
+                <source>search</source>
+                <target>جستجو</target>
+            </trans-unit>
+            <trans-unit id="search-2">
+                <source>keyboard</source>
+                <target>کلیدواژه</target>
+            </trans-unit>
+            <trans-unit id="search-3">
+                <source>active</source>
+                <target>فعال</target>
+            </trans-unit>
+            <trans-unit id="search-4">
+                <source>date range</source>
+                <target>محدوده‌ی تاریخ</target>
+            </trans-unit>
+            <trans-unit id="search-5">
+                <source>to</source>
+                <target>تا تاریخ</target>
+            </trans-unit>
+            <trans-unit id="search-6">
+                <source>from</source>
+                <target>از تاریخ</target>
+            </trans-unit>
+            <trans-unit id="search-7">
+                <source>search in</source>
+                <target>جستجو در</target>
+            </trans-unit>
+            <trans-unit id="search-8">
+                <source>all newsgroups</source>
+                <target>همه</target>
+            </trans-unit>
+            <trans-unit id="search-9">
+                <source>hot news</source>
+                <target>اخبار داغ</target>
+            </trans-unit>
+            <!--end search-->
+        </body>
+    </file>
+</xliff>

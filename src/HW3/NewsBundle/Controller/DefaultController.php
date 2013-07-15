@@ -34,7 +34,7 @@ class DefaultController extends Controller
         $groups = $em->getRepository('NewsBundle:NewsGroup')->findAll();
 
         foreach ($groups as $group)
-            $group->setTopNews($em->getRepository('NewsBundle:News')->getNewsFromGroup($group, 0, 7));
+            $group->setTopNews($em->getRepository('NewsBundle:News')->getHotNews($group, 7, 0));
         return $groups;
     }
 
@@ -52,8 +52,8 @@ class DefaultController extends Controller
         $group = $em->getRepository('NewsBundle:NewsGroup')->findOneById($id);
         if (!$group)
             throw $this->createNotFoundException('Unable to find News entity.');
-        $latest_news = $news_repo->getNewsFromGroup($group, 0, 3);
-        $news = $news_repo->getNewsFromGroup($group, ($page - 1) * 15, 15);
+        $latest_news = $news_repo->getRecentNews($group, 3, 0);
+        $news = $news_repo->getRecentNews($group, 15, ($page - 1) * 15);
 
         return $this->render('NewsBundle::category.html.twig', array(
             'news_count' => $news_repo->getNewsCount($group),
