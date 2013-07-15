@@ -9,18 +9,18 @@
                 <section id='gkBreadcrumb'>
                     <div class='breadcrumbs'>
                         <a href='{{ path('news_homepage', {'_locale': _locale}) }}'>
-                            {% trans %}Main Page{% endtrans %}
+                            {% trans %}Main window{% endtrans %}
                         </a> &gt;
                         <a href="{{ path('news_single',{'_locale': _locale , 'id':news.id}) }}">
-                            {{ news.newsgroup.name }}
+                            {{ news.newsgroup.name | trans() }}
                         </a>
                     </div>
                     <div class=' ContentCount'>
                         {% trans %}News group{% endtrans %}:
-                        {{ news.newsgroup.name }}
-                        ,{% trans %}Creation date{% endtrans %}:
-                        {{ news.creationdate|date('Y-m-d H:i:s') }}
-                        ,{% trans %}News identifier{% endtrans %}:
+                        {{ news.newsgroup.name | trans() }}{% trans %},{% endtrans %}
+                                                {% trans %}Creation Date{% endtrans %}:
+                                                {{ news.creationdate|date('Y-m-d H:i:s') }}{% trans %},{% endtrans %}
+                                                {% trans %}Id{% endtrans %}:
                         {{ news.id }}
                     </div>
                 </section>
@@ -57,7 +57,7 @@
         <aside id="gkSidebar">
 
             <div class="box nsp color">
-                <div class="splitHeader"><a>ااخبار مرتبط</a></div>
+                <div class="splitHeader"><a>{% trans %}Related news{% endtrans %}</a></div>
                 <div class="content side catList">
                     {% for post in related_news %}
                         <div class="nspArt nspCol1">
@@ -82,16 +82,10 @@
                 <div class="comBorder">
                     {#<a id="postcomment" style="font-size: 20px;position:relative ;left:10px; top:-20px;"> پاسخ</a>#}
                     <div class="comHeader">
-
-                        <div>
-                            نظرات بینندگان
-                        </div>
+                        <div>{% trans %}Visitors Comments{% endtrans %}</div>
                     </div>
-                    <div class="comHeader comReply" style=" right:94%;">
-
-                        <div>
-                            پاسخ
-                        </div>
+                    <div class="comHeader comReply" style=" right:90%;">
+                        <div>{% trans %}Answer{% endtrans %}</div>
                     </div>
 
                 </div>
@@ -114,16 +108,17 @@
         {% endif %}
         <div class="commentReply" style="display : none" parentid="0" newsid="{{ news.id }}">
             <div class="commentReplyHeader">
-                <label style="margin : 5px">نام :</label>
+                <label style="margin : 5px">{% trans %}Name{% endtrans %}</label>
                 <input type="text"></input>
             </div>
             <div id="commenteditor">
+                <label style="margin : 5px">{% trans %}Comment{% endtrans %}</label>
                 <textarea style="width : 100% ; height : auto" rows="5">
                 </textarea>
             </div>
             <div class="controls" style="margin : 0px 5px ">
-                <button type="submit" class="btn commentsend">send</button>
-                <button type="submit" class="btn commentcancel">cancel</button>
+                <button type="submit" class="btn commentsend">{% trans %}send{% endtrans %}</button>
+                                <button type="submit" class="btn commentcancel">{% trans %}cancel{% endtrans%}</button>
             </div>
         </div>
 

@@ -348,7 +348,7 @@ function backTop()
     $('div#backtotop').click(function(){
             var temp = parseInt($(window).scrollTop()/50) ;
             var interval = setInterval(function (){$(window).scrollTop(Math.min($(window).scrollTop()-50),0)},20);
-           setTimeout(function(){clearInterval(interval)},(temp+1)*20+1) ;
+           setTimeout(function(){clearInterval(interval)},(temp+2)*20+1) ;
 
     });
 

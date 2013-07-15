@@ -9,7 +9,8 @@
 
     <section id="gkBreadcrumb">
         <div class="breadcrumbs">
-            <a href="{{ path('news_homepage') }}">صفحه اصلی</a> &gt; جستجو
+            <a href="{{ path('news_homepage') }}">{% trans %}Main window{% endtrans %}</a> &gt;
+                        <a href={{ path('news_search') }}>{% trans %}search{% endtrans %}</a>
             <h1></h1>
         </div>
         <div class="ContentCount">
@@ -28,7 +29,7 @@
             <form method="GET" action="{{ path('news_search') }}">
                 <div class="section">
                     <div class="caption">
-                        کلیدواژه
+                        {% trans %}keyboard{% endtrans %}:
                     </div>
                     <div class="element">
                         <div class="keyword">
@@ -51,24 +52,26 @@
 
                 <div class="section">
                     <div class="caption">
-                        محدوده تاریخ:
+                        {% trans %}date range{% endtrans %}:
 
 
                     </div>
                     <div class="element">
-                        فعال باشد
+                        {% trans %}active{% endtrans %}
                         <input type="checkbox" id="withdate" name="withdate" checked="checked">
 
 
                         <div class="dates" style="display: block;">
 
                             <span></span>
-    <span>از تاریخ:
-        <input type="date" name="datefrom" value="">
-    </span>
-    <span>تا تاریخ:
-        <input type="date" name="dateto" value="">
-    </span>
+                      <span>
+                                {% trans %}from{% endtrans %}:
+                                <input type="date" name="datefrom" value="">
+                            </span>
+                                                     <span>
+                                {% trans %}to{% endtrans %}:
+                                <input type="date" name="dateto" value="">
+                            </span>
 
 
                         </div>
@@ -77,30 +80,28 @@
 
                 <div class="section">
                     <div class="caption">
-                        جستجو در:
+                        {% trans %}search in{% endtrans %}:
 
                     </div>
                     <div class="element">
                         <div class="position">
-                                                    <span>تیتر
-                                                    <input type="checkbox" checked="checked" name="positions[]"
-                                                           value="title">
-                                                    </span>
-                                                    <span>جکیده
-                                                    <input type="checkbox" name="positions[]" value="abstract"
-                                                           checked="checked">
-                                                    </span>
-                                                    <span>متن
-                                                    <input type="checkbox" name="positions[]" value="content"
-                                                           checked="checked">
-                                                    </span>
+                                                    <span>
+                                {% trans %}title{% endtrans %}
+                                <input type="checkbox" checked="checked" name="positions[]" value="title">
+                            </span>
+                            <span>{% trans %}abstract{% endtrans %}
+                                <input type="checkbox" name="positions[]" value="abstract" checked="checked">
+                     </span>
+                            <span>{% trans %}content{% endtrans %}
+                                <input type="checkbox" name="positions[]" value="content" checked="checked">
+                            </span>
                         </div>
                     </div>
                 </div>
 
                 <div class="section">
                     <div class="caption">
-                        سرویس خبر:
+                        {% trans %}Newsgroups{% endtrans %}:
                     </div>
                     <div class="element">
                         <div class="services">
@@ -113,8 +114,8 @@
                                         <td colspan="3" style="font-weight: bold;">
 
                                             <input type="checkbox" id="allservices" >
-                    <span>همه سرویس ها
-                    </span>
+                       <span>{% trans %}all newsgroups{% endtrans %}</span>
+
 
                                         </td>
                                     </tr>
@@ -123,7 +124,7 @@
 
                                         <td>
                                             <input type="checkbox" name="services[]" value="{{ group.id }}">
-                                            {{ group.name }}
+                                            {{ group.name | trans() }}
                                         </td>
                                         {% if index % 4 ==0  and index !=0 %}
                                     </tr>
@@ -185,12 +186,9 @@
                     <div class="pagination">
                         <div class="wp-pagenavi">
                                     <span class="pages">
-                                        {% trans %}page{% endtrans %}
-                                        {{ current_page }}
-                                        {% trans %}out of{% endtrans %}
                                         {% set reminder = news_count %15 == 0 ? 0 : 1 %}
                                         {% set numofpage = ((news_count-news_count%15) / 15) + reminder %}
-                                        {{ numofpage }}
+                                        {% trans %}page %current_page% out of %numofpage% {% endtrans %}
                                     </span>
                             {% set low = current_page - 5 %}
                             {% set high = current_page + 5 %}
@@ -244,7 +242,7 @@
                             {% if current_page < numofpage %}
                                 <a href="{{ path('news_search', app.request.query.all | merge({'page': current_page + 1})) }}"
                                    class="next">
-                                    {% trans %} next {% endtrans %}
+                                    {% trans %}next{% endtrans %}
                                 </a>
                             {% endif %}
                         </div>
@@ -266,7 +264,9 @@
     <aside id="gkSidebar" class="gkOnlyOne">
 
         <div class="box nsp color">
-            <div class="splitHeader"><a href="{{ path('news_homepage') }}" target="_blank">اخبار داغ</a></div>
+            <div class="splitHeader">
+                                <a>{% trans %}hot news{% endtrans %}</a>
+                            </div>
             <div class="content side catList">
                 {% for news in hot_news %}
                     <div class="nspArt nspCol1">

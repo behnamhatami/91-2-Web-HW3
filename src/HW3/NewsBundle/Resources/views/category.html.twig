@@ -10,10 +10,10 @@
             <section id="gkBreadcrumb">
                 <div class="breadcrumbs">
                     <a href="{{ path('news_homepage', {'_locale': _locale}) }}">
-                        Main window
+                        {% trans %}Main window{% endtrans %}
                     </a> &gt;
                     <a href="{{ path('news_category', {'_locale': _locale, 'id': group.id}) }}">
-                        {{ group.name }}
+                        {{ group.name | trans() }}
                     </a>
                 </div>
                 <div class="ie8clear">
@@ -99,12 +99,9 @@
                         <div class="pagination">
                             <div class="wp-pagenavi">
                                     <span class="pages">
-                                        {% trans %}page{% endtrans %}
-                                        {{ current_page }}
-                                        {% trans %}out of{% endtrans %}
                                         {% set reminder = news_count %15 == 0 ? 0 : 1 %}
                                         {% set numofpage = ((news_count-news_count%15) / 15) + reminder %}
-                                        {{ numofpage }}
+                                        {% trans %}page %current_page% out of %numofpage%{% endtrans %}
                                     </span>
                                 {% set low = current_page - 5 %}
                                 {% set high = current_page + 5 %}
@@ -158,7 +155,7 @@
                                 {% if current_page < numofpage %}
                                     <a href="{{ path('news_category', {'_locale': _locale, 'id' : group.id,'page':current_page+1}) }}"
                                        class="next">
-                                        {% trans %} next {% endtrans %}
+                                        {% trans %}next{% endtrans %}
                                     </a>
                                 {% endif %}
                             </div>
@@ -193,7 +190,7 @@
         {#</div>#}
         <div class="block_email_top">
             <form action="javascript:void(0);" group-id="{{ group.id }}">
-                <label class="email-label">ایمیل اشتراک اخبار</label>
+                <label class="email-label">{% trans %}Email subscription{% endtrans %}</label>
 
                 <div class="field">
                     <input type="text" class="w_def_text" id="email-box" name="email">
@@ -211,7 +208,7 @@
         </div>
         <div class="box nsp color">
             <div class="splitHeader"><a href="{{ path('news_category', {'_locale': _locale, 'id' : group.id}) }}"
-                                        target="_blank">برگزیده</a></div>
+                                        target="_blank">{% trans %}Selected{% endtrans %}</a></div>
             <div class="content side catList">
                 {% for selectnews in selected_news %}
                     <div class="nspArt nspCol1">
