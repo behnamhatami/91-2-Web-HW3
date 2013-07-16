@@ -17,67 +17,54 @@ class News implements ItemInterface
      */
 
     private $image_valid = true;
-
     /**
      * @var integer
      */
     private $id;
-
     /**
      * @var string
      */
     private $title;
-
     /**
      * @var string
      */
     private $abstract;
-
     /**
      * @var string
      */
     private $image;
-
     /**
      * @var \DateTime
      */
     private $creation_date;
-
     /**
      * @var string
      */
     private $content;
-
     /**
      * @var integer
      */
     private $visit;
-
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $comments;
-
     /**
      * @var \HW3\UserBundle\Entity\User
      */
     private $user;
-
     /**
      * @var \HW3\NewsBundle\Entity\NewsGroup
      */
     private $newsgroup;
-
     /**
      * @var boolean
      */
     private $confirmed;
-
     /**
      * @var boolean
      */
     private $selected;
-
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
@@ -107,36 +94,13 @@ class News implements ItemInterface
     }
 
     /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return News
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
+     * Get abstract
      *
      * @return string
      */
-    public function getTitle()
+    public function getAbstract()
     {
-        return $this->title;
+        return $this->abstract;
     }
 
     /**
@@ -148,29 +112,6 @@ class News implements ItemInterface
     public function setAbstract($abstract)
     {
         $this->abstract = $abstract;
-
-        return $this;
-    }
-
-    /**
-     * Get abstract
-     *
-     * @return string
-     */
-    public function getAbstract()
-    {
-        return $this->abstract;
-    }
-
-    /**
-     * Set image
-     *
-     * @param String $image
-     * @return News
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
 
         return $this;
     }
@@ -188,14 +129,15 @@ class News implements ItemInterface
     }
 
     /**
-     * Set creation_date
+     * Set image
      *
-     * @param \DateTime $creationDate
+     * @param String $image
      * @return News
      */
-    public function setCreationDate($creationDate)
+    public function setImage($image)
     {
-        $this->creation_date = new \DateTime($creationDate);
+        if ($image != null)
+            $this->image = $image;
 
         return $this;
     }
@@ -211,14 +153,14 @@ class News implements ItemInterface
     }
 
     /**
-     * Set content
+     * Set creation_date
      *
-     * @param string $content
+     * @param \DateTime $creationDate
      * @return News
      */
-    public function setContent($content)
+    public function setCreationDate($creationDate)
     {
-        $this->content = $content;
+        $this->creation_date = new \DateTime($creationDate);
 
         return $this;
     }
@@ -234,18 +176,17 @@ class News implements ItemInterface
     }
 
     /**
-     * Set visit
+     * Set content
      *
-     * @param integer $visit
+     * @param string $content
      * @return News
      */
-    public function setVisit($visit)
+    public function setContent($content)
     {
-        $this->visit = $visit;
+        $this->content = $content;
 
         return $this;
     }
-
 
     /**
      * visit
@@ -265,6 +206,19 @@ class News implements ItemInterface
     public function getVisit()
     {
         return $this->visit;
+    }
+
+    /**
+     * Set visit
+     *
+     * @param integer $visit
+     * @return News
+     */
+    public function setVisit($visit)
+    {
+        $this->visit = $visit;
+
+        return $this;
     }
 
     /**
@@ -301,19 +255,6 @@ class News implements ItemInterface
     }
 
     /**
-     * Set user
-     *
-     * @param \HW3\UserBundle\Entity\User $user
-     * @return News
-     */
-    public function setUser(\HW3\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
      * Get user
      *
      * @return \HW3\UserBundle\Entity\User
@@ -324,14 +265,14 @@ class News implements ItemInterface
     }
 
     /**
-     * Set newsgroup
+     * Set user
      *
-     * @param \HW3\NewsBundle\Entity\NewsGroup $newsgroup
+     * @param \HW3\UserBundle\Entity\User $user
      * @return News
      */
-    public function setNewsgroup(\HW3\NewsBundle\Entity\NewsGroup $newsgroup = null)
+    public function setUser(\HW3\UserBundle\Entity\User $user = null)
     {
-        $this->newsgroup = $newsgroup;
+        $this->user = $user;
 
         return $this;
     }
@@ -346,21 +287,17 @@ class News implements ItemInterface
         return $this->newsgroup;
     }
 
-    public function getFullImagePath()
+    /**
+     * Set newsgroup
+     *
+     * @param \HW3\NewsBundle\Entity\NewsGroup $newsgroup
+     * @return News
+     */
+    public function setNewsgroup(\HW3\NewsBundle\Entity\NewsGroup $newsgroup = null)
     {
-        return null === $this->image ? null : $this->getUploadRootDir() . $this->image;
-    }
+        $this->newsgroup = $newsgroup;
 
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded documents should be saved
-        return $this->getTmpUploadRootDir() . $this->getId() . "/";
-    }
-
-    protected function getTmpUploadRootDir()
-    {
-        // the absolute directory path where uploaded documents should be saved
-        return __DIR__ . '/../../../../web/upload/';
+        return $this;
     }
 
     public function uploadImage()
@@ -379,6 +316,28 @@ class News implements ItemInterface
             $this->setImage($this->image->getClientOriginalName());
     }
 
+    protected function getTmpUploadRootDir()
+    {
+        // the absolute directory path where uploaded documents should be saved
+        return __DIR__ . '/../../../../web/upload/';
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded documents should be saved
+        return $this->getTmpUploadRootDir() . $this->getId() . "/";
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
     public function moveImage()
     {
         if (null === $this->image) {
@@ -389,6 +348,11 @@ class News implements ItemInterface
         }
         copy($this->getTmpUploadRootDir() . $this->image, $this->getFullImagePath());
         unlink($this->getTmpUploadRootDir() . $this->image);
+    }
+
+    public function getFullImagePath()
+    {
+        return null === $this->image ? null : $this->getUploadRootDir() . $this->image;
     }
 
     public function removeImage()
@@ -433,6 +397,16 @@ class News implements ItemInterface
     }
 
     /**
+     * Get confirmed
+     *
+     * @return boolean
+     */
+    public function getConfirmed()
+    {
+        return $this->confirmed;
+    }
+
+    /**
      * Set confirmed
      *
      * @param boolean $confirmed
@@ -446,13 +420,13 @@ class News implements ItemInterface
     }
 
     /**
-     * Get confirmed
+     * Get selected
      *
      * @return boolean
      */
-    public function getConfirmed()
+    public function getSelected()
     {
-        return $this->confirmed;
+        return $this->selected;
     }
 
     /**
@@ -468,24 +442,14 @@ class News implements ItemInterface
         return $this;
     }
 
-    /**
-     * Get selected
-     *
-     * @return boolean
-     */
-    public function getSelected()
-    {
-        return $this->selected;
-    }
-
     public function getFeedItemTitle()
     {
-        return $this->title ;
+        return $this->title;
     }
 
     public function getFeedItemDescription()
     {
-       return $this->content ;
+        return $this->content;
     }
 
     public function getFeedItemPubDate()
@@ -495,29 +459,48 @@ class News implements ItemInterface
 
     public function getFeedItemLink()
     {
-        return "/FinalProject/Symfony/web/app_dev.php/fa/news/".$this->id ;
+        return "/FinalProject/Symfony/web/app_dev.php/fa/news/" . $this->id;
     }
-
 
     public function sortComments()
     {
-        $result = array () ;
-        for( $i=0 ; $i<count($this->comments) ; $i++)
-        {
-            if($this->comments[$i]->getLevel() == 0)
-            {
-                $temp = $this->comments[$i]->sortChildren() ;
-                for($j=0 ; $j<count($temp) ;$j++)
-                {
-                    $result [] =  $temp[$j];
+        $result = array();
+        for ($i = 0; $i < count($this->comments); $i++) {
+            if ($this->comments[$i]->getLevel() == 0) {
+                $temp = $this->comments[$i]->sortChildren();
+                for ($j = 0; $j < count($temp); $j++) {
+                    $result [] = $temp[$j];
                 }
             }
         }
-        return $result ;
+        return $result;
     }
 
     public function __toString()
     {
         return $this->getTitle();
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return News
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
     }
 }

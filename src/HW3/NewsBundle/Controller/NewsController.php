@@ -4,6 +4,7 @@ namespace HW3\NewsBundle\Controller;
 
 use HW3\NewsBundle\Entity\News;
 use HW3\NewsBundle\Form\NewsType;
+use HW3\NewsBundle\Form\NewsUpdateType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -187,7 +188,7 @@ class NewsController extends Controller
         }
 
         $entity->inValidateImage();
-        $editForm = $this->createForm(new NewsType($this->getRequest()->getLocale()), $entity);
+        $editForm = $this->createForm(new NewsUpdateType($this->getRequest()->getLocale()), $entity);
         $entity->validateImage();
         $deleteForm = $this->createDeleteForm($id);
 
@@ -214,7 +215,7 @@ class NewsController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
         $entity->inValidateImage();
-        $editForm = $this->createForm(new NewsType($this->getRequest()->getLocale()), $entity);
+        $editForm = $this->createForm(new NewsUpdateType($this->getRequest()->getLocale()), $entity);
         $entity->validateImage();
         $editForm->bind($request);
 
@@ -224,6 +225,32 @@ class NewsController extends Controller
 
             $this->get('session')->getFlashBag()->add('success', 'News updated successfully.');
             return $this->redirect($this->generateUrl('news_show', array('id' => $id)));
+        }
+
+        if ((substr_count($editForm->getErrorsAsString(), 'No errors') == 6 &&
+            substr_count($editForm->getErrorsAsString(), 'The file could not be found.') == 1)
+        ) {
+            $request = $this->getRequest();
+            $x1 = $request->get('x1');
+            $x2 = $request->get('x2');
+            $y1 = $request->get('y1');
+            $y2 = $request->get('y2');
+            $width = $request->get('width');
+            $height = $request->get('height');
+            $check = $request->get('edit_image_checkbox');
+
+            if ($check) {
+                $img_path = $entity->getFullImagePath();
+                $img = new \Imagick($img_path);
+                $img->cropimage($width, $height, $x1, $y1);
+                $img->writeImage($img_path);
+
+                $em->persist($entity);
+                $em->flush();
+
+                $this->get('session')->getFlashBag()->add('success', 'News updated successfully.');
+                return $this->redirect($this->generateUrl('news_show', array('id' => $id)));
+            }
         }
 
         $this->get('session')->getFlashBag()->add('error', 'News update failed.');
