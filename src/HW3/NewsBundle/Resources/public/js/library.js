@@ -9,7 +9,7 @@
 var currentnavelem = null ;
 function homepageSidebar()
 {
-    $("div.tabbed_area .LeftTopTabs li.first  a").click(function()
+    $("div.tabbed_area .LeftTopTabs li.first  ").click(function()
     {
 		console.log('bye');
         $('div#content_1').show();
@@ -17,7 +17,7 @@ function homepageSidebar()
         $('this').parent().attr('class','first active');
         $("div.tabbed_area .LeftTopTabs li.middle").attr('class','middle');
     });
-    $("div.tabbed_area .LeftTopTabs li.middle  a").click(function()
+    $("div.tabbed_area .LeftTopTabs li.middle  ").click(function()
     {
         $('div#content_2').show()
         $('div#content_1').hide();
@@ -27,7 +27,10 @@ function homepageSidebar()
 }
 function mainNavigation()
 {
-
+    $("section div nav.main_menu ul li[data-content=MainPage]").mouseout(function(){
+        if($(this).attr('class')!= "big_dropdown current_page_item")
+            $(this).attr('class','big_dropdown');
+    });
 	
     $.each($("section div nav.main_menu ul li"),function(index,val)
     {
@@ -110,13 +113,13 @@ function middleContent()
 
     });
 
-    $('.nspArt.nspCol1').mouseover(function(){
+    $('.nsphover .nspArt.nspCol1').mouseover(function(){
         $('.nspHoverOverlay').css({top:0});
 
         $('.nspHeader.tleft.fnone.MainHeader').hide() ;
         $('.gkResponsive img.nspImage.noborder').css({opacity:0.5});
     });
-    $('.nspArt.nspCol1').mouseout(function(){
+    $('.nsphover .nspArt.nspCol1').mouseout(function(){
         $('.nspHoverOverlay').css({top:'100%'});
         $('.nspHeader.tleft.fnone.MainHeader').show() ;
         $('.gkResponsive img.nspImage.noborder').css({opacity:1});
@@ -190,16 +193,18 @@ function likeDislike()
 
     });
     $('.comReply').click(function(){
-        $('.commentReply').slideToggle();
+       // $('.commentBox .commentReply').remove();
+        $('.comment.box.nsp.clear.light').append($('.commentReply'));
+        $('.commentReply').show();
         $('.commentReply').attr('parentid',-1);
 
     });
     $('div.oncommentReply a').click(function()
     {
-
         //$('.commentReply').slideToggle();
-        $('.commentReply').show();
         $('.commentReply').attr('parentid',$(this).parent().parent().parent().attr('id'));
+        jQuery($(this).parent().parent().parent()).append($('.commentReply'));
+        $('.commentReply').show();
     });
 }
 function newComment()
@@ -220,8 +225,10 @@ function newComment()
 
             var commentInfoBar = jQuery("<div class='commentInfoBar'></div>");
             commentInfoBar.append(jQuery("<div class='commentUser'>"+data['composer']+"</div>"));
-            commentInfoBar.append(jQuery( "<div class='oncommentReply'> <a>پاسخ</a></div>"));
-
+            if($('.commentReply').attr('lang')=="fa")
+                commentInfoBar.append(jQuery( "<div class='oncommentReply'> <a>پاسخ جدید</a></div>"));
+            else
+                commentInfoBar.append(jQuery( "<div class='oncommentReply'> <a>New answer</a></div>"));
             var commentRating = jQuery("<div class='commentRating'></div>");
             commentRating.append(jQuery("<div class='ratingDown' >"+data['neg']+"</div>"));
             commentRating.append(jQuery("<a  class='rateDownLink' ></a><a  class='rateUpLink' ></a>"));

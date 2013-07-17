@@ -47,6 +47,8 @@
                                 {% trans %}Main window{% endtrans %}
                             </a>
                         </li>
+
+
                         {% for  group in groups %}
                             <li {% if cur_cat_id is defined and cur_cat_id == group.id %}class="big_dropdown current_page_item"
                                 {% else %}class="big_dropdown" {% endif %} data-content="{{ group.id }}">
@@ -61,6 +63,7 @@
         </section>
         <section class="section_big_dropdown">
             <div class="inner">
+                <div class="block_big_dropdown" data-menu="MainPage" style="display: none;"></div>
                 {% for group_index, group in groups %}
                     <div class="block_big_dropdown" data-menu="{{ group.id }}" style="display: none;">
                         <div class="content">

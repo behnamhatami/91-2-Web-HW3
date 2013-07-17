@@ -1,0 +1,61 @@
+.ticker-wrapper.has-js {
+    display: block;
+    float: right;
+}
+
+.right .ticker-controls, .right .ticker-content, .right .ticker-title, .right .ticker
+{
+    float: right;
+}
+
+.ticker-content {
+    display: block;
+	position: relative;
+	right: 0px;
+	overflow: hidden;
+	display: block;
+	opacity: 1;
+	width: 1000px;
+	background-position: initial initial;
+	background-repeat: initial initial;
+	margin-top: 5px;
+	margin-right: 10px ;
+
+}
+.ticker-content a:hover
+{
+	color :red ;
+}
+
+.ticker-swipe {
+    position: absolute;
+    background-color: #eee;
+    display: block;
+    width: 650px;
+}
+
+.block_clock .ticker {
+    width: 240px;
+    margin: 0;
+}
+
+.ticker {
+    height: 22px;
+    width: 800px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin: 2px 0;
+}
+
+.block_clock p {
+    padding-bottom: 0;
+    font-size: 14px;
+    color: #767676;
+    font-weight: bold;
+    line-height: 13px;
+}
+
+
+
+

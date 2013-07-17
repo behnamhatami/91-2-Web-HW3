@@ -1,4 +1,6 @@
 {% extends '::base.html.twig' %}
+{% set left_align = (app.request.locale == 'en') %}
+{% set _locale = app.request.locale %}
 
 {% block stylesheets %}
     <script src="{{ asset('bundles/news/js/library.js') }}"></script>
@@ -6,13 +8,22 @@
 	{% stylesheets  'bundles/user/bootstrap/css/*' filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/news/css/style.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/news/css/Header.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/news/css/Custom.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/news/css/ticker-style.css') }}" type="text/css"/>
-    {% stylesheets  'Symfony/bundles/news/css/*' filter='cssrewrite' %}
-    <link rel="stylesheet" href="{{ asset_url }}"/>
-    {% endstylesheets %}
+
+    {% if left_align %}
+        <link rel="stylesheet" href="{{ asset('bundles/news/css/en/style.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('bundles/news/css/en/Header.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('bundles/news/css/en/Custom.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('bundles/news/css/en/ticker-style.css') }}" type="text/css"/>
+
+    {% else %}
+        <link rel="stylesheet" href="{{ asset('bundles/news/css/fa/style.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('bundles/news/css/fa/Header.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('bundles/news/css/fa/Custom.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('bundles/news/css/fa/ticker-style.css') }}" type="text/css"/>
+    {% endif %}
+    {#{% stylesheets  'Symfony/bundles/news/css/*' filter='cssrewrite' %}#}
+    {#<link rel="stylesheet" href="{{ asset_url }}"/>#}
+    {#{% endstylesheets %}#}
 {% endblock %}
 {% block javascripts %}
     {% javascripts '@NewsBundle/Resources/public/js/*' %}

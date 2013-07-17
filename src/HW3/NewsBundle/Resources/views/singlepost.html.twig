@@ -37,12 +37,7 @@
                                     {{ news.abstract }}
                                 </div>
                             </header>
-                            <div class="actionBox">
-                                <a href="javascript:Print('70598');">
-                                    <img src="{{ asset('bundles/news/Images/print.png') }}" alt="print">
-                                    <span>Print version</span>
-                                </a>
-                            </div>
+
                             <div class="itemBody StoryBody">
                                 <div class="itemFullText">
                                     {{ news.content|raw }}
@@ -84,7 +79,7 @@
                     <div class="comHeader">
                         <div>{% trans %}Visitors Comments{% endtrans %}</div>
                     </div>
-                    <div class="comHeader comReply" style=" right:90%;">
+                    <div class="comHeader comReply" {% if app.request.locale == 'en' %} style="left:90%;" {% else %} style="right:90%;" {% endif %}>
                         <div>{% trans %}Answer{% endtrans %}</div>
                     </div>
 
@@ -106,7 +101,7 @@
                 {% if comments|length > 0 %}
         </div>
         {% endif %}
-        <div class="commentReply" style="display : none" parentid="0" newsid="{{ news.id }}">
+        <div lang="{{ app.request.locale }}" class="commentReply" style="display : none" parentid="0" newsid="{{ news.id }}">
             <div class="commentReplyHeader">
                 <label style="margin : 5px">{% trans %}Name{% endtrans %}</label>
                 <input type="text"></input>

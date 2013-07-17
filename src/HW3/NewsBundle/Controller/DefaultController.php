@@ -144,7 +144,7 @@ class DefaultController extends Controller
             'selected_news' => $repo->getSelectedNews(null, 10),
             'hot_news' => $repo->getHotNews(null, 10),
             'news_count' => $repo->search($query_string, $fields, $from_date,
-                $to_date, $newsgroups, 15, ($page - 1) * 15, true),
+               $to_date, $newsgroups, 15, ($page - 1) * 15, true),
             'current_page' => $page,
         ));
     }
