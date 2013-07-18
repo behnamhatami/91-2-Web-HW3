@@ -278,7 +278,11 @@ class NewsController extends Controller
                 throw $this->createNotFoundException('Unable to find News entity.');
             }
 
+            for ($i = count($entity->getComments()) - 1; $i >= 0; $i--)
+                $em->remove($entity->getComments()[$i]);
+
             $em->remove($entity);
+
             $em->flush();
             $this->get('session')->getFlashBag()->add('info', 'News deleted successfully.');
         }
