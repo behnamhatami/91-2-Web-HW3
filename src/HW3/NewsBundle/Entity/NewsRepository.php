@@ -146,7 +146,7 @@ class NewsRepository extends EntityRepository
         }
 
         if (!$count)
-            $query = $query->addOrderBy('n . creation_date', 'DESC')
+            $query = $query->addOrderBy('n.creation_date', 'DESC')
                 ->setMaxResults($limit)
                 ->setFirstResult($offset);
 
@@ -158,9 +158,9 @@ class NewsRepository extends EntityRepository
     function getSelectedNews($group, $limit, $offset = 0)
     {
         $db = $this->createQueryBuilder('n')
-            ->where('n . selected = true')
-            ->where('n . confirmed = true')
-            ->addOrderBy('n . creation_date', 'DESC')
+            ->where('n.selected = true')
+            ->andWhere('n.confirmed = true')
+            ->addOrderBy('n.creation_date', 'DESC')
             ->setMaxResults($limit)
             ->setFirstResult($offset);
 

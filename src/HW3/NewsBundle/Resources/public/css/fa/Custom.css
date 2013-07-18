@@ -1,8 +1,10 @@
+@import url(http://awebfont.ir/css?id=1069|1047|1106&mode=wl);
+
 body, h1, h2, h3, h4, h5, h6, dl#tabs dt.tabs span h3, dl.tabs dt.tabs span h3, .gkMenu>ul>li li,
 .bigtitle h3.header, .box.badge-new .header::after, .box.badge-popular .header::after,
 .box.badge-top .header::after
 {
-    font-family:Bnazanin,Tahoma;
+    font-family:'B NAZANIN', Tahoma;
 }
 
 body {
@@ -296,7 +298,7 @@ ul.LeftTopTabs li {
 ul.LeftTopTabs li a {
     color: #fff;
     font-size: 12px;
-    font-family: Bnazanin;
+    font-family:'B NAZANIN', Tahoma;
     font-weight: bold;
 }
 

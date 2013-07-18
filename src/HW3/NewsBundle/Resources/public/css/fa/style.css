@@ -1,9 +1,11 @@
+@import url(http://awebfont.ir/css?id=1069|1047|1106&mode=wl);
+
 html {
     font-size: 100%;
 }
 
 html, button, input, select, textarea {
-    font-family: Bnazanin,Tahoma;
+    font-family: 'B NAZANIN', Tahoma;
 }
 html {
     border-bottom: 1px solid transparent;

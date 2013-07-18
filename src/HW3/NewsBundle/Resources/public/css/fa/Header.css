@@ -1,3 +1,4 @@
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 blockquote, pre, a, abbr, acronym, address, big,
 cite, code, del, dfn, em, font, img, ins, kbd, q, s,
@@ -132,7 +133,7 @@ nav.main_menu>ul>li>a {
     line-height: 30px;
     padding: 0 15px;
     display: block;
-    font-family: Bnazanin,Tahoma;
+    font-family:'B NAZANIN', Tahoma;
     font-size: 11px;
     color: #fff;
     font-weight: bold;
@@ -381,7 +382,7 @@ nav.main_menu>ul>li.hover>a {
     display: block;
     background-color: transparent;
     border: 0;
-    font-family: Bnazanin,Tahoma;
+    font-family:'B NAZANIN', Tahoma;
     font-size: 16px;
     color: black;
     direction: rtl;
@@ -425,7 +426,7 @@ nav.main_menu>ul>li.hover>a {
     display: block;
     background-color: transparent;
     border: 0;
-    font-family: Bnazanin,Tahoma;
+    font-family:'B NAZANIN', Tahoma;
     font-size: 16px;
     color: black;
     direction: rtl;

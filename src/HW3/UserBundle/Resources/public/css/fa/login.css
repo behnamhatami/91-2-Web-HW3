@@ -1,10 +1,10 @@
-/*@import url(http://awebfont.ir/css?id=1047&mode=wl);*/
+@import url(http://awebfont.ir/css?id=1047&mode=wl);
 
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    /*font-family: 'B Koodak', Tahoma, Arial;*/
+    font-family: 'B Koodak', Tahoma, Arial;
 }
 
 body {
